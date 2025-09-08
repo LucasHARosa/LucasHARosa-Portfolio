@@ -13,10 +13,36 @@ export interface ProjetosProps {
 
 export const listaProjetos: ProjetosProps[] = [
   {
+    id: 29,
+    titulo: "DubPay",
+    descricao:
+      "Fintech de pagamentos que oferece soluções inovadoras para facilitar transações financeiras, tanto para consumidores quanto para empresas.",
+    tags: ["Projeto Real", "NextJs", "Vite", "React App"],
+    imagem: "/imagens/dubpay.png",
+    Link: "https://www.dubpay.com/",
+    LinkGit: "",
+    LinkGoogle: "",
+    LinkApple: "",
+    tipo: ["frontend", "principais"],
+  },
+  {
+    id: 28,
+    titulo: "Mouv Brasil",
+    descricao:
+      "Aplicação para compra e venda de ingressos, permitindo que os usuários comprem ingressos para eventos e parceiros podem criar e editar eventos.",
+    tags: ["Projeto Real", "NextJs", "NestJS"],
+    imagem: "/imagens/mouv.png",
+    Link: "https://www.mouvbrasil.com/",
+    LinkGit: "",
+    LinkGoogle: "",
+    LinkApple: "",
+    tipo: ["backend", "frontend", "principais"],
+  },
+  {
     id: 27,
     titulo: "Nacional Go",
     descricao:
-      "Plataforma de transporte de veículos, oferecendo uma área exclusiva para clientes e um e-commerce integrado para serviços relacionados.",
+      "Maior plataforma/empresa de transporte de veículos, oferecendo todo o processo de tranporte veicular no Brasil todo, conta com área para clientes e um e-commerce integrado.",
     tags: ["Projeto Real", "React", "PHP"],
     imagem: "/imagens/nacional.png",
     Link: "https://app.nacionalgo.com.br/",
@@ -29,10 +55,10 @@ export const listaProjetos: ProjetosProps[] = [
     id: 26,
     titulo: "SporTickets",
     descricao:
-      "Aplicativo para compra e venda de ingressos, permitindo que os usuários comprem ingressos para eventos esportivos e parceiros podem criar e editar eventos.",
+      "Aplicação para compra e venda de ingressos, permitindo que os usuários comprem ingressos para eventos esportivos e parceiros podem criar e editar eventos.",
     tags: ["Projeto Real", "NextJs", "NestJS"],
     imagem: "/imagens/sporticket.png",
-    Link: "https://beta.sportickets.com.br/",
+    Link: "https://sportickets.com.br/",
     LinkGit: "",
     LinkGoogle: "",
     LinkApple: "",

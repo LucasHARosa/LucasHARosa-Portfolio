@@ -28,12 +28,36 @@ const experiences = [
     tags: ["Next.js", "NestJS", "React Native"],
   },
   {
+    icon: IoDesktopOutline,
+    title: "Desenvolvedor Full Stack",
+    subtitle: "DubPay",
+    description:
+      "Fintech de pagamentos que oferece soluções inovadoras para transações financeiras. Atuei no desenvolvimento e manutenção de aplicações web e mobile, integrações com gateways de pagamento e automações para consumidores e empresas.",
+    tags: ["Next.js", "Vite", "React"],
+  },
+  {
+    icon: IoDesktopOutline,
+    title: "Desenvolvedor Full Stack",
+    subtitle: "Sportickets",
+    description:
+      "Plataforma de compra e venda de ingressos esportivos. Participei no desenvolvimento de funcionalidades para usuários finais e painel de parceiros, com foco em escalabilidade, performance e experiência de compra simplificada.",
+    tags: ["Next.js", "NestJS", "React Native"],
+  },
+  {
     icon: MdOutlineDevices,
     title: "Desenvolvedor Full Stack",
     subtitle: "Nacional GO",
     description:
       "Responsável pelo novo ecommerce da Nacional GO, assim como o novo site da empresa. Atuei com funcionalidades front-end e back-end do sistema interno da empresa. Desenvolvi um app mobile para motoristas em React Native, otimizando operações logísticas. Também trabalhei na refatoração completa do site principal com React, com foco em performance, SEO e acessibilidade. Utilizei React, React Native e PHP",
     tags: ["PHP", "React", "React Native"],
+  },
+  {
+    icon: IoDesktopOutline,
+    title: "Desenvolvedor Full Stack",
+    subtitle: "Mouv Brasil",
+    description:
+      "Aplicação para compra e venda de ingressos online. Atuei tanto no frontend quanto no backend, construindo fluxos de compra, dashboards administrativos e integrações com sistemas de parceiros para gestão de eventos.",
+    tags: ["Next.js", "NestJS"],
   },
   {
     icon: MdOutlineDevices,
@@ -102,7 +126,7 @@ const experiences = [
 ];
 
 export function Experience() {
-  const [visibleCards, setVisibleCards] = useState(5);
+  const [visibleCards, setVisibleCards] = useState(3);
   const [isLoading, setIsLoading] = useState(false);
   const [visibleElements, setVisibleElements] = useState<boolean[]>([]);
 
