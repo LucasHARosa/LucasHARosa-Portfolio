@@ -102,9 +102,9 @@ export function Skills() {
         <Techs>
           <TechsLogo
             key={skill.id}
-            initial={{ opacity: 0, scale: 0.8, x: -50 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 1.2, type: "spring" }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
             <IconWrapper>{ImagemFundo()}</IconWrapper>
           </TechsLogo>
@@ -174,9 +174,9 @@ export function Skills() {
         </Techs>
         <TechsDescription
           key={skill.id}
-          initial={{ opacity: 0, scale: 0.7, x: 30 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 1.2, type: "spring" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
         >
           <h2>{skill.titulo}</h2>
           <Text>{skill.description}</Text>

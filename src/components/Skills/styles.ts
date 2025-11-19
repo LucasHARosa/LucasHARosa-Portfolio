@@ -106,6 +106,7 @@ export const TechsLogo = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
+  will-change: transform, opacity;
 
   @media (max-width: 1000px) {
     height: 160px;
@@ -167,9 +168,12 @@ export const TechsDescription = styled(motion.div)`
   justify-content: flex-start;
   width: 50%;
   padding: 1rem;
+  min-height: 400px;
+  will-change: transform, opacity;
 
   @media (max-width: 768px) {
     width: 100%;
+    min-height: 350px;
   }
 
   h2 {
