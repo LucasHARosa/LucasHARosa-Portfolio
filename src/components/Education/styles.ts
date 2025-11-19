@@ -2,8 +2,11 @@ import styled from "styled-components";
 
 export const EducationSection = styled.section`
   padding: 0;
-
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const EducationContainer = styled.div`
@@ -35,6 +38,17 @@ export const TimelineContainer = styled.div`
 
   > * {
     flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+
+    > * {
+      scroll-snap-align: center;
+    }
   }
 `;
 
