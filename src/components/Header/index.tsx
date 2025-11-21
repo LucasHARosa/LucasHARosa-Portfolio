@@ -132,7 +132,7 @@ export function Header() {
               <li>
                 <ButtonAnimationHover
                   handleTheme={handleTheme}
-                  text="Mudar tema"
+                  text="Mudar fundo"
                   icon
                 />
               </li>
@@ -188,7 +188,7 @@ export function Header() {
               <NavLi variants={itemVariants}>
                 <ButtonAnimationHover
                   handleTheme={handleTheme}
-                  text="Mudar tema"
+                  text="Mudar fundo"
                 />
               </NavLi>
             </motion.ul>
