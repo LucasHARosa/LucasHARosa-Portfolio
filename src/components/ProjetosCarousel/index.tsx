@@ -1,3 +1,5 @@
+"use client";
+
 import {
   motion,
   MotionValue,
@@ -14,6 +16,7 @@ import {
   GooglePlayLogo,
 } from "phosphor-react";
 import React, { useEffect, useRef, useState } from "react";
+
 import { ProjetosProps } from "../../data/data";
 import {
   AutoScrollIndicator,
@@ -59,60 +62,65 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
   cardWidth,
   onClick,
 }) => {
-  const position = index * (cardWidth + GAP);
-  const [isCentered, setIsCentered] = useState(false);
+  const itemWidth = cardWidth + GAP;
+  const position = index * itemWidth;
+  const [isCentered, setIsCentered] = useState(index === 1);
 
-  const inputRange = [
-    position - (cardWidth + GAP),
-    position,
-    position + (cardWidth + GAP),
-  ];
+  // Input range para transições baseadas no scroll
+  const inputRange = [position - itemWidth, position, position + itemWidth];
 
-  const scale = useTransform(scrollX, inputRange, [0.85, 1.15, 0.85]);
-  const opacity = useTransform(scrollX, inputRange, [0.4, 1, 0.4]);
-  const grayscale = useTransform(scrollX, inputRange, [1, 0, 1]);
-  const blur = useTransform(scrollX, inputRange, [3, 0, 3]);
-  const zIndex = useTransform(scrollX, inputRange, [1, 10, 1]);
+  // Escala suave baseada no scroll
+  const scale = useTransform(scrollX, inputRange, [0.85, 1.2, 0.85]);
+
+  // Grayscale e blur apenas para itens não centrais
+  const grayscale = useTransform(scrollX, inputRange, [0.7, 0, 0.7]);
+  const blur = useTransform(scrollX, inputRange, [1.5, 0, 1.5]);
+
+  // Z-index para garantir que o item central fique por cima
+  const zIndex = useTransform(scrollX, inputRange, [1, 20, 1]);
 
   const filter = useMotionTemplate`grayscale(${grayscale}) blur(${blur}px)`;
 
   // Content visibility
-  const contentOpacity = useTransform(
-    scrollX,
-    [position - cardWidth / 2, position, position + cardWidth / 2],
-    [0, 1, 0],
-  );
+  const contentInputRange = [
+    position - itemWidth * 0.5,
+    position,
+    position + itemWidth * 0.5,
+  ];
+  const contentOpacity = useTransform(scrollX, contentInputRange, [0, 1, 0]);
+  const contentY = useTransform(scrollX, inputRange, [15, 0, 15]);
 
-  const contentY = useTransform(scrollX, inputRange, [30, 0, 30]);
   const contentPointerEvents = useTransform(scrollX, (value) => {
     const diff = Math.abs(value - position);
-    return diff < cardWidth / 2 ? "auto" : "none";
+    return diff < itemWidth * 0.4 ? "auto" : "none";
   });
 
-  // Detecta se o card está centralizado para controlar o hover
+  // Detecta se o card está centralizado
   useEffect(() => {
     const unsubscribe = scrollX.on("change", (value) => {
       const diff = Math.abs(value - position);
-      setIsCentered(diff < (cardWidth + GAP) / 2);
+      setIsCentered(diff < itemWidth * 0.4);
     });
     return unsubscribe;
-  }, [scrollX, position, cardWidth]);
+  }, [scrollX, position, itemWidth]);
 
   return (
     <CarouselItemWrapper cardWidth={cardWidth} gap={GAP}>
       {/* Image Container */}
       <motion.div
         onClick={onClick}
+        initial={{ opacity: index === 1 ? 1 : 0.5 }}
+        animate={{
+          opacity: isCentered ? 1 : 0.5,
+        }}
         style={{
           scale,
-          opacity,
           filter: process.env.NODE_ENV === "test" ? "none" : filter,
           width: "100%",
           zIndex,
           position: "relative",
         }}
-        whileHover={isCentered ? undefined : { opacity: 0.9 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
       >
         <CarouselImageContainer>
           <CarouselImage
@@ -203,7 +211,12 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      const width = Math.min(window.innerWidth * 0.9, CARD_WIDTH_DESKTOP);
+      const isMobile = window.innerWidth <= 768;
+      // No mobile, usa 85% da largura para deixar espaço nas laterais
+      // No desktop, usa 90% até o máximo de CARD_WIDTH_DESKTOP
+      const width = isMobile
+        ? window.innerWidth * 0.85
+        : Math.min(window.innerWidth * 0.7, CARD_WIDTH_DESKTOP);
       setCardWidth(width);
       const containerW = containerRef.current?.offsetWidth || window.innerWidth;
       setPadding((containerW - width) / 2);

@@ -57,12 +57,18 @@ export const ScrollContainer = styled.div<{
 }>`
   display: flex;
   overflow-x: auto;
+  overflow-y: visible;
   scroll-snap-type: x mandatory;
   padding-bottom: 3rem;
   padding-top: 2.5rem;
   padding-left: ${({ paddingLeft }) => paddingLeft}px;
   padding-right: ${({ paddingRight }) => paddingRight}px;
   cursor: grab;
+
+  /* Espaço extra para permitir escala sem cortar */
+  margin: 0 -1rem;
+  padding-left: calc(${({ paddingLeft }) => paddingLeft}px + 1rem);
+  padding-right: calc(${({ paddingRight }) => paddingRight}px + 1rem);
 
   &:active {
     cursor: grabbing;
@@ -74,6 +80,11 @@ export const ScrollContainer = styled.div<{
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
   }
 `;
 
@@ -90,6 +101,13 @@ export const CarouselItemWrapper = styled.div<{
   position: relative;
   width: ${({ cardWidth }) => cardWidth}px;
   margin-right: ${({ gap }) => gap}px;
+
+  /* Garantir que o item tenha espaço para a escala */
+  padding: 1rem 0;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 0;
+  }
 `;
 
 // Container da imagem com bordas e sombras
@@ -133,7 +151,7 @@ export const ImageOverlay = styled.div`
 
 // Container do conteúdo (texto e botões)
 export const ContentContainer = styled.div`
-  margin-top: 4rem;
+  margin-top: 5rem;
   text-align: center;
   max-width: 52rem;
   margin-left: auto;
@@ -143,6 +161,11 @@ export const ContentContainer = styled.div`
   align-items: center;
   z-index: 20;
   padding: 0 1rem;
+
+  @media (max-width: 768px) {
+    margin-top: 1.5rem;
+    padding: 0 0.5rem;
+  }
 `;
 
 // Container das tags
