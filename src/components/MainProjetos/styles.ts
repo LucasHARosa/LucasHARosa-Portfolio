@@ -134,32 +134,36 @@ export const ViewAllContainer = styled.div`
 `;
 
 export const ViewAllButton = styled.button`
+  width: fit-content;
+  height: fit-content;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.875rem 2rem;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
-  border: 1px solid ${({ theme }) => theme["Blue-500"]};
-  background: transparent;
-  color: ${({ theme }) => theme["Blue-100"]};
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: ${({ theme }) => theme["Gray-900"]};
+  background-color: ${({ theme }) => theme["white"]};
+  border: none;
+  box-shadow: ${({ theme }) => theme["shadow-sm"]};
+  transition: all 0.2s ease-in-out;
 
   &:hover {
-    background: ${({ theme }) => theme["Blue-500"]};
-    color: white;
-    transform: translateY(-4px);
-    box-shadow: ${({ theme }) => theme["shadow-lg"]};
-  }
-
-  &:active {
+    background-color: ${({ theme }) => theme["Gray-300"]};
+    box-shadow: ${({ theme }) => theme["shadow-md"]};
     transform: translateY(-2px);
   }
 
+  &:active {
+    transform: translateY(0);
+  }
+
   @media (max-width: 768px) {
-    font-size: 0.9375rem;
-    padding: 0.75rem 1.5rem;
+    font-size: 0.75rem;
+    padding: 0.375rem 1rem;
+    gap: 0.25rem;
   }
 `;

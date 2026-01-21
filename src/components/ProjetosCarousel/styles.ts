@@ -21,11 +21,11 @@ export const NavigationButton = styled.button<NavigationButtonProps>`
   top: 33.333%;
   transform: translateY(-50%);
   z-index: 30;
-  padding: 1rem;
-  border-radius: 50%;
-  background-color: ${({ theme }) => theme["Gray-800"]};
-  border: 2px solid ${({ theme }) => theme["Gray-700"]};
-  color: ${({ theme }) => theme.white};
+  padding: 0.5rem;
+  border-radius: 30%;
+  background-color: ${({ theme }) => theme["white"]};
+  border: none;
+  color: ${({ theme }) => theme["Gray-900"]};
   cursor: pointer;
   opacity: 0;
   transition: all 0.3s ease-in-out;
@@ -36,8 +36,8 @@ export const NavigationButton = styled.button<NavigationButtonProps>`
   justify-content: center;
 
   &:hover {
-    background-color: ${({ theme }) => theme["Blue-500"]};
-    border-color: ${({ theme }) => theme["Blue-400"]};
+    background-color: ${({ theme }) => theme["Gray-300"]};
+
     transform: translateY(-50%) scale(1.1);
   }
 
@@ -51,7 +51,10 @@ export const NavigationButton = styled.button<NavigationButtonProps>`
 `;
 
 // Container do scroll horizontal
-export const ScrollContainer = styled.div<{ paddingLeft: number; paddingRight: number }>`
+export const ScrollContainer = styled.div<{
+  paddingLeft: number;
+  paddingRight: number;
+}>`
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -75,7 +78,10 @@ export const ScrollContainer = styled.div<{ paddingLeft: number; paddingRight: n
 `;
 
 // Wrapper do item do carrossel
-export const CarouselItemWrapper = styled.div<{ cardWidth: number; gap: number }>`
+export const CarouselItemWrapper = styled.div<{
+  cardWidth: number;
+  gap: number;
+}>`
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -95,12 +101,12 @@ export const CarouselImageContainer = styled.div`
   overflow: hidden;
   box-shadow: ${({ theme }) => theme["shadow-xl"]};
   background-color: ${({ theme }) => theme["Gray-900"]};
-  border: 2px solid ${({ theme }) => theme["Gray-800"]};
+  border: none;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
   &:hover {
-    border-color: ${({ theme }) => theme["Blue-500"]};
+    border-color: none;
     opacity: 0.9;
   }
 `;
@@ -127,9 +133,9 @@ export const ImageOverlay = styled.div`
 
 // Container do conteúdo (texto e botões)
 export const ContentContainer = styled.div`
-  margin-top: 2rem;
+  margin-top: 4rem;
   text-align: center;
-  max-width: 42rem;
+  max-width: 52rem;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -154,9 +160,9 @@ export const CarouselTag = styled.span`
   font-weight: 700;
   padding: 0.375rem 0.75rem;
   border-radius: 9999px;
-  background-color: ${({ theme }) => theme["Blue-900"]};
-  color: ${({ theme }) => theme["Blue-300"]};
-  border: 1px solid ${({ theme }) => theme["Blue-800"]};
+  background: rgba(255, 255, 255, 0.06);
+  color: ${({ theme }) => theme["Gray-300"]};
+  border: 1px solid rgba(255, 255, 255, 0.1);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   backdrop-filter: blur(4px);
@@ -184,7 +190,7 @@ export const ProjectDescription = styled.p`
   font-size: 1.125rem;
   margin-bottom: 2rem;
   line-height: 1.75;
-  max-width: 36rem;
+  max-width: 42rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -205,34 +211,37 @@ export const ButtonsContainer = styled.div`
 
 // Botão primário (visitar site)
 export const PrimaryButton = styled.a`
+  width: fit-content;
+  height: fit-content;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 1rem 2rem;
-  background: linear-gradient(
-    to right,
-    ${({ theme }) => theme["Blue-500"]},
-    ${({ theme }) => theme["Blue-600"]}
-  );
-  color: ${({ theme }) => theme.white};
-  border-radius: 9999px;
-  font-weight: 700;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
-  text-decoration: none;
-  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: ${({ theme }) => theme["Gray-900"]};
+  background-color: ${({ theme }) => theme["white"]};
+  border: none;
+  box-shadow: ${({ theme }) => theme["shadow-sm"]};
+  transition: all 0.2s ease-in-out;
 
   &:hover {
-    background: linear-gradient(
-      to right,
-      ${({ theme }) => theme["Blue-400"]},
-      ${({ theme }) => theme["Blue-500"]}
-    );
-    transform: scale(1.05);
+    background-color: ${({ theme }) => theme["Gray-300"]};
+    box-shadow: ${({ theme }) => theme["shadow-md"]};
+    transform: translateY(-2px);
   }
 
   &:active {
-    transform: scale(1.02);
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+    padding: 0.375rem 1rem;
+    gap: 0.25rem;
   }
 `;
 
@@ -303,7 +312,6 @@ export const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 0.75rem;
-  margin-top: 2rem;
 `;
 
 // Dot de paginação
@@ -320,13 +328,13 @@ export const PaginationDot = styled.button<PaginationDotProps>`
   width: ${({ isActive }) => (isActive ? "3rem" : "0.75rem")};
   height: 0.75rem;
   background-color: ${({ theme, isActive }) =>
-    isActive ? theme["Blue-500"] : theme["Gray-700"]};
+    isActive ? theme["Blue-400"] : theme["Gray-700"]};
   box-shadow: ${({ isActive }) =>
-    isActive ? "0 0 15px rgba(59, 130, 246, 0.6)" : "none"};
+    isActive ? "0 0 15px rgba(96, 165, 250, 0.8)" : "none"};
 
   &:hover {
     background-color: ${({ theme, isActive }) =>
-      isActive ? theme["Blue-500"] : theme["Gray-600"]};
+      isActive ? theme["Blue-400"] : theme["Gray-600"]};
   }
 `;
 

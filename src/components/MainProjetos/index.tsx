@@ -1,11 +1,4 @@
-import {
-  ArrowRight,
-  Code,
-  Cpu,
-  DeviceMobile,
-  Globe,
-  HardDrives,
-} from "phosphor-react";
+import { Code, Cpu, DeviceMobile, Globe, HardDrives } from "phosphor-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { listaProjetos } from "../../data/data";
@@ -17,8 +10,6 @@ import {
   ContainerProjetos,
   SectionContainer,
   SelectContainer,
-  ViewAllButton,
-  ViewAllContainer,
 } from "./styles";
 
 const categorias = [
@@ -42,7 +33,26 @@ export function MainProjetos() {
         <Title
           title="Projetos e Trabalhos"
           subTitle="Resultados do meu trabalho"
-          description="Aqui estão alguns dos meus projetos mais recentes. Clique em cada um deles para ver mais detalhes."
+          description={
+            <>
+              Aqui estão alguns dos meus projetos mais recentes. Clique em cada
+              um deles para ver mais detalhes.{" "}
+              <Link
+                to="/projetos"
+                style={{
+                  color: "inherit",
+                  textDecoration: "underline",
+                  textDecorationStyle: "dotted",
+                  opacity: 0.7,
+                  transition: "opacity 0.3s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
+              >
+                Ver todos ({listaProjetos.length})
+              </Link>
+            </>
+          }
         />
 
         <ContainerButtonSelect>
@@ -64,17 +74,6 @@ export function MainProjetos() {
           <Projetos key={item.id} projeto={item} />
         ))}
       </ContainerProjetos>
-
-      <ViewAllContainer>
-        <Link to="/projetos" style={{ textDecoration: "none" }}>
-          <ViewAllButton>
-            Ver Todos os Projetos ({listaProjetos.length})
-            <ArrowRight size={20} weight="bold" />
-          </ViewAllButton>
-        </Link>
-      </ViewAllContainer>
-
-      {/* Carrossel de Projetos em Destaque */}
     </SectionContainer>
   );
 }

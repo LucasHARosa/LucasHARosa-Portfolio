@@ -1,28 +1,41 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, MotionValue, useMotionTemplate } from 'framer-motion';
-import { ArrowRight, GithubLogo, GooglePlayLogo, AppleLogo, CaretLeft, CaretRight } from 'phosphor-react';
-import { ProjetosProps } from '../../data/data';
 import {
-  CarouselContainer,
-  NavigationButton,
-  ScrollContainer,
-  CarouselItemWrapper,
-  CarouselImageContainer,
-  CarouselImage,
-  ImageOverlay,
-  ContentContainer,
-  TagsContainer,
-  CarouselTag,
-  ProjectTitle,
-  ProjectDescription,
+  motion,
+  MotionValue,
+  useMotionTemplate,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import {
+  AppleLogo,
+  ArrowRight,
+  CaretLeft,
+  CaretRight,
+  GithubLogo,
+  GooglePlayLogo,
+} from "phosphor-react";
+import React, { useEffect, useRef, useState } from "react";
+import { ProjetosProps } from "../../data/data";
+import {
+  AutoScrollIndicator,
   ButtonsContainer,
-  PrimaryButton,
-  SecondaryButton,
+  CarouselContainer,
+  CarouselImage,
+  CarouselImageContainer,
+  CarouselItemWrapper,
+  CarouselTag,
+  ContentContainer,
   IconButton,
+  ImageOverlay,
+  NavigationButton,
   PaginationContainer,
   PaginationDot,
-  AutoScrollIndicator,
-} from './styles';
+  PrimaryButton,
+  ProjectDescription,
+  ProjectTitle,
+  ScrollContainer,
+  SecondaryButton,
+  TagsContainer,
+} from "./styles";
 
 interface ProjectCarouselProps {
   projects: ProjetosProps[];
@@ -44,9 +57,10 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
   index,
   scrollX,
   cardWidth,
-  onClick
+  onClick,
 }) => {
   const position = index * (cardWidth + GAP);
+  const [isCentered, setIsCentered] = useState(false);
 
   const inputRange = [
     position - (cardWidth + GAP),
@@ -58,20 +72,31 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
   const opacity = useTransform(scrollX, inputRange, [0.4, 1, 0.4]);
   const grayscale = useTransform(scrollX, inputRange, [1, 0, 1]);
   const blur = useTransform(scrollX, inputRange, [3, 0, 3]);
+  const zIndex = useTransform(scrollX, inputRange, [1, 10, 1]);
 
   const filter = useMotionTemplate`grayscale(${grayscale}) blur(${blur}px)`;
 
   // Content visibility
-  const contentOpacity = useTransform(scrollX,
-    [position - (cardWidth / 2), position, position + (cardWidth / 2)],
-    [0, 1, 0]
+  const contentOpacity = useTransform(
+    scrollX,
+    [position - cardWidth / 2, position, position + cardWidth / 2],
+    [0, 1, 0],
   );
 
   const contentY = useTransform(scrollX, inputRange, [30, 0, 30]);
   const contentPointerEvents = useTransform(scrollX, (value) => {
     const diff = Math.abs(value - position);
-    return diff < cardWidth / 2 ? 'auto' : 'none';
+    return diff < cardWidth / 2 ? "auto" : "none";
   });
+
+  // Detecta se o card está centralizado para controlar o hover
+  useEffect(() => {
+    const unsubscribe = scrollX.on("change", (value) => {
+      const diff = Math.abs(value - position);
+      setIsCentered(diff < (cardWidth + GAP) / 2);
+    });
+    return unsubscribe;
+  }, [scrollX, position, cardWidth]);
 
   return (
     <CarouselItemWrapper cardWidth={cardWidth} gap={GAP}>
@@ -81,10 +106,13 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
         style={{
           scale,
           opacity,
-          filter: process.env.NODE_ENV === 'test' ? 'none' : filter,
-          width: '100%',
+          filter: process.env.NODE_ENV === "test" ? "none" : filter,
+          width: "100%",
+          zIndex,
+          position: "relative",
         }}
-        whileHover={{ opacity: 0.9, scale: 1.18 }}
+        whileHover={isCentered ? undefined : { opacity: 0.9, scale: 1.007 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
       >
         <CarouselImageContainer>
           <CarouselImage
@@ -102,23 +130,19 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
           opacity: contentOpacity,
           y: contentY,
           pointerEvents: contentPointerEvents as any,
-          width: '100%',
+          width: "100%",
         }}
       >
         <ContentContainer>
           <TagsContainer>
             {project.tags.slice(0, 3).map((tag, idx) => (
-              <CarouselTag key={idx}>
-                {tag}
-              </CarouselTag>
+              <CarouselTag key={idx}>{tag}</CarouselTag>
             ))}
           </TagsContainer>
 
           <ProjectTitle>{project.titulo}</ProjectTitle>
 
-          <ProjectDescription>
-            {project.descricao}
-          </ProjectDescription>
+          <ProjectDescription>{project.descricao}</ProjectDescription>
 
           <ButtonsContainer>
             {project.Link && (
@@ -186,8 +210,8 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
     };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Inicializa no segundo card
@@ -220,7 +244,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
       const itemWidth = cardWidth + GAP;
       containerRef.current.scrollTo({
         left: index * itemWidth,
-        behavior: smooth ? 'smooth' : 'auto'
+        behavior: smooth ? "smooth" : "auto",
       });
     }
   };

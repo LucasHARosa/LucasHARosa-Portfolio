@@ -1,27 +1,32 @@
+import { FolderOpen } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FolderOpen } from "phosphor-react";
-import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
-import { ProjectsSidebar } from "../../components/ProjectsSidebar";
-import { ProjectsFilterBar } from "../../components/ProjectsFilterBar";
-import { ProjectCardHorizontal } from "../../components/ProjectCardHorizontal";
+import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
+import { ProjectCardHorizontal } from "../../components/ProjectCardHorizontal";
+import { ProjectsFilterBar } from "../../components/ProjectsFilterBar";
+import { ProjectsSidebar } from "../../components/ProjectsSidebar";
 import { Title } from "../../components/Title";
 import { listaProjetos } from "../../data/data";
 
 import {
-  PageContainer,
   ContentWrapper,
-  TitleSection,
-  ProjectsGrid,
   EmptyState,
+  PageContainer,
+  ProjectsGrid,
+  TitleSection,
 } from "./styles";
 
 export function Projects() {
   const [activeFilter, setActiveFilter] = useState("todos");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
+
+  // Scroll to top quando a página é montada
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Reset para página 1 quando filtro muda
   useEffect(() => {
@@ -40,7 +45,7 @@ export function Projects() {
   // Paginar projetos
   const paginatedProjects = filteredProjects.slice(
     (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    currentPage * itemsPerPage,
   );
 
   const getCategoryTitle = (filter: string) => {
