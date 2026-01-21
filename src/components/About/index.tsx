@@ -44,7 +44,7 @@ export function About() {
       scale: 1,
       zoom: 0,
       config: { mass: 10, tension: 500, friction: 40 },
-    })
+    }),
   );
 
   useGesture(
@@ -59,7 +59,7 @@ export function About() {
       onHover: ({ hovering }) =>
         !hovering && api({ rotateX: 0, rotateY: 0, scale: 1 }),
     },
-    { domTarget, eventOptions: { passive: false } }
+    { domTarget, eventOptions: { passive: false } },
   );
 
   const trail = useTrail(3, {
@@ -79,7 +79,7 @@ export function About() {
           }
         });
       },
-      { threshold: 0.2 } // Trigger when 20% of the element is visible
+      { threshold: 0.2 }, // Trigger when 20% of the element is visible
     );
 
     if (textSectionRef.current) {
@@ -134,11 +134,11 @@ export function About() {
             {trail.map((style, index) => (
               <animated.p key={index} style={style}>
                 {index === 0 &&
-                  "🖐 Prazer! Sou desenvolvedor e programador, com anos de experiência em diversas linguagens de programação e frameworks, tenho habilidades sólidas em desenvolvimento web e aplicativos, bem como em automação e Machine Learning"}
+                  "Prazer! Sou desenvolvedor e programador, com anos de experiência em diversas linguagens de programação e frameworks, tenho habilidades sólidas em desenvolvimento web e aplicativos, bem como em automação e Machine Learning"}
                 {index === 1 &&
-                  "🥇 Minha jornada como desenvolvedor começou quando percebi que poderia unir minha paixão por tecnologia e solução de problemas para criar soluções inovadoras. Ao longo dos anos, aprimorei minhas habilidades em programação e desenvolvimento, trabalhando em projetos desafiadores que exigiam pensamento crítico e criatividade."}
+                  "Minha jornada como desenvolvedor começou quando percebi que poderia unir minha paixão por tecnologia e solução de problemas para criar soluções inovadoras. Ao longo dos anos, aprimorei minhas habilidades em programação e desenvolvimento, trabalhando em projetos desafiadores que exigiam pensamento crítico e criatividade."}
                 {index === 2 &&
-                  "🚀 Se você está procurando um desenvolvedor web e programador que possa levar sua empresa para o próximo nível, estou à disposição. Meu compromisso com a excelência, juntamente com minhas habilidades técnicas, me tornam um parceiro valioso em qualquer projeto."}
+                  "Se você está procurando um desenvolvedor web e programador que possa levar sua empresa para o próximo nível, estou à disposição. Meu compromisso com a excelência, juntamente com minhas habilidades técnicas, me tornam um parceiro valioso em qualquer projeto."}
               </animated.p>
             ))}
           </div>

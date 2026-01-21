@@ -8,6 +8,7 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { Intro } from "../../components/Intro";
 import { MainProjetos } from "../../components/MainProjetos";
+import { ProjectsRating } from "../../components/ProjectsRating";
 import { Skills } from "../../components/Skills";
 
 export function Home() {
@@ -16,10 +17,11 @@ export function Home() {
       <Header />
       <Intro />
       <About />
-      <MainProjetos />
+      <ProjectsRating />
       <Skills />
       <Experience />
       <Education />
+      <MainProjetos />
       <Contact />
       <Footer />
     </>
