@@ -24,7 +24,7 @@ const experiences = [
   {
     icon: GiOctopus,
     title: "Founder & Desenvolvedor Full Stack",
-    subtitle: "Octopus Studio",
+    subtitle: "OctoLuna",
     description:
       "Atualmente presto serviços como desenvolvedor full stack por meio da minha própria software house. Atuo com desenvolvimento sob demanda de aplicações web e mobile, integrações com APIs de terceiros, automações de processos, gateways de pagamento (Pagar.me, Mercado Pago), deploy em cloud (Heroku, Vercel, S3) e arquitetura de software com foco em escalabilidade.",
     tags: ["Next.js", "NestJS", "React Native"],
