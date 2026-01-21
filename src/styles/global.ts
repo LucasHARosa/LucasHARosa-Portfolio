@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import './tailwind.css';
+import "./tailwind.css";
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: #020818;
+    background: #0a0b0d;
     color:#f8fafc;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;

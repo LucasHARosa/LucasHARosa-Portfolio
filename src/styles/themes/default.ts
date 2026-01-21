@@ -50,7 +50,7 @@ export const defaultTheme = {
   "Green-600": "#16a34a",
 
   // Background colors - more professional
-  background: "#020818", // Darker, more professional background
+  background: "#0a0b0d", // Darker, more professional background
   "Blue-Gray-800": "#1e293b",
   "Blue-Gray-700": "#334155",
   "Blue-Gray-600": "#475569",

@@ -13,7 +13,7 @@ export function ParticleAmong() {
     async (container: Container | undefined) => {
       await console.log(container);
     },
-    []
+    [],
   );
   return (
     <Particles
@@ -43,7 +43,7 @@ export function ParticleAmong() {
         },
         particles: {
           color: {
-            value: "#a78bfa",
+            value: "#f5f6ff",
           },
           move: {
             angle: {

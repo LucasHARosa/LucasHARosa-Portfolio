@@ -28,7 +28,7 @@ export function SpaceScene({ mousePosition }: SpaceSceneProps) {
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(
       mountRef.current.clientWidth,
-      mountRef.current.clientHeight
+      mountRef.current.clientHeight,
     );
     renderer.setClearColor(0x000000, 0);
     renderer.shadowMap.enabled = true;
@@ -59,7 +59,7 @@ export function SpaceScene({ mousePosition }: SpaceSceneProps) {
 
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath(
-      "https://www.gstatic.com/draco/versioned/decoders/1.5.6/"
+      "https://www.gstatic.com/draco/versioned/decoders/1.5.6/",
     );
 
     const gltfLoader = new GLTFLoader();
@@ -98,7 +98,7 @@ export function SpaceScene({ mousePosition }: SpaceSceneProps) {
       (error) => {
         console.error("Erro ao carregar modelo:", error);
         setModelError(true);
-      }
+      },
     );
 
     const animate = () => {
