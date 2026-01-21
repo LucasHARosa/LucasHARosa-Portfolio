@@ -4,10 +4,46 @@ export const Container = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   height: 100%;
-  padding: 6rem 0;
+  padding: 6rem 10vw;
+
+  @media (max-width: 768px) {
+    padding: 4rem 5vw;
+  }
+`;
+
+export const SectionHeader = styled.div`
+  margin-bottom: 3rem;
+  width: 100%;
+`;
+
+export const SectionLabel = styled.span`
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: ${({ theme }) => theme["Gray-500"]};
+  margin-bottom: 0.5rem;
+`;
+
+export const SectionTitle = styled.h2`
+  font-size: 2rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme["Gray-100"]};
+  margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+`;
+
+export const SectionDescription = styled.p`
+  font-size: 1rem;
+  color: ${({ theme }) => theme["Gray-400"]};
+  max-width: 500px;
 `;
 
 export const ContainerAbout = styled.div`
@@ -15,13 +51,12 @@ export const ContainerAbout = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 6rem;
-  padding: 1rem 10vw;
+  width: 100%;
   position: relative;
 
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 3rem;
-    padding: 4rem 5vw;
   }
 `;
 

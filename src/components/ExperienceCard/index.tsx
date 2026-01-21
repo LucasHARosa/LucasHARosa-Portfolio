@@ -1,14 +1,16 @@
-import { IconType } from "react-icons";
+"use client";
+
+import type { IconType } from "react-icons";
 import {
   CardContainer,
+  Company,
+  ContentWrapper,
   Description,
   Header,
-  IconContainer,
-  Subtitle,
+  IconWrapper,
   Tag,
   TagsContainer,
   Title,
-  TitleContainer,
 } from "./styles";
 
 interface ExperienceCardProps {
@@ -28,21 +30,21 @@ export function ExperienceCard({
 }: ExperienceCardProps) {
   return (
     <CardContainer>
-      <Header>
-        <IconContainer>
-          <Icon size={24} color="#a78bfa" />
-        </IconContainer>
-        <TitleContainer>
+      <IconWrapper>
+        <Icon size={20} />
+      </IconWrapper>
+      <ContentWrapper>
+        <Header>
           <Title>{title}</Title>
-          <Subtitle>{subtitle}</Subtitle>
-        </TitleContainer>
-      </Header>
-      <Description>{description}</Description>
-      <TagsContainer>
-        {tags.map((tag, index) => (
-          <Tag key={index}>{tag}</Tag>
-        ))}
-      </TagsContainer>
+          <Company>{subtitle}</Company>
+        </Header>
+        <Description>{description}</Description>
+        <TagsContainer>
+          {tags.map((tag, index) => (
+            <Tag key={index}>{tag}</Tag>
+          ))}
+        </TagsContainer>
+      </ContentWrapper>
     </CardContainer>
   );
 }

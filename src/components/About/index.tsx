@@ -1,7 +1,6 @@
 import { ChatCircle, Heart, PaperPlaneTilt } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
 import foto from "../../assets/foto.png";
-import { Title } from "../Title";
 import {
   Container,
   ContainerAbout,
@@ -9,6 +8,10 @@ import {
   ContainerAboutText,
   Interact,
   LegendImage,
+  SectionDescription,
+  SectionHeader,
+  SectionLabel,
+  SectionTitle,
 } from "./styles";
 
 import { animated, to, useSpring, useTrail } from "@react-spring/web";
@@ -95,11 +98,13 @@ export function About() {
 
   return (
     <Container id="SobreMim">
-      <Title
-        title="Lucas Henrique Alves Rosa"
-        subTitle="Desenvolvedor Full Stack"
-        description="Transformando ideias em código"
-      />
+      <SectionHeader>
+        <SectionLabel>Sobre mim</SectionLabel>
+        <SectionTitle>Lucas Henrique Alves Rosa</SectionTitle>
+        <SectionDescription>
+          Desenvolvedor Full Stack • Transformando ideias em código
+        </SectionDescription>
+      </SectionHeader>
       <ContainerAbout>
         <span>
           <Interact>

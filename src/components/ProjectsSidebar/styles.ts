@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SidebarContainer = styled.aside`
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 4rem;
   width: 240px;

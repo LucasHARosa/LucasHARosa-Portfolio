@@ -81,7 +81,7 @@ export const IntroContent = styled.div`
     background: linear-gradient(
       90deg,
       ${({ theme }) => theme["Blue-500"]},
-      ${({ theme }) => theme["Purple-300"]}
+      ${({ theme }) => theme["Blue-400"]}
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -4,6 +4,9 @@ export const PageContainer = styled.div`
   display: flex;
   flex-direction: row;
   min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
   background: ${({ theme }) => theme["background"]};
 
   @media (max-width: 768px) {
@@ -13,13 +16,12 @@ export const PageContainer = styled.div`
 
 export const ContentWrapper = styled.div`
   margin-left: 280px;
-  padding: 6rem 10vw;
-  width: calc(100% - 280px);
+  padding: 6rem 2rem;
+  flex: 1;
   min-height: 100vh;
 
   @media (max-width: 768px) {
     margin-left: 0;
-    width: 100%;
     padding: 4rem 5vw;
   }
 `;
