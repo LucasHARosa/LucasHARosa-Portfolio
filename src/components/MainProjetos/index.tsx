@@ -1,5 +1,6 @@
 import { Code, Cpu, DeviceMobile, Globe, HardDrives } from "phosphor-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { listaProjetos } from "../../data/data";
 import { Projetos } from "../Projetos";
 import { Title } from "../Title";
@@ -23,7 +24,7 @@ export function MainProjetos() {
   const [categoriaAtiva, setCategoriaAtiva] = useState("principais");
 
   const listaFiltrada = listaProjetos.filter((projeto) =>
-    projeto.tipo.includes(categoriaAtiva)
+    projeto.tipo.includes(categoriaAtiva),
   );
 
   return (
@@ -32,7 +33,26 @@ export function MainProjetos() {
         <Title
           title="Projetos e Trabalhos"
           subTitle="Resultados do meu trabalho"
-          description="Aqui estão alguns dos meus projetos mais recentes. Clique em cada um deles para ver mais detalhes."
+          description={
+            <>
+              Aqui estão alguns dos meus projetos mais recentes. Clique em cada
+              um deles para ver mais detalhes.{" "}
+              <Link
+                to="/projetos"
+                style={{
+                  color: "inherit",
+                  textDecoration: "underline",
+                  textDecorationStyle: "dotted",
+                  opacity: 0.7,
+                  transition: "opacity 0.3s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
+              >
+                Ver todos ({listaProjetos.length})
+              </Link>
+            </>
+          }
         />
 
         <ContainerButtonSelect>

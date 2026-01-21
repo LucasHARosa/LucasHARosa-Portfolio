@@ -53,7 +53,7 @@ export function SpaceScene({ mousePosition }: SpaceSceneProps) {
     blueLight.position.set(2, 1, 2);
     scene.add(blueLight);
 
-    const purpleLight = new THREE.PointLight(0xa78bfa, 0.8, 10);
+    const purpleLight = new THREE.PointLight(0x3b82f6, 0.8, 10);
     purpleLight.position.set(-2, -1, 2);
     scene.add(purpleLight);
 

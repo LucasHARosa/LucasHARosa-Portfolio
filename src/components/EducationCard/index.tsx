@@ -30,7 +30,7 @@ export function EducationCard({
     <CardContainer>
       <Header>
         <IconContainer>
-          <Icon size={24} color="#a78bfa" />
+          <Icon size={24} color="#60a5fa" />
         </IconContainer>
         <TitleContainer>
           <Title>{title}</Title>

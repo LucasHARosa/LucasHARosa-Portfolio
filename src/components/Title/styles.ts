@@ -26,17 +26,12 @@ export const Container = styled.div`
 `;
 
 export const SubTitle = styled.h2`
-  font-size: 1rem;
-  font-weight: 400;
-  background: linear-gradient(
-    90deg,
-    ${({ theme }) => theme["Blue-500"]},
-    ${({ theme }) => theme["Purple-300"]}
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: ${({ theme }) => theme["Gray-500"]};
+  margin-bottom: 0.5rem;
 `;
 
 export const MainTitle = styled.h1`

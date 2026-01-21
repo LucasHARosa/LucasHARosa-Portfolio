@@ -1,6 +1,7 @@
 import { Variants, motion } from "framer-motion";
 import { List, X } from "phosphor-react";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { ButtonAnimationHover } from "../ButtonAnimationHover";
 import { ParticleLight } from "../Particles/particleLight";
 import { ParticleAmong } from "../Particles/particlesAmong";
@@ -28,6 +29,7 @@ export function Header() {
   const [menu, setMenu] = useState(false);
   const [theme, setTheme] = useState("among");
   const [activeSection, setActiveSection] = useState("Home");
+  const location = useLocation();
 
   function handleTheme() {
     if (theme === "stars") {
@@ -41,49 +43,57 @@ export function Header() {
     }
   }
 
+  const isProjectsPage = location.pathname === "/projetos";
+
   const dataHeader = [
     {
       id: 1,
       name: "Início",
-      link: "#Home",
+      link: isProjectsPage ? "/" : "#Home",
       section: "Home",
+      isRoute: isProjectsPage,
     },
     {
       id: 2,
       name: "Sobre mim",
-      link: "#SobreMim",
+      link: isProjectsPage ? "/#SobreMim" : "#SobreMim",
       section: "SobreMim",
+      isRoute: isProjectsPage,
     },
     {
       id: 3,
-      name: "Projetos",
-      link: "#Projetos",
+      name: isProjectsPage ? "Voltar ao Início" : "Ver Projetos",
+      link: isProjectsPage ? "/" : "/projetos",
       section: "Projetos",
+      isRoute: true,
     },
     {
       id: 4,
       name: "Habilidades",
-      link: "#Skills",
+      link: isProjectsPage ? "/#Skills" : "#Skills",
       section: "Skills",
+      isRoute: isProjectsPage,
     },
     {
       id: 5,
       name: "Experiência",
-      link: "#Experiencia",
+      link: isProjectsPage ? "/#Experiencia" : "#Experiencia",
       section: "Experiencia",
+      isRoute: isProjectsPage,
     },
     {
       id: 6,
       name: "Educação",
-      link: "#Educacao",
+      link: isProjectsPage ? "/#Educacao" : "#Educacao",
       section: "Educacao",
+      isRoute: isProjectsPage,
     },
-
     {
       id: 7,
       name: "Contato",
-      link: "#Contato",
+      link: isProjectsPage ? "/#Contato" : "#Contato",
       section: "Contato",
+      isRoute: isProjectsPage,
     },
   ];
 
@@ -120,12 +130,25 @@ export function Header() {
               {dataHeader.map((item) => (
                 <li
                   key={item.id}
-                  className={activeSection === item.section ? "active" : ""}
+                  className={
+                    item.isRoute
+                      ? location.pathname === item.link
+                        ? "active"
+                        : ""
+                      : activeSection === item.section
+                        ? "active"
+                        : ""
+                  }
                 >
                   <ButtonAnimationHover
                     text={item.name}
                     link={item.link}
-                    active={activeSection === item.section}
+                    active={
+                      item.isRoute
+                        ? location.pathname === item.link
+                        : activeSection === item.section
+                    }
+                    isRoute={item.isRoute}
                   />
                 </li>
               ))}
@@ -175,13 +198,26 @@ export function Header() {
                 <NavLi
                   key={item.id}
                   variants={itemVariants}
-                  className={activeSection === item.section ? "active" : ""}
+                  className={
+                    item.isRoute
+                      ? location.pathname === item.link
+                        ? "active"
+                        : ""
+                      : activeSection === item.section
+                        ? "active"
+                        : ""
+                  }
                 >
                   <ButtonAnimationHover
                     text={item.name}
                     link={item.link}
                     mobile={true}
-                    active={activeSection === item.section}
+                    active={
+                      item.isRoute
+                        ? location.pathname === item.link
+                        : activeSection === item.section
+                    }
+                    isRoute={item.isRoute}
                   />
                 </NavLi>
               ))}

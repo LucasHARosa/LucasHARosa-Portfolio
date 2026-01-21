@@ -54,7 +54,7 @@ export function Intro() {
     <section id="Home">
       <IntroContainer>
         <IntroContent>
-          <Tag>👋 &nbsp; Hello!</Tag>
+          <Tag>Hello!</Tag>
           <h1>Lucas Rosa</h1>
           <TypeWriterText>
             <Typewriter
