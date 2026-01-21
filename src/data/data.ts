@@ -38,19 +38,7 @@ export const listaProjetos: ProjetosProps[] = [
     LinkApple: "",
     tipo: ["backend", "frontend", "principais"],
   },
-  {
-    id: 27,
-    titulo: "Nacional Go",
-    descricao:
-      "Plataforma líder nacional em transporte veicular que gerencia todo processo logístico de movimentação de veículos. Sistema integrado com área do cliente, e-commerce completo e rastreamento em tempo real, atendendo todo território brasileiro.",
-    tags: ["Projeto Real", "React", "PHP"],
-    imagem: "/imagens/nacional.png",
-    Link: "https://app.nacionalgo.com.br/",
-    LinkGit: "",
-    LinkGoogle: "",
-    LinkApple: "",
-    tipo: ["backend", "frontend", "principais"],
-  },
+
   {
     id: 26,
     titulo: "SporTickets",
@@ -65,17 +53,30 @@ export const listaProjetos: ProjetosProps[] = [
     tipo: ["backend", "frontend", "principais"],
   },
   {
-    id: 25,
-    titulo: "Vale Energia",
+    id: 30,
+    titulo: "Base 3",
     descricao:
-      "Sistema web completo para gestão e pagamento de contas de energia elétrica. Plataforma que facilita pagamentos, permite aquisição de vales-energia e oferece ferramentas para empresas parceiras cadastrarem e gerenciarem campanhas promocionais.",
-    tags: ["Projeto Real", "React", "Vite", "NodeJS"],
-    imagem: "/imagens/valeenergia.png",
-    Link: "https://hml.valeenergia.site",
+      "Plataforma de gestão de escolas, cursos e alunos. Sistema integrado que facilita administração acadêmica, acompanhamento de desempenho estudantil e geração de relatórios detalhados para instituições educacionais.",
+    tags: ["Projeto Real", "React", "NestJS"],
+    imagem: "/imagens/base3.png",
+    Link: "https://base3edu.com.br/",
     LinkGit: "",
     LinkGoogle: "",
     LinkApple: "",
-    tipo: ["frontend", "backend", "principais"],
+    tipo: ["backend", "frontend", "principais"],
+  },
+  {
+    id: 27,
+    titulo: "Nacional Go",
+    descricao:
+      "Plataforma líder nacional em transporte veicular que gerencia todo processo logístico de movimentação de veículos. Sistema integrado com área do cliente, e-commerce completo e rastreamento em tempo real, atendendo todo território brasileiro.",
+    tags: ["Projeto Real", "React", "PHP"],
+    imagem: "/imagens/nacional.png",
+    Link: "https://app.nacionalgo.com.br/",
+    LinkGit: "",
+    LinkGoogle: "",
+    LinkApple: "",
+    tipo: ["backend", "frontend", "principais"],
   },
   {
     id: 24,
@@ -102,6 +103,19 @@ export const listaProjetos: ProjetosProps[] = [
     LinkGoogle: "https://play.google.com/store/apps/details?id=com.besx.core",
     LinkApple: "https://apps.apple.com/us/app/cortex-app/id6449041878",
     tipo: ["mobile", "principais"],
+  },
+  {
+    id: 25,
+    titulo: "Vale Energia",
+    descricao:
+      "Sistema web completo para gestão e pagamento de contas de energia elétrica. Plataforma que facilita pagamentos, permite aquisição de vales-energia e oferece ferramentas para empresas parceiras cadastrarem e gerenciarem campanhas promocionais.",
+    tags: ["Projeto Real", "React", "Vite", "NodeJS"],
+    imagem: "/imagens/valeenergia.png",
+    Link: "https://hml.valeenergia.site",
+    LinkGit: "",
+    LinkGoogle: "",
+    LinkApple: "",
+    tipo: ["frontend", "backend", "principais"],
   },
   {
     id: 15,
