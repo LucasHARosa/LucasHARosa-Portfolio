@@ -38,7 +38,6 @@ export const listaProjetos: ProjetosProps[] = [
     LinkApple: "",
     tipo: ["backend", "frontend", "principais"],
   },
-
   {
     id: 26,
     titulo: "SporTickets",
@@ -46,7 +45,7 @@ export const listaProjetos: ProjetosProps[] = [
       "Plataforma especializada em comercialização de ingressos para eventos esportivos. Sistema que oferece experiência otimizada de compra para torcedores e painel administrativo completo para organizadores gerenciarem eventos esportivos.",
     tags: ["Projeto Real", "NextJs", "NestJS"],
     imagem: "/imagens/sporticket.png",
-    Link: "https://sportickets.com.br/",
+    Link: "https://www.sportickets.com.br/",
     LinkGit: "",
     LinkGoogle: "",
     LinkApple: "",

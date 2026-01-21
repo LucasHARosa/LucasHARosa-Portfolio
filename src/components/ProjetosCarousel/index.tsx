@@ -111,7 +111,7 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
           zIndex,
           position: "relative",
         }}
-        whileHover={isCentered ? undefined : { opacity: 0.9, scale: 1.007 }}
+        whileHover={isCentered ? undefined : { opacity: 0.9 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
       >
         <CarouselImageContainer>
