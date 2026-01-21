@@ -121,3 +121,45 @@ export const ContainerProjetos = styled.div`
     gap: 1.5rem;
   }
 `;
+
+export const ViewAllContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 3rem;
+
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+  }
+`;
+
+export const ViewAllButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid ${({ theme }) => theme["Blue-500"]};
+  background: transparent;
+  color: ${({ theme }) => theme["Blue-100"]};
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: ${({ theme }) => theme["Blue-500"]};
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: ${({ theme }) => theme["shadow-lg"]};
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9375rem;
+    padding: 0.75rem 1.5rem;
+  }
+`;

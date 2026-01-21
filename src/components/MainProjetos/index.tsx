@@ -1,14 +1,18 @@
-import { Code, Cpu, DeviceMobile, Globe, HardDrives } from "phosphor-react";
+import { Code, Cpu, DeviceMobile, Globe, HardDrives, ArrowRight } from "phosphor-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { listaProjetos } from "../../data/data";
 import { Projetos } from "../Projetos";
 import { Title } from "../Title";
+import ProjectCarousel from "../ProjetosCarousel";
 import {
   ButtonSelect,
   ContainerButtonSelect,
   ContainerProjetos,
   SectionContainer,
   SelectContainer,
+  ViewAllButton,
+  ViewAllContainer,
 } from "./styles";
 
 const categorias = [
@@ -54,6 +58,27 @@ export function MainProjetos() {
           <Projetos key={item.id} projeto={item} />
         ))}
       </ContainerProjetos>
+
+      <ViewAllContainer>
+        <Link to="/projetos" style={{ textDecoration: "none" }}>
+          <ViewAllButton>
+            Ver Todos os Projetos ({listaProjetos.length})
+            <ArrowRight size={20} weight="bold" />
+          </ViewAllButton>
+        </Link>
+      </ViewAllContainer>
+
+      {/* Carrossel de Projetos em Destaque */}
+      <div style={{ width: '100%', marginTop: '4rem' }}>
+        <Title
+          title="Projetos em Destaque"
+          subTitle="Navegue pelos destaques"
+          description="Confira uma seleção especial dos meus principais projetos em um carrossel interativo."
+        />
+        <div style={{ marginTop: '3rem' }}>
+          <ProjectCarousel projects={listaProjetos.filter(p => p.tipo.includes('principais'))} />
+        </div>
+      </div>
     </SectionContainer>
   );
 }

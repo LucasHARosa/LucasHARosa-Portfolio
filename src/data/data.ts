@@ -16,7 +16,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 29,
     titulo: "DubPay",
     descricao:
-      "Fintech de pagamentos que oferece soluções inovadoras para facilitar transações financeiras, tanto para consumidores quanto para empresas.",
+      "Plataforma completa de fintech desenvolvida para revolucionar transações financeiras digitais. Sistema robusto que oferece soluções de pagamento seguras e eficientes para consumidores e empresas, com interface moderna e processos otimizados.",
     tags: ["Projeto Real", "NextJs", "Vite", "React App"],
     imagem: "/imagens/dubpay.png",
     Link: "https://www.dubpay.com/",
@@ -29,7 +29,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 28,
     titulo: "Mouv Brasil",
     descricao:
-      "Aplicação para compra e venda de ingressos, permitindo que os usuários comprem ingressos para eventos e parceiros podem criar e editar eventos.",
+      "Sistema completo de gestão e comercialização de ingressos para eventos. Plataforma que conecta organizadores e público, permitindo compra segura de ingressos e ferramentas administrativas completas para criação e gerenciamento de eventos.",
     tags: ["Projeto Real", "NextJs", "NestJS"],
     imagem: "/imagens/mouv.png",
     Link: "https://www.mouvbrasil.com/",
@@ -42,7 +42,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 27,
     titulo: "Nacional Go",
     descricao:
-      "Maior plataforma/empresa de transporte de veículos, oferecendo todo o processo de tranporte veicular no Brasil todo, conta com área para clientes e um e-commerce integrado.",
+      "Plataforma líder nacional em transporte veicular que gerencia todo processo logístico de movimentação de veículos. Sistema integrado com área do cliente, e-commerce completo e rastreamento em tempo real, atendendo todo território brasileiro.",
     tags: ["Projeto Real", "React", "PHP"],
     imagem: "/imagens/nacional.png",
     Link: "https://app.nacionalgo.com.br/",
@@ -55,7 +55,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 26,
     titulo: "SporTickets",
     descricao:
-      "Aplicação para compra e venda de ingressos, permitindo que os usuários comprem ingressos para eventos esportivos e parceiros podem criar e editar eventos.",
+      "Plataforma especializada em comercialização de ingressos para eventos esportivos. Sistema que oferece experiência otimizada de compra para torcedores e painel administrativo completo para organizadores gerenciarem eventos esportivos.",
     tags: ["Projeto Real", "NextJs", "NestJS"],
     imagem: "/imagens/sporticket.png",
     Link: "https://sportickets.com.br/",
@@ -68,7 +68,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 25,
     titulo: "Vale Energia",
     descricao:
-      "Aplicação web para pagamento de contas de energia, onde um usuário pode pagar contas e adiquirir vales e a empresa parceira pode cadastrar e gerenciar campanhas e vales.",
+      "Sistema web completo para gestão e pagamento de contas de energia elétrica. Plataforma que facilita pagamentos, permite aquisição de vales-energia e oferece ferramentas para empresas parceiras cadastrarem e gerenciarem campanhas promocionais.",
     tags: ["Projeto Real", "React", "Vite", "NodeJS"],
     imagem: "/imagens/valeenergia.png",
     Link: "https://hml.valeenergia.site",
@@ -81,7 +81,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 24,
     titulo: "Anac Arquitetura",
     descricao:
-      "Site de portfólio para uma empresa de arquitetura, apresentando projetos e serviços oferecidos.",
+      "Website institucional desenvolvido para escritório de arquitetura renomado. Plataforma elegante que apresenta portfólio completo de projetos, serviços especializados e identidade visual sofisticada, refletindo excelência em design arquitetônico.",
     tags: ["Projeto Real", "React", "Next", "TypeScript"],
     imagem: "/imagens/anac.png",
     Link: "https://anacotrim.com.br/",
@@ -94,7 +94,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 23,
     titulo: "Cortex",
     descricao:
-      "Com os dados dos sensores IoT enviados em tempo real para a nuvem, é possível monitorar constantemente o consumo e verificar a situação dos recursos, como a água, podendo identificar vazamentos ou diminuição nos níveis por meio de gráficos e alarmes configuráveis.",
+      "Aplicativo mobile para monitoramento IoT de recursos em tempo real. Sistema inteligente que recebe dados de sensores na nuvem, detecta anomalias como vazamentos, apresenta análises através de gráficos dinâmicos e permite configuração de alarmes personalizados.",
     tags: ["Projeto Real", "React Native", "Expo"],
     imagem: "/imagens/cortex.png",
     Link: "",
@@ -107,7 +107,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 15,
     titulo: "Quiz Programing",
     descricao:
-      "Aplicativo mobile de quiz sobre programação, oferecendo perguntas dinâmicas e desafios para testar conhecimentos em diversas linguagens e conceitos.",
+      "Aplicativo mobile interativo para avaliação de conhecimentos em programação. Plataforma gamificada com perguntas dinâmicas, desafios progressivos e cobertura de múltiplas linguagens e conceitos fundamentais de desenvolvimento de software.",
     tags: ["React Native", "Native Base"],
     imagem: "/imagens/quizprogram.png",
     Link: "",
@@ -118,7 +118,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 18,
     titulo: "I Weather",
     descricao:
-      "Uma aplicação React Native que fornece informações meteorológicas em tempo real. Aplicação de testes unitários e automatizados ",
+      "Aplicativo mobile de previsão meteorológica com dados em tempo real. Projeto desenvolvido com foco em qualidade de código, implementando cobertura completa de testes unitários e automatizados utilizando Jest para garantir confiabilidade.",
     tags: ["React Native", "Jest"],
     imagem: "/imagens/iweather.png",
     Link: "",
@@ -129,7 +129,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 21,
     titulo: "Arthos",
     descricao:
-      "O Arthos é um aplicativo inovador projetado para oferecer controle de acesso seguro e eficiente a diferentes espaços, como salas, prédios e áreas restritas.",
+      "Sistema mobile de controle de acesso inteligente para ambientes corporativos. Solução tecnológica que gerencia permissões de entrada em salas, prédios e áreas restritas, oferecendo segurança avançada e facilidade operacional através de dispositivos móveis.",
     tags: ["Projeto Real", "React Native", "Expo"],
     imagem: "/imagens/Arthos.png",
     Link: "",
@@ -144,7 +144,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 14,
     titulo: "Gym Train",
     descricao:
-      "Aplicativo para organização e acompanhamento de treinos de academia. Permite o cadastro de exercícios, divisão por grupos musculares e histórico de evolução.",
+      "Aplicativo mobile completo para gestão de treinos e evolução física. Ferramenta que permite cadastro personalizado de exercícios, organização por grupos musculares, acompanhamento de progresso e visualização de histórico detalhado de performance.",
     tags: ["React Native", "TypeScript", "Styled Components"],
     imagem: "/imagens/gyntrain.png",
     Link: "",
@@ -155,7 +155,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 17,
     titulo: "DT Money",
     descricao:
-      "Aplicação para controle financeiro pessoal. Ajudando os usuários a gerenciar suas finanças pessoais de forma eficiente",
+      "Aplicação web para gestão completa de finanças pessoais. Sistema intuitivo que permite controle de receitas e despesas, categorização de transações, visualização de balanços e análise de gastos para melhor planejamento financeiro.",
     tags: ["React", "TypeScript", "json-server"],
     imagem: "/imagens/dt_money.png",
     Link: "",
@@ -166,7 +166,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 4,
     titulo: "Timer Pomodoro",
     descricao:
-      "Timer para organização de tarefas com foco na técnica Pomodoro, permitindo a configuração de tempo e intervalos para aumentar a produtividade.",
+      "Aplicação web baseada na técnica Pomodoro para otimização de produtividade. Ferramenta que permite configuração personalizada de ciclos de trabalho e descanso, gerenciamento de tarefas e acompanhamento de tempo focado em atividades.",
     tags: ["React", "TypeScript"],
     imagem: "/imagens/timer_pomoro_1.png",
     Link: "https://lucasharosa.github.io/Timer-Pomodoro/",
@@ -177,7 +177,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 1,
     titulo: "Habits",
     descricao:
-      "Aplicação full stack para criação e monitoramento de hábitos. Possui uma interface interativa e estatísticas diárias para auxiliar no acompanhamento de metas.",
+      "Plataforma full stack multiplataforma para rastreamento e desenvolvimento de hábitos saudáveis. Sistema com versões web e mobile que oferece interface interativa, estatísticas detalhadas e acompanhamento diário para alcançar metas pessoais.",
     tags: ["React", "React Native", "NodeJS"],
     imagem: "/imagens/habits.png",
     Link: "",
@@ -189,7 +189,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 2,
     titulo: "Coffee Delivery",
     descricao:
-      "Aplicação de e-commerce para compra de cafés, simulando um sistema de pedidos com carrinho de compras e cálculo de preços.",
+      "E-commerce completo especializado em cafés especiais e produtos relacionados. Plataforma que simula sistema real de pedidos online com carrinho de compras interativo, cálculo automático de valores, seleção de métodos de pagamento e endereço de entrega.",
     tags: ["React", "TypeScript"],
     imagem: "/imagens/coffe_deliveryHome.png",
     Link: "https://lucasharosa.github.io/Coffee-Delivery/",
@@ -200,7 +200,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 3,
     titulo: "Enigm",
     descricao:
-      "Jogo de palavras estilo TERMO, desenvolvido em Next.js, permitindo que os usuários desafiem seus conhecimentos em um jogo divertido e interativo.",
+      "Jogo de adivinhação de palavras inspirado no TERMO/Wordle. Aplicação web interativa que desafia jogadores a descobrir palavras através de tentativas estratégicas, com feedback visual em tempo real e mecânica envolvente de progressão.",
     tags: ["NextJs", "TypeScript", "React"],
     imagem: "/imagens/Enigm.png",
     Link: "https://enigm.vercel.app/",
@@ -211,9 +211,9 @@ export const listaProjetos: ProjetosProps[] = [
     id: 12,
     titulo: "TCC: IA para Soldagem",
     descricao:
-      "Sistema de Inteligência Artificial baseado em YOLOV8 para detecção de padrões em processos de soldagem, auxiliando no monitoramento da qualidade.",
+      "Trabalho de Conclusão de Curso aplicando visão computacional para inspeção de qualidade industrial. Sistema de IA baseado em YOLOV8 que detecta e classifica padrões em processos de soldagem, automatizando controle de qualidade em manufatura.",
     tags: ["CNN", "TCC", "YOLOV8"],
-    imagem: "/imagens/tcc.PNG",
+    imagem: "/imagens/tcc.png",
     Link: "",
     LinkGit: "https://github.com/LucasHARosa/UnB-TCC-IA",
     tipo: ["ia"],
@@ -221,7 +221,8 @@ export const listaProjetos: ProjetosProps[] = [
   {
     id: 7,
     titulo: "Redes Neurais: Classificação",
-    descricao: "Projeto de IA para tarefas de classificação de dados.",
+    descricao:
+      "Projeto acadêmico de Machine Learning focado em algoritmos de classificação. Implementação de redes neurais para categorização de dados, explorando diferentes arquiteturas e técnicas de otimização para maximizar precisão e desempenho preditivo.",
     tags: ["Python", "Redes Neurais"],
     imagem:
       "https://static.imasters.com.br/wp-content/uploads/2016/06/redes-1.png",
@@ -232,7 +233,8 @@ export const listaProjetos: ProjetosProps[] = [
   {
     id: 8,
     titulo: "Redes Neurais: Regressão",
-    descricao: "Projeto de IA para prever valores numéricos contínuos.",
+    descricao:
+      "Projeto de Machine Learning aplicando modelos de regressão para previsão de valores contínuos. Desenvolvimento de redes neurais especializadas em estimativa numérica, utilizando técnicas avançadas de treinamento e validação de modelos.",
     tags: ["Python", "Redes Neurais"],
     imagem:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXAcZTGYRe0OSumsIhXkiXB44sVkhC-X64ig&usqp=CAU",
@@ -243,7 +245,8 @@ export const listaProjetos: ProjetosProps[] = [
   {
     id: 9,
     titulo: "Redes Neurais Convolucionais",
-    descricao: "Projeto de CNN para processamento de imagens.",
+    descricao:
+      "Projeto de Deep Learning aplicando CNNs para visão computacional. Implementação de arquiteturas convolucionais para processamento e análise de imagens, incluindo detecção de padrões, extração de características e reconhecimento de objetos.",
     tags: ["Python", "Redes Neurais", "CNN"],
     imagem:
       "https://www.sakurai.dev.br/assets/images/posts/2017-12-20-cnn-mapreduce.png",
@@ -255,7 +258,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 11,
     titulo: "Redes Neurais com Ruído",
     descricao:
-      "Análise dos efeitos de ruído em redes neurais para classificação.",
+      "Pesquisa sobre robustez de modelos de IA em ambientes adversos. Análise experimental dos impactos de diferentes tipos de ruído em redes neurais, avaliando degradação de performance e técnicas de mitigação para melhorar resiliência.",
     tags: ["CNN", "Redes Neurais", "Ruído"],
     imagem: "/imagens/ruidos.PNG",
     Link: "",
@@ -266,7 +269,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 5,
     titulo: "Feed de notícias",
     descricao:
-      "Simula um feed de rede social com postagens, comentários e curtidas.",
+      "Interface de rede social simulando funcionalidades completas de interação. Aplicação web com sistema de postagens, comentários aninhados, reações e interações em tempo real, replicando experiência de mídias sociais modernas.",
     tags: ["React", "TypeScript"],
     imagem: "/imagens/telaInicial.png",
     Link: "https://lucasharosa.github.io/Ignite-Feed/",
@@ -276,7 +279,8 @@ export const listaProjetos: ProjetosProps[] = [
   {
     id: 16,
     titulo: "Game Tracker",
-    descricao: "E-commerce de jogos com filtros e informações detalhadas.",
+    descricao:
+      "Plataforma de catálogo e comercialização de jogos digitais. E-commerce com sistema avançado de filtros por gênero, plataforma e preço, apresentando informações detalhadas, avaliações e screenshots para cada título disponível.",
     tags: ["React", "JavaScript"],
     imagem: "/imagens/Game_tracker_web.png",
     Link: "https://lucasharosa.github.io/Game-Tracker/",
@@ -287,7 +291,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 13,
     titulo: "E-Commerce",
     descricao:
-      "Loja virtual de produtos de tecnologia com integração de API, onde os usuários podem visualizar produtos, adicionar ao carrinho e simular pedidos.",
+      "Loja virtual completa especializada em produtos tecnológicos. Plataforma integrada com APIs externas, oferecendo catálogo dinâmico, carrinho de compras com persistência, animações fluidas e simulação completa de processo de checkout.",
     tags: ["React", "TypeScript", "Frame Motion"],
     imagem: "/imagens/home.png",
     Link: "",
@@ -298,7 +302,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 19,
     titulo: "Keyboard Test",
     descricao:
-      "Teste de teclado qual tecla está sendo pressionada em um teclado 65% com som e histórico de teclas. Idealmente feito para testar meus teclados mecânicos.",
+      "Ferramenta interativa para teste e diagnóstico de teclados mecânicos. Aplicação que detecta pressionamento de teclas em layouts 65%, reproduz feedback sonoro personalizado e mantém histórico de inputs para validação de funcionamento.",
     tags: ["React", "NextJs"],
     imagem: "/imagens/testKeyboard.png",
     Link: "https://keyboard-test-eight.vercel.app/",
@@ -309,7 +313,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 10,
     titulo: "Teams",
     descricao:
-      "Aplicativo mobile para gerenciamento de times e eventos, é possível criar turmas de jogos e atividades e dividir pessoas entre as duas turmas",
+      "Aplicativo mobile para organização de eventos esportivos e recreativos. Sistema que facilita criação de turmas, gerenciamento de participantes, divisão equilibrada de times e coordenação de atividades em grupo de forma prática.",
     tags: ["React Native", "TypeScript"],
     imagem: "/imagens/teams.PNG",
     Link: "",
@@ -320,7 +324,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 6,
     titulo: "To do List",
     descricao:
-      "Lista de tarefas para facilitar e organizar as atividades diárias, com opções de adicionar, remover e marcar como concluída.",
+      "Aplicação de gerenciamento de tarefas diárias com interface intuitiva. Ferramenta produtiva que permite adicionar, editar e remover atividades, marcar conclusão de tarefas e organizar rotina pessoal de forma eficiente.",
     tags: ["React", "React Native"],
     imagem: "/imagens/todolist.png",
     Link: "https://lucasharosa.github.io/To-Do-List/",
@@ -331,12 +335,12 @@ export const listaProjetos: ProjetosProps[] = [
     id: 20,
     titulo: "Transações Financeiras",
     descricao:
-      "Aplicação backend para controle de transações financeiras, permitindo a criação, listagem e remoção de transações.",
+      "API REST robusta para gestão de operações bancárias e financeiras. Sistema backend desenvolvido com Spring Boot que gerencia transações, oferece persistência segura em MySQL e implementa operações CRUD completas com validações.",
     tags: ["Spring Boot", "Java", "MySQL"],
     imagem: "/imagens/bank.jpg",
     Link: "",
     LinkGit: "https://github.com/LucasHARosa/Bank-Transactions",
-    tipo: ["backend"],
+    tipo: [""],
   },
 ];
 
@@ -361,8 +365,8 @@ export const listaSkills = [
     ],
   },
   {
-    experiencia: "2 anos",
-    nivel: 7,
+    experiencia: "4 anos",
+    nivel: 10,
     id: "nodejs",
     titulo: "NodeJS",
     description:
@@ -409,7 +413,7 @@ export const listaSkills = [
     ],
   },
   {
-    experiencia: "2 anos",
+    experiencia: "3 anos",
     nivel: 10,
     id: "nextjs",
     titulo: "NextJs",
@@ -418,7 +422,7 @@ export const listaSkills = [
     tecnologiasAxiliares: ["React", "TypeScript"],
   },
   {
-    experiencia: "2 anos",
+    experiencia: "3 anos",
     nivel: 8,
     id: "nestjs",
     titulo: "NestJS",
