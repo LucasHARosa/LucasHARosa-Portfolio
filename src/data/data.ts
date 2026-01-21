@@ -227,7 +227,7 @@ export const listaProjetos: ProjetosProps[] = [
     descricao:
       "Trabalho de Conclusão de Curso aplicando visão computacional para inspeção de qualidade industrial. Sistema de IA baseado em YOLOV8 que detecta e classifica padrões em processos de soldagem, automatizando controle de qualidade em manufatura.",
     tags: ["CNN", "TCC", "YOLOV8"],
-    imagem: "/imagens/tcc.png",
+    imagem: "/imagens/tcc1.png",
     Link: "",
     LinkGit: "https://github.com/LucasHARosa/UnB-TCC-IA",
     tipo: ["ia"],
