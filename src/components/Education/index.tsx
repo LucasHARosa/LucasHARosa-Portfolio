@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LiaCertificateSolid } from "react-icons/lia";
 import { PiGraduationCapFill } from "react-icons/pi";
 import { TbCertificate, TbDeviceMobileCode } from "react-icons/tb";
@@ -53,14 +53,31 @@ const educations = [
 
 export function Education() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Detecta se a seção está visível para pausar animação quando fora de vista
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) return;
+    if (!container || !isVisible) return; // Só roda quando visível
 
     let scrollAmount = 0;
-    const speed = 0.25;
-
+    const speed = 0.5;
     let animationFrameId: number;
 
     const scroll = () => {
@@ -81,10 +98,10 @@ export function Education() {
     scroll();
 
     return () => cancelAnimationFrame(animationFrameId);
-  }, []);
+  }, [isVisible]);
 
   return (
-    <EducationSection id="Educacao">
+    <EducationSection id="Educacao" ref={sectionRef}>
       <EducationContainer>
         <Title
           title="Educação"

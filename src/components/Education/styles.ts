@@ -31,6 +31,7 @@ export const TimelineContainer = styled.div`
   scrollbar-width: none;
   white-space: nowrap;
   margin-top: 2rem;
+  will-change: scroll-position;
 
   &::-webkit-scrollbar {
     display: none;

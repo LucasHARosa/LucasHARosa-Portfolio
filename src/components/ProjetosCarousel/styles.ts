@@ -28,16 +28,19 @@ export const NavigationButton = styled.button<NavigationButtonProps>`
   color: ${({ theme }) => theme["Gray-900"]};
   cursor: pointer;
   opacity: 0;
-  transition: all 0.3s ease-in-out;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background-color 0.2s ease;
   backdrop-filter: blur(4px);
   box-shadow: ${({ theme }) => theme["shadow-xl"]};
   display: flex;
   align-items: center;
   justify-content: center;
+  will-change: opacity, transform;
 
   &:hover {
     background-color: ${({ theme }) => theme["Gray-300"]};
-
     transform: translateY(-50%) scale(1.1);
   }
 
@@ -120,8 +123,9 @@ export const CarouselImageContainer = styled.div`
   box-shadow: ${({ theme }) => theme["shadow-xl"]};
   background-color: ${({ theme }) => theme["Gray-900"]};
   border: none;
-  transition: all 0.3s ease-in-out;
+  transition: opacity 0.2s ease;
   cursor: pointer;
+  will-change: opacity;
 
   &:hover {
     border-color: none;
@@ -249,7 +253,11 @@ export const PrimaryButton = styled.a`
   background-color: ${({ theme }) => theme["white"]};
   border: none;
   box-shadow: ${({ theme }) => theme["shadow-sm"]};
-  transition: all 0.2s ease-in-out;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  will-change: transform;
 
   &:hover {
     background-color: ${({ theme }) => theme["Gray-300"]};
@@ -279,10 +287,14 @@ export const SecondaryButton = styled.a`
   border: 2px solid ${({ theme }) => theme["Gray-700"]};
   border-radius: 9999px;
   font-weight: 700;
-  transition: all 0.3s ease-in-out;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
   box-shadow: ${({ theme }) => theme["shadow-lg"]};
   text-decoration: none;
   cursor: pointer;
+  will-change: transform;
 
   &:hover {
     background-color: ${({ theme }) => theme["Gray-800"]};
@@ -302,13 +314,17 @@ export const IconButton = styled.a`
   color: ${({ theme }) => theme.white};
   border-radius: 50%;
   border: 2px solid ${({ theme }) => theme["Gray-700"]};
-  transition: all 0.3s ease-in-out;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
   box-shadow: ${({ theme }) => theme["shadow-lg"]};
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  will-change: transform;
 
   &:hover {
     transform: scale(1.1);
@@ -344,7 +360,10 @@ interface PaginationDotProps {
 
 export const PaginationDot = styled.button<PaginationDotProps>`
   border-radius: 9999px;
-  transition: all 0.3s ease-in-out;
+  transition:
+    width 0.3s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
   cursor: pointer;
   border: none;
   padding: 0;
@@ -354,6 +373,7 @@ export const PaginationDot = styled.button<PaginationDotProps>`
     isActive ? theme["Blue-400"] : theme["Gray-700"]};
   box-shadow: ${({ isActive }) =>
     isActive ? "0 0 15px rgba(96, 165, 250, 0.8)" : "none"};
+  will-change: width;
 
   &:hover {
     background-color: ${({ theme, isActive }) =>

@@ -14,13 +14,17 @@ export const CardContainer = styled.div`
   border: 1px solid ${({ theme }) => theme["Gray-800"]};
   border-radius: 0.75rem;
 
-  transition: all 0.3s ease;
+  transition:
+    transform 0.2s ease-out,
+    box-shadow 0.2s ease-out;
   max-width: 450px;
   margin-bottom: 2rem;
+  will-change: transform;
 
   &:hover {
     transform: translateY(-0.25rem);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
       0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
 `;

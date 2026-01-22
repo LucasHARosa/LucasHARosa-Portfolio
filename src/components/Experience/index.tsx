@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { GiOctopus } from "react-icons/gi";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoDesktopOutline } from "react-icons/io5";
@@ -90,36 +90,6 @@ const experiences = [
 export function Experience() {
   const [visibleCards, setVisibleCards] = useState(4);
   const [isLoading, setIsLoading] = useState(false);
-  const [visibleElements, setVisibleElements] = useState<boolean[]>([]);
-
-  useEffect(() => {
-    setVisibleElements(new Array(experiences.length).fill(false));
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = parseInt(
-              entry.target.getAttribute("data-index") || "0",
-            );
-            setVisibleElements((prev) => {
-              const newVisible = [...prev];
-              newVisible[index] = true;
-              return newVisible;
-            });
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
-
-    const elements = document.querySelectorAll(".experience-card");
-    elements.forEach((element) => observer.observe(element));
-
-    return () => observer.disconnect();
-  }, [visibleCards]);
 
   const handleLoadMore = () => {
     setIsLoading(true);
@@ -143,12 +113,7 @@ export function Experience() {
 
         <TimelineContainer>
           {experiences.slice(0, visibleCards).map((exp, index) => (
-            <ExperienceCardWrapper
-              key={index}
-              isVisible={visibleElements[index]}
-              className="experience-card"
-              data-index={index}
-            >
+            <ExperienceCardWrapper key={index}>
               <ExperienceCard {...exp} />
             </ExperienceCardWrapper>
           ))}

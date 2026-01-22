@@ -86,10 +86,4 @@ export const LoadMoreButton = styled.div`
   }
 `;
 
-export const ExperienceCardWrapper = styled.div<{ isVisible: boolean }>`
-  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-  transform: translateY(${({ isVisible }) => (isVisible ? "0" : "20px")});
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
-`;
+export const ExperienceCardWrapper = styled.div``;

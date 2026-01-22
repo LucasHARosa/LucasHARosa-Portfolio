@@ -120,7 +120,7 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
           zIndex,
           position: "relative",
         }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
       >
         <CarouselImageContainer>
           <CarouselImage
@@ -202,12 +202,14 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
 
 const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const { scrollX } = useScroll({ container: containerRef });
 
   const [cardWidth, setCardWidth] = useState(CARD_WIDTH_DESKTOP);
   const [padding, setPadding] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(1); // Começa no segundo item
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -227,6 +229,22 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Detecta visibilidade do carrossel
+  useEffect(() => {
+    const element = carouselRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
   // Inicializa no segundo card
   useEffect(() => {
     if (containerRef.current && cardWidth > 0 && padding > 0) {
@@ -239,7 +257,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
 
   // Auto-scroll
   useEffect(() => {
-    if (!isAutoScrolling) return;
+    if (!isAutoScrolling || !isVisible) return; // Só roda quando visível
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => {
@@ -250,7 +268,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
     }, 5000); // Muda a cada 5 segundos
 
     return () => clearInterval(interval);
-  }, [isAutoScrolling, projects.length]);
+  }, [isAutoScrolling, isVisible, projects.length]);
 
   const scrollToIndex = (index: number, smooth: boolean = true) => {
     if (containerRef.current) {
@@ -296,7 +314,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
   };
 
   return (
-    <CarouselContainer>
+    <CarouselContainer ref={carouselRef}>
       {/* Navigation Buttons - Visible on Desktop/Hover */}
       <NavigationButton
         direction="left"
