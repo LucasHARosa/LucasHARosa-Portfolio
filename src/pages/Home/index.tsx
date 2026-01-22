@@ -2,6 +2,7 @@ import { About } from "../../components/About";
 
 import { Contact } from "../../components/Contact";
 import { Education } from "../../components/Education";
+import { Experience } from "../../components/Experience";
 
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
@@ -17,7 +18,7 @@ export function Home() {
       <About />
       <ProjectsRating />
       <Skills />
-      {/* <Experience /> */}
+      <Experience />
       <Education />
       {/* <MainProjetos /> */}
       <Contact />
