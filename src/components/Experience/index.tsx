@@ -8,15 +8,12 @@ import { MdOutlineDevices } from "react-icons/md";
 import { TbDeviceMobileCode } from "react-icons/tb";
 
 import { ExperienceCard } from "../ExperienceCard";
+import { Title } from "../Title";
 import {
   ExperienceCardWrapper,
   ExperienceContainer,
   ExperienceSection,
   LoadMoreButton,
-  SectionDescription,
-  SectionHeader,
-  SectionLabel,
-  SectionTitle,
   TimelineContainer,
 } from "./styles";
 
@@ -101,16 +98,13 @@ export function Experience() {
 
   return (
     <ExperienceSection id="Experiencia">
+      <Title
+        title="Experiência Profissional"
+        subTitle="Trajetória"
+        description=" Minha jornada como desenvolvedor, trabalhando com diversas
+            tecnologias e projetos."
+      />
       <ExperienceContainer>
-        <SectionHeader>
-          <SectionLabel>Trajetória</SectionLabel>
-          <SectionTitle>Experiência Profissional</SectionTitle>
-          <SectionDescription>
-            Minha jornada como desenvolvedor, trabalhando com diversas
-            tecnologias e projetos.
-          </SectionDescription>
-        </SectionHeader>
-
         <TimelineContainer>
           {experiences.slice(0, visibleCards).map((exp, index) => (
             <ExperienceCardWrapper key={index}>

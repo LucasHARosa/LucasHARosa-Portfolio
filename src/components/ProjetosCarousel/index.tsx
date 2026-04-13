@@ -92,6 +92,9 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
 
   const contentPointerEvents = useTransform(scrollX, (value) => {
     const diff = Math.abs(value - position);
+    // No mobile, sempre permitir eventos de toque para não bloquear o swipe
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) return "auto";
     return diff < itemWidth * 0.4 ? "auto" : "none";
   });
 
@@ -115,7 +118,7 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
         }}
         style={{
           scale,
-          filter: process.env.NODE_ENV === "test" ? "none" : filter,
+          filter,
           width: "100%",
           zIndex,
           position: "relative",
@@ -139,6 +142,7 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
           y: contentY,
           pointerEvents: contentPointerEvents as any,
           width: "100%",
+          touchAction: "pan-x",
         }}
       >
         <ContentContainer>
@@ -313,6 +317,15 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
     }
   };
 
+  // Para auto-scroll ao tocar/arrastar
+  const handleTouchStart = () => {
+    setIsAutoScrolling(false);
+  };
+
+  const handleMouseDown = () => {
+    setIsAutoScrolling(false);
+  };
+
   return (
     <CarouselContainer ref={carouselRef}>
       {/* Navigation Buttons - Visible on Desktop/Hover */}
@@ -336,6 +349,8 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
       <ScrollContainer
         ref={containerRef}
         onScroll={handleScroll}
+        onTouchStart={handleTouchStart}
+        onMouseDown={handleMouseDown}
         paddingLeft={padding}
         paddingRight={padding}
       >

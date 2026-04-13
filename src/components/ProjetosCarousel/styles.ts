@@ -38,6 +38,7 @@ export const NavigationButton = styled.button<NavigationButtonProps>`
   align-items: center;
   justify-content: center;
   will-change: opacity, transform;
+  touch-action: manipulation;
 
   &:hover {
     background-color: ${({ theme }) => theme["Gray-300"]};
@@ -67,6 +68,8 @@ export const ScrollContainer = styled.div<{
   padding-left: ${({ paddingLeft }) => paddingLeft}px;
   padding-right: ${({ paddingRight }) => paddingRight}px;
   cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
 
   /* Espaço extra para permitir escala sem cortar */
   margin: 0 -1rem;
@@ -88,6 +91,7 @@ export const ScrollContainer = styled.div<{
   @media (max-width: 768px) {
     padding-top: 1.5rem;
     padding-bottom: 2rem;
+    cursor: default;
   }
 `;
 
@@ -351,6 +355,14 @@ export const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 0.75rem;
+  position: relative;
+  z-index: 25;
+  
+  padding: 0.5rem;
+
+  @media (max-width: 768px) {
+    margin-top: 0rem;
+    padding: 0rem;
 `;
 
 // Dot de paginação
@@ -374,10 +386,17 @@ export const PaginationDot = styled.button<PaginationDotProps>`
   box-shadow: ${({ isActive }) =>
     isActive ? "0 0 15px rgba(96, 165, 250, 0.8)" : "none"};
   will-change: width;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     background-color: ${({ theme, isActive }) =>
       isActive ? theme["Blue-400"] : theme["Gray-600"]};
+  }
+
+  @media (max-width: 768px) {
+    min-width: ${({ isActive }) => (isActive ? "2rem" : "1.5rem")};
+    min-height: 1.5rem;
   }
 `;
 
@@ -387,4 +406,11 @@ export const AutoScrollIndicator = styled.div`
   margin-top: 1rem;
   color: ${({ theme }) => theme["Gray-500"]};
   font-size: 0.875rem;
+  position: relative;
+  z-index: 15;
+
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
 `;
