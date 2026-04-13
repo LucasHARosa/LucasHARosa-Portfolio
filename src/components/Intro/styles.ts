@@ -43,7 +43,10 @@ export const IntroContainer = styled.div`
   position: relative;
 
   @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    padding-bottom: 2rem;
   }
 
   @keyframes floatAnimation {
@@ -116,5 +119,33 @@ export const IntroButtons = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+`;
+
+export const ScrollIndicator = styled.div`
+  display: none;
+
+  @keyframes scrollBounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(8px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    color: ${({ theme }) => theme["Gray-500"]};
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 2.5rem;
+    animation: scrollBounce 1.6s ease-in-out infinite;
+    user-select: none;
   }
 `;

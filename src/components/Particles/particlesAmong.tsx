@@ -1,10 +1,16 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Particles from "react-particles";
 import type { Container, Engine } from "tsparticles-engine";
 //import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
 import { loadSlim } from "tsparticles-slim"; // if you are going to use `loadSlim`, install the "tsparticles-slim" package too.
 
 export function ParticleAmong() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 768);
+  }, []);
+
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
@@ -44,6 +50,9 @@ export function ParticleAmong() {
         particles: {
           color: {
             value: "#f5f6ff",
+          },
+          number: {
+            value: isMobile ? 50 : 170,
           },
           move: {
             angle: {
@@ -86,9 +95,6 @@ export function ParticleAmong() {
 
             speed: 2,
           },
-          number: {
-            value: 170,
-          },
           opacity: {
             value: 1,
           },
@@ -103,7 +109,7 @@ export function ParticleAmong() {
           groups: {
             z5000: {
               number: {
-                value: 70,
+                value: isMobile ? 21 : 70,
               },
               zIndex: {
                 value: 50,
@@ -111,7 +117,7 @@ export function ParticleAmong() {
             },
             z7500: {
               number: {
-                value: 30,
+                value: isMobile ? 9 : 30,
               },
               zIndex: {
                 value: 75,
@@ -119,7 +125,7 @@ export function ParticleAmong() {
             },
             z2500: {
               number: {
-                value: 50,
+                value: isMobile ? 15 : 50,
               },
               zIndex: {
                 value: 25,
@@ -127,7 +133,7 @@ export function ParticleAmong() {
             },
             z1000: {
               number: {
-                value: 40,
+                value: isMobile ? 12 : 40,
               },
               zIndex: {
                 value: 10,

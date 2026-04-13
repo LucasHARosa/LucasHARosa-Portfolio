@@ -1,8 +1,8 @@
 import Typewriter from "typewriter-effect";
 
-import { GithubLogo, LinkedinLogo } from "phosphor-react";
+import { GithubLogo, Globe, LinkedinLogo } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
-import { PiArrowBendRightDown } from "react-icons/pi";
+import { PiArrowBendRightDown, PiArrowDown } from "react-icons/pi";
 import { Button } from "../Button";
 import { Tag } from "../Tag";
 import { SpaceScene } from "./SpaceScene";
@@ -10,6 +10,7 @@ import {
   IntroButtons,
   IntroContainer,
   IntroContent,
+  ScrollIndicator,
   Space3DContainer,
   TypeWriterText,
 } from "./styles";
@@ -87,6 +88,16 @@ export function Intro() {
                 Linkedin
               </Button>
             </a>
+            <a
+              href="https://bbs.lucasrosa.dev.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button>
+                <Globe size={22} />
+                Portfolio BBS
+              </Button>
+            </a>
           </IntroButtons>
         </IntroContent>
         <Space3DContainer>
@@ -96,6 +107,11 @@ export function Intro() {
           </span>
           {isMounted && <SpaceScene mousePosition={mousePosition} />}
         </Space3DContainer>
+
+        <ScrollIndicator>
+          <PiArrowDown size={18} />
+          Role para ver mais
+        </ScrollIndicator>
       </IntroContainer>
     </section>
   );

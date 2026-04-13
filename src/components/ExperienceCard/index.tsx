@@ -1,11 +1,13 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import type { IconType } from "react-icons";
 import {
   CardContainer,
   Company,
   ContentWrapper,
   Description,
+  ExpandButton,
   Header,
   IconWrapper,
   Tag,
@@ -28,6 +30,15 @@ export function ExperienceCard({
   description,
   tags,
 }: ExperienceCardProps) {
+  const [isMobile, setIsMobile] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 768);
+  }, []);
+
+  const collapsed = isMobile && !isExpanded;
+
   return (
     <CardContainer>
       <IconWrapper>
@@ -38,8 +49,11 @@ export function ExperienceCard({
           <Title>{title}</Title>
           <Company>{subtitle}</Company>
         </Header>
-        <Description>{description}</Description>
-        <TagsContainer>
+        <Description $collapsed={collapsed}>{description}</Description>
+        <ExpandButton onClick={() => setIsExpanded((v) => !v)}>
+          {isExpanded ? "Ver menos" : "Ver mais"}
+        </ExpandButton>
+        <TagsContainer $collapsed={collapsed}>
           {tags.map((tag, index) => (
             <Tag key={index}>{tag}</Tag>
           ))}

@@ -216,16 +216,16 @@ export const ProjectTitle = styled.h3`
 `;
 
 // Descrição do projeto
-export const ProjectDescription = styled.p`
+export const ProjectDescription = styled.p<{ $expanded?: boolean }>`
   color: ${({ theme }) => theme["Gray-300"]};
   font-size: 1.125rem;
-  margin-bottom: 2rem;
+  margin-bottom: ${({ $expanded }) => ($expanded ? "1rem" : "2rem")};
   line-height: 1.75;
   max-width: 42rem;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: ${({ $expanded }) => ($expanded ? "unset" : "3")};
   -webkit-box-orient: vertical;
-  overflow: hidden;
+  overflow: ${({ $expanded }) => ($expanded ? "visible" : "hidden")};
 
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -350,19 +350,18 @@ export const IconButton = styled.a`
   }
 `;
 
-// Container da paginação (dots)
+// Container da paginação (dots) — oculto no mobile (substituído pelo MobileNavRow)
 export const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 0.75rem;
   position: relative;
   z-index: 25;
-  
   padding: 0.5rem;
 
   @media (max-width: 768px) {
-    margin-top: 0rem;
-    padding: 0rem;
+    display: none;
+  }
 `;
 
 // Dot de paginação
@@ -397,6 +396,63 @@ export const PaginationDot = styled.button<PaginationDotProps>`
   @media (max-width: 768px) {
     min-width: ${({ isActive }) => (isActive ? "2rem" : "1.5rem")};
     min-height: 1.5rem;
+  }
+`;
+
+// Botão "Ver mais" — visível apenas no mobile
+export const VerMaisButton = styled.button`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: ${({ theme }) => theme["Blue-400"]};
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.25rem 0;
+    margin-bottom: 1.5rem;
+    align-self: center;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+`;
+
+// Row de navegação mobile: [<] dots [>]
+export const MobileNavRow = styled.div`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    position: relative;
+    z-index: 25;
+  }
+`;
+
+// Botão de seta para o MobileNavRow
+export const MobileNavButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: ${({ theme }) => theme["Gray-800"]};
+  border: 1px solid ${({ theme }) => theme["Gray-700"]};
+  border-radius: 50%;
+  color: ${({ theme }) => theme.white};
+  width: 2.25rem;
+  height: 2.25rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.15s ease;
+
+  &:active {
+    background: ${({ theme }) => theme["Gray-700"]};
   }
 `;
 

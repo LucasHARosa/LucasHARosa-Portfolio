@@ -62,17 +62,53 @@ export const Company = styled.span`
   color: ${({ theme }) => theme["Blue-400"]};
 `;
 
-export const Description = styled.p`
+export const Description = styled.p<{ $collapsed?: boolean }>`
   font-size: 0.875rem;
   color: ${({ theme }) => theme["Gray-400"]};
   line-height: 1.6;
-  margin-bottom: 1rem;
+  margin-bottom: ${({ $collapsed }) => ($collapsed ? "0.5rem" : "1rem")};
+
+  @media (max-width: 768px) {
+    display: -webkit-box;
+    -webkit-line-clamp: ${({ $collapsed }) => ($collapsed ? "3" : "unset")};
+    -webkit-box-orient: vertical;
+    overflow: ${({ $collapsed }) => ($collapsed ? "hidden" : "visible")};
+  }
 `;
 
-export const TagsContainer = styled.div`
+export const ExpandButton = styled.button`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: ${({ theme }) => theme["Blue-400"]};
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 0.75rem;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+`;
+
+export const TagsContainer = styled.div<{ $collapsed?: boolean }>`
   display: flex;
   flex-wrap: wrap;
   gap: 0.375rem;
+
+  @media (max-width: 768px) {
+    ${({ $collapsed }) =>
+      $collapsed &&
+      `
+      & > *:nth-child(n+4) {
+        display: none;
+      }
+    `}
+  }
 `;
 
 export const Tag = styled.span`

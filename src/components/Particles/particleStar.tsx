@@ -1,10 +1,16 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Particles from "react-particles";
 import type { Container, Engine } from "tsparticles-engine";
 //import { loadFull } from "tsparticles"; // if you are going to use `loadFull`, install the "tsparticles" package too.
 import { loadSlim } from "tsparticles-slim"; // if you are going to use `loadSlim`, install the "tsparticles-slim" package too.
 
 export function ParticleStar() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 768);
+  }, []);
+
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
@@ -53,7 +59,7 @@ export function ParticleStar() {
             speed: 0.05,
           },
           number: {
-            value: 400,
+            value: isMobile ? 80 : 400,
             density: {
               enable: true,
               value_area: 1500,

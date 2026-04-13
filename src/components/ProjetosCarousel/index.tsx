@@ -29,6 +29,8 @@ import {
   ContentContainer,
   IconButton,
   ImageOverlay,
+  MobileNavButton,
+  MobileNavRow,
   NavigationButton,
   PaginationContainer,
   PaginationDot,
@@ -38,6 +40,7 @@ import {
   ScrollContainer,
   SecondaryButton,
   TagsContainer,
+  VerMaisButton,
 } from "./styles";
 
 interface ProjectCarouselProps {
@@ -53,6 +56,9 @@ interface CarouselItemProps {
   scrollX: MotionValue<number>;
   cardWidth: number;
   onClick: () => void;
+  isMobile: boolean;
+  isExpanded: boolean;
+  onExpandToggle: () => void;
 }
 
 const CarouselItem: React.FC<CarouselItemProps> = ({
@@ -61,6 +67,9 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
   scrollX,
   cardWidth,
   onClick,
+  isMobile,
+  isExpanded,
+  onExpandToggle,
 }) => {
   const itemWidth = cardWidth + GAP;
   const position = index * itemWidth;
@@ -154,7 +163,13 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
 
           <ProjectTitle>{project.titulo}</ProjectTitle>
 
-          <ProjectDescription>{project.descricao}</ProjectDescription>
+          <ProjectDescription $expanded={isExpanded}>
+            {project.descricao}
+          </ProjectDescription>
+
+          {isMobile && !isExpanded && (
+            <VerMaisButton onClick={onExpandToggle}>Ver mais</VerMaisButton>
+          )}
 
           <ButtonsContainer>
             {project.Link && (
@@ -214,13 +229,14 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
   const [currentIndex, setCurrentIndex] = useState(1); // Começa no segundo item
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [expandedDescriptions, setExpandedDescriptions] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const handleResize = () => {
-      const isMobile = window.innerWidth <= 768;
-      // No mobile, usa 85% da largura para deixar espaço nas laterais
-      // No desktop, usa 90% até o máximo de CARD_WIDTH_DESKTOP
-      const width = isMobile
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      const width = mobile
         ? window.innerWidth * 0.85
         : Math.min(window.innerWidth * 0.7, CARD_WIDTH_DESKTOP);
       setCardWidth(width);
@@ -361,6 +377,15 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
             index={index}
             scrollX={scrollX}
             cardWidth={cardWidth}
+            isMobile={isMobile}
+            isExpanded={expandedDescriptions.has(index)}
+            onExpandToggle={() =>
+              setExpandedDescriptions((prev) => {
+                const next = new Set(prev);
+                next.has(index) ? next.delete(index) : next.add(index);
+                return next;
+              })
+            }
             onClick={() => {
               setIsAutoScrolling(false);
               scrollToIndex(index);
@@ -370,7 +395,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
         ))}
       </ScrollContainer>
 
-      {/* Pagination Dots */}
+      {/* Pagination Dots — desktop */}
       <PaginationContainer>
         {projects.map((_, i) => (
           <PaginationDot
@@ -381,6 +406,24 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
           />
         ))}
       </PaginationContainer>
+
+      {/* Mobile nav: setas + dots em linha */}
+      <MobileNavRow>
+        <MobileNavButton onClick={handlePrev} aria-label="Projeto Anterior">
+          <CaretLeft size={16} weight="bold" />
+        </MobileNavButton>
+        {projects.map((_, i) => (
+          <PaginationDot
+            key={i}
+            isActive={i === currentIndex}
+            onClick={() => handleDotClick(i)}
+            aria-label={`Ir para projeto ${i + 1}`}
+          />
+        ))}
+        <MobileNavButton onClick={handleNext} aria-label="Próximo Projeto">
+          <CaretRight size={16} weight="bold" />
+        </MobileNavButton>
+      </MobileNavRow>
 
       {/* Auto-scroll indicator */}
       {isAutoScrolling && (
