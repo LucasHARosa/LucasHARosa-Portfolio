@@ -27,6 +27,7 @@ export const ButtonContainer = styled.div<Props>`
   border-radius: 0.5rem;
   font-size: 0.875rem;
   font-weight: 400;
+  white-space: nowrap;
   color: ${({ theme }) => theme["white"]};
 
   background-color: ${({ type, theme }) => {
