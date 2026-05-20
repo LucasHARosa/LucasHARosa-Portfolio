@@ -19,7 +19,7 @@ export const listaProjetos: ProjetosProps[] = [
       "Plataforma completa de fintech desenvolvida para revolucionar transações financeiras digitais. Sistema robusto que oferece soluções de pagamento seguras e eficientes para consumidores e empresas, com interface moderna e processos otimizados.",
     tags: ["Projeto Real", "NextJs", "Vite", "React App"],
     imagem: "/imagens/dubpay.png",
-    Link: "https://www.dubpay.com/",
+    Link: "https://dubpay.com.br/",
     LinkGit: "",
     LinkGoogle: "",
     LinkApple: "",

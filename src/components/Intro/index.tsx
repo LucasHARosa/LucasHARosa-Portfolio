@@ -32,14 +32,13 @@ export function Intro() {
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
-        // Normalize mouse position between -1 and 1
+
         const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
         const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
         setMousePosition({ x, y });
       }
     };
 
-    // Initial dimensions
     handleResize();
 
     window.addEventListener("resize", handleResize);
