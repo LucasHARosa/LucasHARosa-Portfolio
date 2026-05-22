@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { AppleLogo, GithubLogo, GooglePlayLogo, Link } from "phosphor-react";
+import { AppleLogo, CaretDown, GithubLogo, GooglePlayLogo, Link } from "phosphor-react";
+import { useState } from "react";
 import { ProjetosProps } from "../../data/data";
 
 import {
@@ -22,6 +23,8 @@ interface Props {
 }
 
 export function ProjectCardHorizontal({ projeto }: Props) {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -39,7 +42,38 @@ export function ProjectCardHorizontal({ projeto }: Props) {
         </ImageSection>
         <ContentSection>
           <Header>{projeto.titulo}</Header>
-          <Description>{projeto.descricao}</Description>
+          <Description
+            style={
+              expanded
+                ? { overflow: "visible", display: "block", WebkitLineClamp: "unset" }
+                : undefined
+            }
+          >
+            {projeto.descricao}
+          </Description>
+          <button
+            onClick={() => setExpanded(!expanded)}
+            style={{
+              background: "none",
+              border: "none",
+              color: "rgba(255,255,255,0.3)",
+              cursor: "pointer",
+              padding: "0.125rem 0 0",
+              display: "flex",
+              alignItems: "center",
+              transition: "color 0.2s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.3)")}
+          >
+            <CaretDown
+              size={14}
+              style={{
+                transition: "transform 0.25s ease",
+                transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
+              }}
+            />
+          </button>
 
           <TagsContainer>
             {projeto.tags.map((tag) => {

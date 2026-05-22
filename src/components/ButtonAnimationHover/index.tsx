@@ -39,7 +39,6 @@ export function ButtonAnimationHover({
             cursor: "pointer",
             whiteSpace: "nowrap",
             textDecoration: "none",
-            color: "inherit",
           }}
         >
           {text}

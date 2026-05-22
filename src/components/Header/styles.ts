@@ -83,6 +83,7 @@ export const HeaderNav = styled.nav`
     color: ${({ theme }) => theme["Gray-900"]};
     font-weight: 400;
   }
+
 `;
 
 export const HeaderNavMobile = styled(motion.nav)`

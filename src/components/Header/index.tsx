@@ -52,6 +52,15 @@ export function Header() {
       link: isProjectsPage ? "/" : "#Home",
       section: "Home",
       isRoute: isProjectsPage,
+      isProjectsLink: false,
+    },
+    {
+      id: 3,
+      name: "Projetos",
+      link: "/projetos",
+      section: "Projetos",
+      isRoute: true,
+      isProjectsLink: true,
     },
     {
       id: 2,
@@ -59,13 +68,7 @@ export function Header() {
       link: isProjectsPage ? "/#SobreMim" : "#SobreMim",
       section: "SobreMim",
       isRoute: isProjectsPage,
-    },
-    {
-      id: 3,
-      name: isProjectsPage ? "Voltar ao Início" : "Ver Projetos",
-      link: isProjectsPage ? "/" : "/projetos",
-      section: "Projetos",
-      isRoute: true,
+      isProjectsLink: false,
     },
     {
       id: 4,
@@ -73,14 +76,15 @@ export function Header() {
       link: isProjectsPage ? "/#Skills" : "#Skills",
       section: "Skills",
       isRoute: isProjectsPage,
+      isProjectsLink: false,
     },
-
     {
       id: 6,
       name: "Educação",
       link: isProjectsPage ? "/#Educacao" : "#Educacao",
       section: "Educacao",
       isRoute: isProjectsPage,
+      isProjectsLink: false,
     },
     {
       id: 7,
@@ -88,6 +92,7 @@ export function Header() {
       link: isProjectsPage ? "/#Contato" : "#Contato",
       section: "Contato",
       isRoute: isProjectsPage,
+      isProjectsLink: false,
     },
   ];
 
@@ -121,31 +126,24 @@ export function Header() {
         <HeaderContent>
           <HeaderNav>
             <ul>
-              {dataHeader.map((item) => (
-                <li
-                  key={item.id}
-                  className={
-                    item.isRoute
+              {dataHeader.map((item) => {
+                const isActive =
+                  item.isProjectsLink && isProjectsPage
+                    ? true
+                    : item.isRoute
                       ? location.pathname === item.link
-                        ? "active"
-                        : ""
-                      : activeSection === item.section
-                        ? "active"
-                        : ""
-                  }
-                >
-                  <ButtonAnimationHover
-                    text={item.name}
-                    link={item.link}
-                    active={
-                      item.isRoute
-                        ? location.pathname === item.link
-                        : activeSection === item.section
-                    }
-                    isRoute={item.isRoute}
-                  />
-                </li>
-              ))}
+                      : activeSection === item.section;
+                return (
+                  <li key={item.id} className={`${isActive ? "active" : ""}`}>
+                    <ButtonAnimationHover
+                      text={item.name}
+                      link={item.link}
+                      active={isActive}
+                      isRoute={item.isRoute}
+                    />
+                  </li>
+                );
+              })}
               <li>
                 <ButtonAnimationHover
                   handleTheme={handleTheme}
@@ -188,33 +186,29 @@ export function Header() {
               }}
               style={{ pointerEvents: menu ? "auto" : "none" }}
             >
-              {dataHeader.map((item) => (
-                <NavLi
-                  key={item.id}
-                  variants={itemVariants}
-                  className={
-                    item.isRoute
+              {dataHeader.map((item) => {
+                const isActive =
+                  item.isProjectsLink && isProjectsPage
+                    ? true
+                    : item.isRoute
                       ? location.pathname === item.link
-                        ? "active"
-                        : ""
-                      : activeSection === item.section
-                        ? "active"
-                        : ""
-                  }
-                >
-                  <ButtonAnimationHover
-                    text={item.name}
-                    link={item.link}
-                    mobile={true}
-                    active={
-                      item.isRoute
-                        ? location.pathname === item.link
-                        : activeSection === item.section
-                    }
-                    isRoute={item.isRoute}
-                  />
-                </NavLi>
-              ))}
+                      : activeSection === item.section;
+                return (
+                  <NavLi
+                    key={item.id}
+                    variants={itemVariants}
+                    className={`${isActive ? "active" : ""}${item.isProjectsLink && isProjectsPage ? " projects-highlight" : ""}`}
+                  >
+                    <ButtonAnimationHover
+                      text={item.name}
+                      link={item.link}
+                      mobile={true}
+                      active={isActive}
+                      isRoute={item.isRoute}
+                    />
+                  </NavLi>
+                );
+              })}
               <NavLi variants={itemVariants}>
                 <ButtonAnimationHover
                   handleTheme={handleTheme}

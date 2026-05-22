@@ -1,7 +1,7 @@
 import { animated, to, useSpring } from "@react-spring/web";
 import { motion } from "framer-motion";
-import { AppleLogo, GithubLogo, GooglePlayLogo, Link } from "phosphor-react";
-import { useRef } from "react";
+import { AppleLogo, CaretDown, GithubLogo, GooglePlayLogo, Link } from "phosphor-react";
+import { useRef, useState } from "react";
 import { useGesture } from "react-use-gesture";
 import { ProjetosProps } from "../../data/data";
 
@@ -19,6 +19,7 @@ interface Props {
 }
 
 export function Projetos({ projeto }: Props) {
+  const [expanded, setExpanded] = useState(false);
   const domTarget = useRef<HTMLDivElement>(null);
 
   const calcX = (y: number) => {
@@ -87,7 +88,38 @@ export function Projetos({ projeto }: Props) {
           <ContainerContent>
             <div>
               <h1>{projeto.titulo}</h1>
-              <p>{projeto.descricao}</p>
+              <p
+                style={
+                  expanded
+                    ? { overflow: "visible", display: "block", WebkitLineClamp: "unset" }
+                    : undefined
+                }
+              >
+                {projeto.descricao}
+              </p>
+              <button
+                onClick={(e) => { e.stopPropagation(); setExpanded(!expanded); }}
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: "rgba(255,255,255,0.3)",
+                  cursor: "pointer",
+                  padding: "0.125rem 0 0",
+                  display: "flex",
+                  alignItems: "center",
+                  transition: "color 0.2s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.3)")}
+              >
+                <CaretDown
+                  size={14}
+                  style={{
+                    transition: "transform 0.25s ease",
+                    transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
+                  }}
+                />
+              </button>
             </div>
             <div>
               <ContainerTags>

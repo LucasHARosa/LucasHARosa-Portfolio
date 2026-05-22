@@ -13,8 +13,9 @@ export const Container = styled.div`
   border: 1px solid ${({ theme }) => theme["Gray-800"]};
 
   width: 320px;
-  height: 480px;
-  overflow: hidden;
+  min-height: 480px;
+  height: auto;
+  overflow: visible;
   transition: all 0.3s ease;
   box-shadow: ${({ theme }) => theme["shadow-md"]};
 
@@ -26,7 +27,8 @@ export const Container = styled.div`
 
   @media (max-width: 768px) {
     width: 280px;
-    height: 420px;
+    min-height: 420px;
+    height: auto;
   }
 
   h1 {
