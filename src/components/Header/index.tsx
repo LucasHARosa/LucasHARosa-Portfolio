@@ -27,7 +27,7 @@ const itemVariants: Variants = {
 
 export function Header() {
   const [menu, setMenu] = useState(false);
-  const [theme, setTheme] = useState("among");
+  const [theme, setTheme] = useState("stars");
   const [activeSection, setActiveSection] = useState("Home");
   const location = useLocation();
 

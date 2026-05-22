@@ -139,11 +139,11 @@ export function About() {
             {trail.map((style, index) => (
               <animated.p key={index} style={style}>
                 {index === 0 &&
-                  "Prazer! Sou desenvolvedor e programador, com anos de experiência em diversas linguagens de programação e frameworks, tenho habilidades sólidas em desenvolvimento web e aplicativos, bem como em automação e Machine Learning"}
+                  "Prazer! Sou Engenheiro Mecatrônico pela UnB e Desenvolvedor Full Stack com foco em back-end. Tenho experiência sólida na construção de APIs REST escaláveis, integrações com serviços externos, automações de processos e arquitetura de sistemas utilizando Node.js, NestJS, FastAPI, Python e Java — além de aplicações web com React e Next.js e mobile com React Native."}
                 {index === 1 &&
-                  "Minha jornada como desenvolvedor começou quando percebi que poderia unir minha paixão por tecnologia e solução de problemas para criar soluções inovadoras. Ao longo dos anos, aprimorei minhas habilidades em programação e desenvolvimento, trabalhando em projetos desafiadores que exigiam pensamento crítico e criatividade."}
+                  "Ao longo da minha trajetória, atuei em projetos reais de fintech, energia, logística, esportes e sistemas industriais — sempre com responsabilidade sobre regras de negócio, modelagem de banco de dados, performance e segurança. Tenho experiência também com automações com IA, N8N, OCR, WebSockets e SSE, e base técnica em sistemas embarcados e IoT."}
                 {index === 2 &&
-                  "Se você está procurando um desenvolvedor web e programador que possa levar sua empresa para o próximo nível, estou à disposição. Meu compromisso com a excelência, juntamente com minhas habilidades técnicas, me tornam um parceiro valioso em qualquer projeto."}
+                  "Se você busca um desenvolvedor que vá além do código e pense em arquitetura, escalabilidade e resultado para o negócio, estou disponível. Prefiro desafios voltados a back-end, integrações e APIs — mas estou pronto para entregar soluções completas de ponta a ponta."}
               </animated.p>
             ))}
           </div>

@@ -359,18 +359,17 @@ export const listaProjetos: ProjetosProps[] = [
 
 export const listaSkills = [
   {
-    experiencia: "5 anos",
+    desde: 2019,
     nivel: 10,
     id: "react",
     titulo: "React",
     description:
-      "Construção de aplicações web modernas e performáticas com React. Experiência com hooks, context API e melhores práticas de componentização.",
+      "Construção de aplicações web modernas e performáticas com React. Experiência aprofundada com hooks, context API, gerenciamento de estado e melhores práticas de componentização em projetos de grande escala.",
     tecnologiasAxiliares: [
       "NextJS",
       "Styled Components",
       "Redux",
       "TypeScript",
-      "BootStrap",
       "Tailwind CSS",
       "Framer Motion",
       "Vite",
@@ -378,12 +377,12 @@ export const listaSkills = [
     ],
   },
   {
-    experiencia: "4 anos",
+    desde: 2020,
     nivel: 10,
     id: "nodejs",
     titulo: "NodeJS",
     description:
-      "Criação de APIs performáticas e escaláveis utilizando Node.js, com foco em microsserviços e mensageria.",
+      "Criação de APIs performáticas, escaláveis e seguras com Node.js. Experiência com microsserviços, filas de mensageria, autenticação JWT, WebSockets e integração com bancos de dados relacionais e NoSQL.",
     tecnologiasAxiliares: [
       "NestJS",
       "Express",
@@ -392,15 +391,17 @@ export const listaSkills = [
       "Socket.io",
       "JWT",
       "GraphQL",
+      "PostgreSQL",
+      "MongoDB",
     ],
   },
   {
-    experiencia: "5 anos",
+    desde: 2019,
     nivel: 10,
     id: "react-native",
     titulo: "React Native",
     description:
-      "Desenvolvimento de aplicativos mobile para Android e iOS com alta performance e integração nativa.",
+      "Desenvolvimento de aplicativos mobile cross-platform para Android e iOS com alta performance, integração nativa, publicação nas lojas e arquitetura escalável.",
     tecnologiasAxiliares: [
       "Expo",
       "Native Base",
@@ -410,83 +411,99 @@ export const listaSkills = [
     ],
   },
   {
-    experiencia: "2 anos",
-    nivel: 7,
+    desde: 2022,
+    nivel: 8,
     id: "java",
     titulo: "Java",
     description:
-      "Desenvolvimento backend robusto e seguro com Java, focado em APIs RESTful e sistemas distribuídos.",
+      "Desenvolvimento backend robusto com Java, focado em APIs RESTful, sistemas distribuídos e integração com bancos de dados. Experiência em contextos industriais e sistemas governamentais.",
     tecnologiasAxiliares: [
       "Spring Boot",
       "Spring Web",
       "Spring Data JPA",
       "Spring Security",
-      "Spring Cloud",
       "Hibernate",
+      "MySQL",
     ],
   },
   {
-    experiencia: "3 anos",
+    desde: 2021,
     nivel: 10,
     id: "nextjs",
     titulo: "NextJs",
     description:
-      "Criação de aplicações SSR e SSG utilizando Next.js, otimizando performance e SEO.",
-    tecnologiasAxiliares: ["React", "TypeScript"],
+      "Criação de aplicações SSR, SSG e ISR com Next.js, com foco em performance, SEO, otimização de Core Web Vitals e experiência do usuário em plataformas de alto tráfego.",
+    tecnologiasAxiliares: ["React", "TypeScript", "Vercel", "App Router", "API Routes"],
   },
   {
-    experiencia: "3 anos",
-    nivel: 8,
+    desde: 2021,
+    nivel: 9,
     id: "nestjs",
     titulo: "NestJS",
     description:
-      "Desenvolvimento backend modular e escalável com NestJS, utilizando arquitetura limpa e princípios SOLID.",
-    tecnologiasAxiliares: ["TypeScript", "NodeJS", "JWT", "TypeORM", "Swagger"],
+      "Desenvolvimento backend modular e escalável com NestJS. Arquitetura limpa, princípios SOLID, injeção de dependência, guards, interceptors, pipes, e integração com bancos de dados via TypeORM e Prisma.",
+    tecnologiasAxiliares: ["TypeScript", "NodeJS", "JWT", "TypeORM", "Prisma", "Swagger", "PostgreSQL"],
   },
   {
-    experiencia: "7 anos",
+    desde: 2017,
     nivel: 10,
     id: "python",
     titulo: "Python",
     description:
-      "Desenvolvimento de scripts, automação e projetos de IA/Machine Learning utilizando Python.",
+      "Desenvolvimento de APIs, automações, scripts e soluções de IA/Machine Learning com Python. Experiência com FastAPI, Django, análise de dados, visão computacional e integração com modelos de ML.",
     tecnologiasAxiliares: [
+      "FastAPI",
+      "Django",
       "Pandas",
       "Numpy",
-      "Matplotlib",
       "Scikit-Learn",
-      "Keras",
       "TensorFlow",
       "PyTorch",
-      "FastAPI",
+      "N8N",
     ],
   },
   {
-    experiencia: "6 anos",
+    desde: 2023,
+    nivel: 9,
+    id: "fastapi",
+    titulo: "FastAPI",
+    description:
+      "Desenvolvimento de APIs REST modernas, rápidas e documentadas com FastAPI. Experiência com autenticação, integração com bancos de dados, OCR, gateways de pagamento e arquitetura de microsserviços em Python.",
+    tecnologiasAxiliares: [
+      "Python",
+      "Pydantic",
+      "SQLAlchemy",
+      "PostgreSQL",
+      "JWT",
+      "Docker",
+      "Swagger",
+    ],
+  },
+  {
+    desde: 2018,
     nivel: 10,
     id: "typescript",
     titulo: "TypeScript",
     description:
-      "Uso avançado do TypeScript para tipagem segura e escalável em aplicações frontend e backend.",
-    tecnologiasAxiliares: ["React", "NodeJs", "NestJS"],
+      "Uso avançado de TypeScript para tipagem segura e escalável em aplicações frontend e backend. Experiência com tipos genéricos, decorators, utility types e integração com frameworks modernos.",
+    tecnologiasAxiliares: ["React", "NodeJs", "NestJS", "Next.js"],
   },
-
   {
-    experiencia: "7 anos",
+    desde: 2017,
     nivel: 10,
     id: "github",
     titulo: "Git/GitHub",
     description:
-      "Gestão de versionamento de código, repositórios e colaboração eficiente em projetos com Git.",
-    tecnologiasAxiliares: ["Git", "GitHub", "GitFlow", "CI/CD"],
+      "Gestão eficiente de versionamento de código, repositórios e colaboração em equipe. Experiência com GitFlow, pull requests, code review, CI/CD e automações com GitHub Actions.",
+    tecnologiasAxiliares: ["Git", "GitHub", "GitFlow", "CI/CD", "GitHub Actions"],
   },
   {
-    experiencia: "7 anos",
+    desde: 2017,
     nivel: 10,
     id: "code",
     titulo: "C++",
     description:
-      "C++ é o código raiz: se você quer entender o que acontece debaixo do capô, essa é a chave da ignição.",
-    tecnologiasAxiliares: ["C++", "Microcontroladores"],
+      "Base sólida em C/C++ para sistemas embarcados, microcontroladores e automação. Fundação técnica que sustenta o entendimento de performance, memória e arquitetura de baixo nível.",
+    tecnologiasAxiliares: ["C++", "C", "Microcontroladores", "Arduino", "IoT"],
   },
 ];

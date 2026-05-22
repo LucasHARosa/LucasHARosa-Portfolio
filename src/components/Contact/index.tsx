@@ -1,7 +1,7 @@
 import emailjs from "@emailjs/browser";
 import { ArrowRight, Envelope, WhatsappLogo } from "phosphor-react";
 import { useForm } from "react-hook-form";
-import { FaCode } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { Title } from "../Title";
 import {
@@ -66,22 +66,22 @@ export function Contact() {
       <Content>
         <ContainerContact>
           <div>
-            <a href="https://wa.me/5561992836376">
+            <a href="https://wa.me/5561992836376" target="_blank" rel="noreferrer">
               <WhatsappLogo size={20} />
               <span>WhatsApp</span>
             </a>
           </div>
           <div>
-            <a href="" onClick={handleCopy}>
+            <button type="button" onClick={handleCopy}>
               <Envelope size={20} />
               <span>Copiar E-mail</span>
-            </a>
+            </button>
           </div>
 
           <div>
-            <a href="https://wa.me/5561992836376">
-              <FaCode size={20} />
-              <span>SoftwareHouse</span>
+            <a href="https://www.linkedin.com/in/lucashenrique-alves-rosa" target="_blank" rel="noreferrer">
+              <FaLinkedin size={20} />
+              <span>LinkedIn</span>
             </a>
           </div>
         </ContainerContact>
@@ -107,7 +107,7 @@ export function Contact() {
           />
           {errors.message && <span>Mensagem é obrigatória</span>}
 
-          <ButtonContainer type="submit" onClick={handleCopy}>
+          <ButtonContainer type="submit">
             Enviar
             <ArrowRight size={20} />
           </ButtonContainer>

@@ -68,7 +68,8 @@ export const ContainerContact = styled.div`
     }
   }
 
-  a {
+  a,
+  button {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -77,6 +78,9 @@ export const ContainerContact = styled.div`
     width: 100%;
     border-radius: 0.5rem;
     padding: 0.5rem 0.875rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
 
     color: ${({ theme }) => theme["Gray-900"]};
     background-color: ${({ theme }) => theme["Gray-200"]};

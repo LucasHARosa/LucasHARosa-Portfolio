@@ -4,6 +4,7 @@ import { DiNodejs } from "react-icons/di";
 import { FaGithub, FaJava, FaPython, FaReact } from "react-icons/fa";
 import {
   SiCplusplus,
+  SiFastapi,
   SiNestjs,
   SiNextdotjs,
   SiTypescript,
@@ -64,10 +65,16 @@ export function Skills() {
         return <SiCplusplus />;
       case "nestjs":
         return <SiNestjs />;
+      case "fastapi":
+        return <SiFastapi />;
       default:
         return <FaReact />;
     }
   };
+
+  const currentYear = new Date().getFullYear();
+  const yearsOfExp = currentYear - skill.desde;
+  const experienciaLabel = `${yearsOfExp} ano${yearsOfExp !== 1 ? "s" : ""} (desde ${skill.desde})`;
 
   const normalizedPercentage = Math.min(100, Math.max(0, skill.nivel * 10));
 
@@ -170,6 +177,12 @@ export function Skills() {
             >
               <SiCplusplus size={30} />
             </ButtonSkill>
+            <ButtonSkill
+              onClick={() => handleChangeSkill("fastapi")}
+              active={skill.id === "fastapi"}
+            >
+              <SiFastapi size={30} />
+            </ButtonSkill>
           </ContainerButtons>
         </Techs>
         <TechsDescription
@@ -188,7 +201,7 @@ export function Skills() {
           <Space />
           <Text>
             <span>Experiência: </span>
-            {skill.experiencia}
+            {experienciaLabel}
           </Text>
           <Progress>
             <TextProgress>Conhecimento:</TextProgress>
