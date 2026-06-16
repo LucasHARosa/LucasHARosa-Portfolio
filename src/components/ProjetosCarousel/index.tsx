@@ -181,7 +181,25 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
                 Visitar Site <ArrowRight size={18} weight="bold" />
               </PrimaryButton>
             )}
-            {project.LinkGit && (
+            {project.LinkGitFront && (
+              <SecondaryButton
+                href={project.LinkGitFront}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GithubLogo size={18} /> Frontend
+              </SecondaryButton>
+            )}
+            {project.LinkGitBack && (
+              <SecondaryButton
+                href={project.LinkGitBack}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GithubLogo size={18} /> Backend
+              </SecondaryButton>
+            )}
+            {project.LinkGit && !project.LinkGitFront && !project.LinkGitBack && (
               <SecondaryButton
                 href={project.LinkGit}
                 target="_blank"

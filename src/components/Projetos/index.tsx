@@ -157,7 +157,27 @@ export function Projetos({ projeto }: Props) {
                     </button>
                   </a>
                 )}
-                {projeto.LinkGit && (
+                {projeto.LinkGitFront && (
+                  <a href={projeto.LinkGitFront} target="_blank">
+                    <button>
+                      <div>
+                        <GithubLogo size={20} />
+                      </div>
+                      Frontend
+                    </button>
+                  </a>
+                )}
+                {projeto.LinkGitBack && (
+                  <a href={projeto.LinkGitBack} target="_blank">
+                    <button>
+                      <div>
+                        <GithubLogo size={20} />
+                      </div>
+                      Backend
+                    </button>
+                  </a>
+                )}
+                {projeto.LinkGit && !projeto.LinkGitFront && !projeto.LinkGitBack && (
                   <a href={projeto.LinkGit} target="_blank">
                     <button>
                       <div>

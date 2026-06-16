@@ -102,7 +102,23 @@ export function ProjectCardHorizontal({ projeto }: Props) {
                 </ActionButton>
               </a>
             )}
-            {projeto.LinkGit && (
+            {projeto.LinkGitFront && (
+              <a href={projeto.LinkGitFront} target="_blank" rel="noreferrer">
+                <ActionButton>
+                  <GithubLogo size={14} />
+                  Frontend
+                </ActionButton>
+              </a>
+            )}
+            {projeto.LinkGitBack && (
+              <a href={projeto.LinkGitBack} target="_blank" rel="noreferrer">
+                <ActionButton>
+                  <GithubLogo size={14} />
+                  Backend
+                </ActionButton>
+              </a>
+            )}
+            {projeto.LinkGit && !projeto.LinkGitFront && !projeto.LinkGitBack && (
               <a href={projeto.LinkGit} target="_blank" rel="noreferrer">
                 <ActionButton>
                   <GithubLogo size={14} />
