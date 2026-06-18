@@ -219,7 +219,7 @@ export const ProjectTitle = styled.h3`
 export const ProjectDescription = styled.p<{ $expanded?: boolean }>`
   color: ${({ theme }) => theme["Gray-300"]};
   font-size: 1.125rem;
-  margin-bottom: ${({ $expanded }) => ($expanded ? "1rem" : "2rem")};
+  margin-bottom: ${({ $expanded }) => ($expanded ? "0.5rem" : "0.25rem")};
   line-height: 1.75;
   max-width: 42rem;
   display: -webkit-box;
@@ -280,34 +280,47 @@ export const PrimaryButton = styled.a`
   }
 `;
 
-// Botão secundário (GitHub, etc)
+// Botão secundário (GitHub, etc) — mesmo padrão do PrimaryButton, em estilo outline
 export const SecondaryButton = styled.a`
+  width: fit-content;
+  height: fit-content;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 1rem 2rem;
-  background-color: ${({ theme }) => theme["Gray-900"]};
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 400;
   color: ${({ theme }) => theme.white};
-  border: 2px solid ${({ theme }) => theme["Gray-700"]};
-  border-radius: 9999px;
-  font-weight: 700;
+  background-color: transparent;
+  border: 1px solid ${({ theme }) => theme["Gray-600"]};
+  box-shadow: ${({ theme }) => theme["shadow-sm"]};
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
-    transform 0.2s ease;
-  box-shadow: ${({ theme }) => theme["shadow-lg"]};
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   text-decoration: none;
   cursor: pointer;
   will-change: transform;
 
   &:hover {
     background-color: ${({ theme }) => theme["Gray-800"]};
-    border-color: ${({ theme }) => theme["Gray-600"]};
-    transform: scale(1.05);
+    border-color: ${({ theme }) => theme["Gray-400"]};
+    box-shadow: ${({ theme }) => theme["shadow-md"]};
+    transform: translateY(-2px);
   }
 
   &:active {
-    transform: scale(1.02);
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+    padding: 0.375rem 1rem;
+    gap: 0.25rem;
   }
 `;
 
@@ -409,7 +422,7 @@ export const VerMaisButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   padding: 0.25rem 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   align-self: center;
   opacity: 0.75;
   transition: opacity 0.2s ease, color 0.2s ease;
