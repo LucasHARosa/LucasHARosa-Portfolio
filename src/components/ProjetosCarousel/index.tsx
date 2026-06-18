@@ -56,7 +56,6 @@ interface CarouselItemProps {
   scrollX: MotionValue<number>;
   cardWidth: number;
   onClick: () => void;
-  isMobile: boolean;
   isExpanded: boolean;
   onExpandToggle: () => void;
 }
@@ -67,7 +66,6 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
   scrollX,
   cardWidth,
   onClick,
-  isMobile,
   isExpanded,
   onExpandToggle,
 }) => {
@@ -167,9 +165,9 @@ const CarouselItem: React.FC<CarouselItemProps> = ({
             {project.descricao}
           </ProjectDescription>
 
-          {isMobile && !isExpanded && (
-            <VerMaisButton onClick={onExpandToggle}>Ver mais</VerMaisButton>
-          )}
+          <VerMaisButton onClick={onExpandToggle}>
+            {isExpanded ? "Ver menos" : "Ver mais"}
+          </VerMaisButton>
 
           <ButtonsContainer>
             {project.Link && (
@@ -247,13 +245,11 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
   const [currentIndex, setCurrentIndex] = useState(1); // Começa no segundo item
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [expandedDescriptions, setExpandedDescriptions] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth <= 768;
-      setIsMobile(mobile);
       const width = mobile
         ? window.innerWidth * 0.85
         : Math.min(window.innerWidth * 0.7, CARD_WIDTH_DESKTOP);
@@ -395,7 +391,6 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
             index={index}
             scrollX={scrollX}
             cardWidth={cardWidth}
-            isMobile={isMobile}
             isExpanded={expandedDescriptions.has(index)}
             onExpandToggle={() =>
               setExpandedDescriptions((prev) => {

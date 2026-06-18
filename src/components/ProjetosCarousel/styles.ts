@@ -223,7 +223,7 @@ export const ProjectDescription = styled.p<{ $expanded?: boolean }>`
   line-height: 1.75;
   max-width: 42rem;
   display: -webkit-box;
-  -webkit-line-clamp: ${({ $expanded }) => ($expanded ? "unset" : "3")};
+  -webkit-line-clamp: ${({ $expanded }) => ($expanded ? "unset" : "2")};
   -webkit-box-orient: vertical;
   overflow: ${({ $expanded }) => ($expanded ? "visible" : "hidden")};
 
@@ -399,24 +399,31 @@ export const PaginationDot = styled.button<PaginationDotProps>`
   }
 `;
 
-// Botão "Ver mais" — visível apenas no mobile
+// Botão "Ver mais" — sutil, visível em qualquer tamanho de tela
 export const VerMaisButton = styled.button`
-  display: none;
+  display: inline-block;
+  background: none;
+  border: none;
+  color: ${({ theme }) => theme["Gray-400"]};
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  margin-bottom: 1.5rem;
+  align-self: center;
+  opacity: 0.75;
+  transition: opacity 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &:hover {
+    opacity: 1;
+    color: ${({ theme }) => theme["Blue-400"]};
+  }
 
   @media (max-width: 768px) {
-    display: inline-block;
-    background: none;
-    border: none;
-    color: ${({ theme }) => theme["Blue-400"]};
     font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    padding: 0.25rem 0;
-    margin-bottom: 1.5rem;
-    align-self: center;
-    -webkit-tap-highlight-color: transparent;
-    text-decoration: underline;
-    text-underline-offset: 2px;
   }
 `;
 

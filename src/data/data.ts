@@ -90,7 +90,7 @@ export const listaProjetos: ProjetosProps[] = [
     LinkGit: "https://github.com/LucasHARosa/BE-Daily-Diet",
     LinkGitBack: "https://github.com/LucasHARosa/BE-Daily-Diet",
     LinkGitFront: "https://github.com/LucasHARosa/APP-Daily-Diet",
-    tipo: ["backend", "mobile"],
+    tipo: ["backend", "mobile", "principais"],
   },
   {
     id: 23,
@@ -129,7 +129,7 @@ export const listaProjetos: ProjetosProps[] = [
     LinkGit: "",
     LinkGoogle: "",
     LinkApple: "",
-    tipo: ["frontend", "backend", "principais"],
+    tipo: ["frontend", "backend"],
   },
   {
     id: 6,
