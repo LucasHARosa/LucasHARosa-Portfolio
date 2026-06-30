@@ -80,6 +80,19 @@ export const listaProjetos: ProjetosProps[] = [
     tipo: ["backend", "frontend", "principais"],
   },
   {
+    id: 25,
+    titulo: "RosaBet",
+    descricao:
+      "Plataforma completa de apostas esportivas e cassino online com foco em back-end de alta performance. API em FastAPI com arquitetura limpa em camadas (API, Aplicação, Domínio e Infraestrutura), SQLAlchemy 2.0 async, PostgreSQL e Redis para cache e pub/sub. Odds ao vivo via WebSocket atualizadas a cada 5s, liquidação automática de apostas em background, autenticação JWT e depósitos PIX simulados. Front-end em Next.js consumindo os dados em tempo real.",
+    tags: ["FastAPI", "Python", "WebSocket", "PostgreSQL", "Redis", "Next.js"],
+    imagem: "/imagens/RosaBet.png",
+    Link: "",
+    LinkGit: "https://github.com/LucasHARosa/BE-RosaBet",
+    LinkGitBack: "https://github.com/LucasHARosa/BE-RosaBet",
+    LinkGitFront: "https://github.com/LucasHARosa/FE-RosaBet",
+    tipo: ["backend", "frontend", "principais"],
+  },
+  {
     id: 24,
     titulo: "Daily Diet",
     descricao:
