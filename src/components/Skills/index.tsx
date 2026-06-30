@@ -5,6 +5,7 @@ import { FaGithub, FaJava, FaPython, FaReact } from "react-icons/fa";
 import {
   SiCplusplus,
   SiFastapi,
+  SiGo,
   SiNestjs,
   SiNextdotjs,
   SiTypescript,
@@ -67,6 +68,8 @@ export function Skills() {
         return <SiNestjs />;
       case "fastapi":
         return <SiFastapi />;
+      case "go":
+        return <SiGo />;
       default:
         return <FaReact />;
     }
@@ -182,6 +185,12 @@ export function Skills() {
               active={skill.id === "fastapi"}
             >
               <SiFastapi size={30} />
+            </ButtonSkill>
+            <ButtonSkill
+              onClick={() => handleChangeSkill("go")}
+              active={skill.id === "go"}
+            >
+              <SiGo size={30} />
             </ButtonSkill>
           </ContainerButtons>
         </Techs>
