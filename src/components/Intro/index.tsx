@@ -1,8 +1,15 @@
 import Typewriter from "typewriter-effect";
 
-import { GithubLogo, Globe, LinkedinLogo } from "phosphor-react";
+import {
+  Envelope,
+  FolderOpen,
+  GithubLogo,
+  Globe,
+  LinkedinLogo,
+} from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
 import { PiArrowBendRightDown, PiArrowDown } from "react-icons/pi";
+import { Link } from "react-router-dom";
 import { Button } from "../Button";
 import { Tag } from "../Tag";
 import { SpaceScene } from "./SpaceScene";
@@ -10,7 +17,9 @@ import {
   IntroButtons,
   IntroContainer,
   IntroContent,
+  RoleTitle,
   ScrollIndicator,
+  SecondaryLink,
   Space3DContainer,
   TypeWriterText,
 } from "./styles";
@@ -56,14 +65,17 @@ export function Intro() {
         <IntroContent>
           <Tag>Hello!</Tag>
           <h1>Lucas Rosa</h1>
+          <RoleTitle>Software Engineer | Full-Stack</RoleTitle>
           <TypeWriterText>
             <Typewriter
               options={{
                 strings: [
-                  "Developer",
-                  "Front-end Developer",
-                  "Deep Learning Engineer",
-                  "Back-end Developer",
+                  "Java · Spring Boot",
+                  "Node.js · NestJS",
+                  "Python · FastAPI · Django",
+                  "Go",
+                  "React · Next.js",
+                  "React Native · Expo",
                 ],
                 autoStart: true,
                 loop: true,
@@ -71,8 +83,19 @@ export function Intro() {
               }}
             />
           </TypeWriterText>
+
           <IntroButtons>
-            <a href="https://github.com/LucasHARosa" target="_blank">
+            <Link to="/projetos">
+              <Button>
+                <FolderOpen size={22} />
+                Projetos
+              </Button>
+            </Link>
+            <a
+              href="https://github.com/LucasHARosa"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button>
                 <GithubLogo size={22} />
                 Github
@@ -81,23 +104,28 @@ export function Intro() {
             <a
               href="https://www.linkedin.com/in/lucas-henrique-alves-rosa/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <Button>
                 <LinkedinLogo size={22} />
                 Linkedin
               </Button>
             </a>
-            <a
-              href="https://bbs.lucasrosa.dev.br/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="#Contato">
               <Button>
-                <Globe size={22} />
-                Portfolio BBS
+                <Envelope size={22} />
+                Contato
               </Button>
             </a>
           </IntroButtons>
+          <SecondaryLink
+            href="https://bbs.lucasrosa.dev.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Globe size={16} />
+            Portfolio BBS
+          </SecondaryLink>
         </IntroContent>
         <Space3DContainer>
           <span>

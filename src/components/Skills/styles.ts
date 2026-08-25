@@ -168,12 +168,12 @@ export const TechsDescription = styled(motion.div)`
   justify-content: flex-start;
   width: 50%;
   padding: 1rem;
-  min-height: 400px;
+  min-height: 320px;
   will-change: transform, opacity;
 
   @media (max-width: 768px) {
     width: 100%;
-    min-height: 350px;
+    min-height: 280px;
   }
 
   h2 {
@@ -201,6 +201,70 @@ export const TechsDescription = styled(motion.div)`
   }
 `;
 
+/**
+ * `&&` eleva a especificidade para vencer a regra genérica `div { flex-direction: row }`
+ * de TechsDescription, que de outra forma deitaria este bloco na horizontal.
+ */
+export const UsageBlock = styled.div`
+  && {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid ${({ theme }) => theme["Blue-Gray-700"]};
+  }
+`;
+
+export const UsageLabel = styled.p`
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme["Blue-Gray-400"]};
+`;
+
+/**
+ * Grade rótulo/valor: listas longas quebram alinhadas sob o valor, e não
+ * sob o rótulo. O `&&` vence a regra genérica `div { display: flex }` de
+ * TechsDescription.
+ */
+export const UsageGrid = styled.div`
+  && {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.25rem;
+    row-gap: 0.85rem;
+    align-items: baseline;
+    width: 100%;
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+      row-gap: 0.35rem;
+    }
+  }
+`;
+
+export const UsageKey = styled.p`
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.7;
+  white-space: nowrap;
+  color: ${({ theme }) => theme["Gray-400"]};
+`;
+
+export const UsageValue = styled.p`
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: ${({ theme }) => theme["Gray-300"]};
+
+  @media (max-width: 900px) {
+    margin-bottom: 0.5rem;
+  }
+`;
+
 export const Text = styled.p`
   font-size: 0.875rem;
   font-weight: 300;
@@ -212,38 +276,3 @@ export const Text = styled.p`
   }
 `;
 
-export const BarProgress = styled.div`
-  width: 300px;
-  border-radius: 0.5rem;
-  height: 0.5rem;
-  background: ${({ theme }) => theme["Blue-Gray-700"]};
-  overflow: hidden;
-
-  @media (max-width: 768px) {
-    width: 150px;
-  }
-`;
-
-export const Space = styled.div`
-  width: 100%;
-  height: 1.5rem;
-`;
-
-export const Progress = styled(motion.div)`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center
-    gap: 0.5rem;
-  }
-`;
-
-export const TextProgress = styled.p`
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: ${({ theme }) => theme["Gray-300"]};
-`;

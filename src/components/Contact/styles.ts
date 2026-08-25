@@ -186,6 +186,18 @@ export const ButtonContainer = styled.button`
     transform: translateY(0);
   }
 
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: ${({ theme }) => theme["shadow-sm"]};
+
+    &:hover {
+      background-color: ${({ theme }) => theme["white"]};
+      transform: none;
+    }
+  }
+
   @media (max-width: 768px) {
     font-size: 0.75rem;
     padding: 0.375rem 1rem;

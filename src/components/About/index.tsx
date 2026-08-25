@@ -102,7 +102,7 @@ export function About() {
         <SectionLabel>Sobre mim</SectionLabel>
         <SectionTitle>Lucas Henrique Alves Rosa</SectionTitle>
         <SectionDescription>
-          Desenvolvedor Full Stack • Transformando ideias em código
+          Software Engineer • Full-Stack • Back-end, Web e Mobile
         </SectionDescription>
       </SectionHeader>
       <ContainerAbout>
@@ -139,11 +139,11 @@ export function About() {
             {trail.map((style, index) => (
               <animated.p key={index} style={style}>
                 {index === 0 &&
-                  "Prazer! Sou Engenheiro Mecatrônico pela UnB e Desenvolvedor Full Stack com foco em back-end. Tenho experiência sólida na construção de APIs REST escaláveis, integrações com serviços externos, automações de processos e arquitetura de sistemas utilizando Node.js, NestJS, FastAPI, Python e Java — além de aplicações web com React e Next.js e mobile com React Native."}
+                  "Prazer! Sou Engenheiro Mecatrônico pela UnB e Software Engineer Full-Stack. Trabalho nas três camadas de um produto: back-end com Java/Spring Boot, Node.js/NestJS, Python/FastAPI e Go; web com React, Next.js e TypeScript; e mobile com React Native e Expo."}
                 {index === 1 &&
-                  "Ao longo da minha trajetória, atuei em projetos reais de fintech, energia, logística, esportes e sistemas industriais — sempre com responsabilidade sobre regras de negócio, modelagem de banco de dados, performance e segurança. Tenho experiência também com automações com IA, N8N, OCR, WebSockets e SSE, e base técnica em sistemas embarcados e IoT."}
+                  "Atuei em produtos de fintech, energia, logística, esportes, educação e sistemas industriais, com responsabilidade sobre arquitetura, APIs REST, regras de negócio, modelagem de dados, performance e segurança. No caminho, também trabalhei com mensageria (RabbitMQ), cache e pub/sub com Redis, containers com Docker e Kubernetes, CI/CD, WebSockets, SSE, OCR e automações com IA e N8N."}
                 {index === 2 &&
-                  "Se você busca um desenvolvedor que vá além do código e pense em arquitetura, escalabilidade e resultado para o negócio, estou disponível. Prefiro desafios voltados a back-end, integrações e APIs — mas estou pronto para entregar soluções completas de ponta a ponta."}
+                  "Tenho base em sistemas embarcados e IoT, que é de onde vem meu interesse por performance e por entender o sistema de ponta a ponta. Me candidato tanto a vagas de Software Engineer e Full-Stack quanto a posições específicas de Back-end, Java, React ou React Native."}
               </animated.p>
             ))}
           </div>

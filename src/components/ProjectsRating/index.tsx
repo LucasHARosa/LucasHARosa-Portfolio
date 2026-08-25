@@ -61,11 +61,11 @@ export function ProjectsRating() {
     <SectionContainer id="ProjetosRating">
       <div style={{ width: "100%", marginTop: "4rem" }}>
         <Title
-          title="Projetos em Destaque"
+          title="Projetos em destaque"
           subTitle="Navegue pelos destaques"
           description={
             <>
-              Confira uma seleção especial dos meus principais projetos.{" "}
+              Uma seleção que cobre back-end, full-stack, mobile e IA.{" "}
               <DesktopLink to="/projetos">Ver todos</DesktopLink>
               <MobileButton onClick={() => navigate("/projetos")}>
                 Ver todos

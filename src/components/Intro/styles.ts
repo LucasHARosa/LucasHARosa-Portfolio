@@ -46,7 +46,8 @@ export const IntroContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-bottom: 2rem;
+    min-height: auto;
+    padding: 3rem 6vw 3.5rem;
   }
 
   @keyframes floatAnimation {
@@ -74,13 +75,20 @@ export const IntroContainer = styled.div`
 export const IntroContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
   max-width: 600px;
+
+  @media (max-width: 768px) {
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
 
   h1 {
     font-style: normal;
     font-weight: 700;
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 5.5vw, 3.5rem);
+    line-height: 1.1;
     background: linear-gradient(
       90deg,
       ${({ theme }) => theme["Gray-300"]},
@@ -90,35 +98,79 @@ export const IntroContent = styled.div`
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
-    margin-bottom: 0.5rem;
-
-    @media (max-width: 768px) {
-      font-size: 2.5rem;
-    }
+    margin-bottom: 0;
   }
+`;
+
+export const RoleTitle = styled.h2`
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+  line-height: 1.3;
+  color: ${({ theme }) => theme["Blue-200"]};
+  letter-spacing: 0.01em;
+
+  /* Fica colado no nome: os dois formam um bloco só. */
+  margin-top: -0.75rem;
 `;
 
 export const TypeWriterText = styled.div`
   font-style: normal;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: ${({ theme }) => theme["Gray-400"]};
-  margin-bottom: 1rem;
 
   @media (max-width: 768px) {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
+  }
+`;
+
+export const IntroSummary = styled.p`
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: ${({ theme }) => theme["Gray-400"]};
+  max-width: 34rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
+
+export const SecondaryLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  align-self: flex-start;
+
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme["Gray-400"]};
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme["Blue-200"]};
+  }
+
+  @media (max-width: 768px) {
+    align-self: center;
   }
 `;
 
 export const IntroButtons = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
 
   @media (max-width: 768px) {
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.75rem;
+    width: 100%;
   }
 `;
 

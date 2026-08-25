@@ -8,7 +8,7 @@ import { ProjectCardHorizontal } from "../../components/ProjectCardHorizontal";
 import { ProjectsFilterBar } from "../../components/ProjectsFilterBar";
 import { ProjectsSidebar } from "../../components/ProjectsSidebar";
 import { Title } from "../../components/Title";
-import { listaProjetos } from "../../data/data";
+import { filtrarProjetos, labelCategoria } from "../../data/data";
 
 import {
   ContentWrapper,
@@ -34,10 +34,7 @@ export function Projects() {
   }, [activeFilter]);
 
   // Filtrar projetos
-  const filteredProjects =
-    activeFilter === "todos"
-      ? listaProjetos
-      : listaProjetos.filter((p) => p.tipo.includes(activeFilter));
+  const filteredProjects = filtrarProjetos(activeFilter);
 
   // Calcular total de páginas
   const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
@@ -51,11 +48,12 @@ export function Projects() {
   const getCategoryTitle = (filter: string) => {
     const titles: { [key: string]: string } = {
       todos: "Todos os Projetos",
-      principais: "Principais Projetos",
+      backend: "Projetos de Back-end",
+      fullstack: "Projetos Full-Stack",
+      frontend: "Projetos de Front-end",
       mobile: "Projetos Mobile",
-      frontend: "Projetos Frontend",
-      backend: "Projetos Backend",
       ia: "Projetos de Inteligência Artificial",
+      academicos: "Projetos Acadêmicos e Históricos",
     };
     return titles[filter] || "Projetos";
   };
@@ -63,11 +61,14 @@ export function Projects() {
   return (
     <>
       <Helmet>
-        <title>Projetos - Lucas Rosa | Portfolio</title>
+        <title>
+          Projetos | Lucas Henrique Alves Rosa — Software Engineer Full-Stack
+        </title>
         <meta
           name="description"
-          content="Explore todos os meus projetos de desenvolvimento web, mobile, backend e inteligência artificial."
+          content="Projetos de back-end, full-stack, front-end, mobile e IA: APIs em Java, Node.js, Python e Go, aplicações web em React e Next.js e apps em React Native."
         />
+        <link rel="canonical" href="https://lucasrosa.dev.br/projetos" />
       </Helmet>
 
       <Header />
@@ -90,7 +91,11 @@ export function Projects() {
               subTitle="Meu Portfólio Completo"
               description={`Mostrando ${filteredProjects.length} ${
                 filteredProjects.length === 1 ? "projeto" : "projetos"
-              } ${activeFilter !== "todos" ? `na categoria ${activeFilter}` : ""}`}
+              } ${
+                activeFilter !== "todos"
+                  ? `na categoria ${labelCategoria(activeFilter)}`
+                  : ""
+              }`}
             />
           </TitleSection>
 

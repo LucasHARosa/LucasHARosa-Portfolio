@@ -1,5 +1,6 @@
 import emailjs from "@emailjs/browser";
 import { ArrowRight, Envelope, WhatsappLogo } from "phosphor-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaLinkedin } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -12,17 +13,30 @@ import {
   SectionContainer,
 } from "./styles";
 
+const EMAIL = "lucashrosa99@gmail.com";
+
+interface ContactFormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
 export function Contact() {
+  const [isSending, setIsSending] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm<ContactFormData>();
 
-  function onSubmit(data: any) {
-    emailjs
-      .send(
+  async function onSubmit(data: ContactFormData) {
+    if (isSending) return;
+
+    setIsSending(true);
+    try {
+      await emailjs.send(
         "service_z6rfo82",
         "template_yw0g23o",
         {
@@ -30,29 +44,45 @@ export function Contact() {
           email: data.email,
           message: data.message,
         },
-        "Ph0oPbifsyxX3HebY"
-      )
-      .then(() => {
-        toast.success("📧 Mensagem enviada com sucesso!");
-        reset();
-      })
-      .catch(() => {
-        toast.error("Erro ao enviar mensagem!");
-      });
+        "Ph0oPbifsyxX3HebY",
+      );
+      toast.success("📧 Mensagem enviada com sucesso!");
+      reset();
+    } catch {
+      toast.error(
+        `Erro ao enviar a mensagem. Se preferir, fale comigo em ${EMAIL}.`,
+      );
+    } finally {
+      setIsSending(false);
+    }
   }
 
-  function handleCopy() {
-    navigator.clipboard.writeText("lucashrosa99@gmail.com");
-    toast("📧 Email copiado!", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
+  async function handleCopy() {
+    try {
+      // clipboard.writeText só existe em contexto seguro (https/localhost)
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(EMAIL);
+      } else {
+        throw new Error("Clipboard indisponível");
+      }
+
+      toast("📧 Email copiado!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    } catch {
+      toast.info(`Meu e-mail: ${EMAIL}`, {
+        position: "top-right",
+        autoClose: 6000,
+        theme: "dark",
+      });
+    }
   }
 
   return (
@@ -79,7 +109,11 @@ export function Contact() {
           </div>
 
           <div>
-            <a href="https://www.linkedin.com/in/lucashenrique-alves-rosa" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.linkedin.com/in/lucas-henrique-alves-rosa/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaLinkedin size={20} />
               <span>LinkedIn</span>
             </a>
@@ -107,8 +141,8 @@ export function Contact() {
           />
           {errors.message && <span>Mensagem é obrigatória</span>}
 
-          <ButtonContainer type="submit">
-            Enviar
+          <ButtonContainer type="submit" disabled={isSending}>
+            {isSending ? "Enviando..." : "Enviar"}
             <ArrowRight size={20} />
           </ButtonContainer>
         </FormContainer>

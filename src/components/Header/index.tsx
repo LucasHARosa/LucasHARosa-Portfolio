@@ -71,6 +71,14 @@ export function Header() {
       isProjectsLink: false,
     },
     {
+      id: 5,
+      name: "Experiência",
+      link: isProjectsPage ? "/#Experiencia" : "#Experiencia",
+      section: "Experiencia",
+      isRoute: isProjectsPage,
+      isProjectsLink: false,
+    },
+    {
       id: 4,
       name: "Habilidades",
       link: isProjectsPage ? "/#Skills" : "#Skills",

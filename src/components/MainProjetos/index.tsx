@@ -1,7 +1,11 @@
-import { Code, Cpu, DeviceMobile, Globe, HardDrives } from "phosphor-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { listaProjetos } from "../../data/data";
+import {
+  filtrarProjetos,
+  listaProjetos,
+  projetoCategorias,
+} from "../../data/data";
+import { categoriaIcones } from "../ProjectsFilterBar/icons";
 import { Projetos } from "../Projetos";
 import { Title } from "../Title";
 import {
@@ -12,20 +16,10 @@ import {
   SelectContainer,
 } from "./styles";
 
-const categorias = [
-  { label: "Principais", value: "principais", icon: <Globe size={22} /> },
-  { label: "Mobile", value: "mobile", icon: <DeviceMobile size={22} /> },
-  { label: "Frontend", value: "frontend", icon: <Code size={22} /> },
-  { label: "Backend", value: "backend", icon: <HardDrives size={22} /> },
-  { label: "IA", value: "ia", icon: <Cpu size={22} /> },
-];
-
 export function MainProjetos() {
-  const [categoriaAtiva, setCategoriaAtiva] = useState("principais");
+  const [categoriaAtiva, setCategoriaAtiva] = useState("todos");
 
-  const listaFiltrada = listaProjetos.filter((projeto) =>
-    projeto.tipo.includes(categoriaAtiva),
-  );
+  const listaFiltrada = filtrarProjetos(categoriaAtiva);
 
   return (
     <SectionContainer id="Projetos">
@@ -56,16 +50,19 @@ export function MainProjetos() {
         />
 
         <ContainerButtonSelect>
-          {categorias.map(({ label, value, icon }) => (
-            <ButtonSelect
-              key={value}
-              isActive={categoriaAtiva === value}
-              onClick={() => setCategoriaAtiva(value)}
-            >
-              {icon}
-              {label}
-            </ButtonSelect>
-          ))}
+          {projetoCategorias.map(({ label, value, icon }) => {
+            const Icon = categoriaIcones[icon];
+            return (
+              <ButtonSelect
+                key={value}
+                isActive={categoriaAtiva === value}
+                onClick={() => setCategoriaAtiva(value)}
+              >
+                <Icon size={22} />
+                {label}
+              </ButtonSelect>
+            );
+          })}
         </ContainerButtonSelect>
       </SelectContainer>
 
