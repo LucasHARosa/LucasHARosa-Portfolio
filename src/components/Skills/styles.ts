@@ -77,9 +77,9 @@ export const Techs = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 2rem 1rem 1rem;
   border-radius: 0.75rem;
-  gap: 1rem;
+  gap: 3rem;
   width: 50%;
   height: auto;
   background: linear-gradient(
@@ -88,7 +88,9 @@ export const Techs = styled.div`
     ${({ theme }) => theme["Blue-300-opacity"]}
   );
   box-shadow: ${({ theme }) => theme["shadow-lg"]};
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
     box-shadow: ${({ theme }) => theme["shadow-xl"]};
@@ -98,6 +100,7 @@ export const Techs = styled.div`
     width: 100%;
     padding: 1.5rem;
     gap: 2rem;
+    padding: 1rem;
   }
 `;
 
@@ -123,9 +126,13 @@ export const ContainerButtons = styled.div`
   gap: 0.75rem;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  width: 100%;
   max-width: 100%;
+  min-height: 2rem;
   overflow-x: auto;
   padding: 0.5rem;
+  border-top: 1px solid ${({ theme }) => theme["Blue-Gray-700"]};
 
   /* Hide scrollbar but allow scrolling */
   -ms-overflow-style: none; /* IE and Edge */
@@ -147,6 +154,9 @@ export const ButtonSkill = styled.button<ButtonProps>`
   transition: all 0.2s ease-in-out;
   color: ${({ theme, active }) =>
     active ? theme["Blue-400"] : theme["Gray-400"]};
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.5rem;
   border-radius: 0.5rem;
 
@@ -275,4 +285,3 @@ export const Text = styled.p`
     font-size: 0.875rem;
   }
 `;
-
