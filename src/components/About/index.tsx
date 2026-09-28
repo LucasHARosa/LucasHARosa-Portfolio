@@ -1,6 +1,6 @@
 import { ChatCircle, Heart, PaperPlaneTilt } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
-import foto from "../../assets/foto.png";
+import foto from "../../assets/profile.jpg";
 import {
   Container,
   ContainerAbout,
@@ -125,7 +125,7 @@ export function About() {
             }}
           >
             <ContainerAboutImage>
-              <img src={foto} alt="" />
+              <img src={foto} alt="Foto de Lucas Rosa" />
               <LegendImage>
                 <Heart size={24} weight="fill" color="#e52e4d" />
                 <ChatCircle size={24} color="#FFF" />
