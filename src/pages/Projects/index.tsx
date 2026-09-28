@@ -62,7 +62,7 @@ export function Projects() {
     <>
       <Helmet>
         <title>
-          Projetos | Lucas Henrique Alves Rosa — Software Engineer Full-Stack
+          Projetos | Lucas Rosa
         </title>
         <meta
           name="description"

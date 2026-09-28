@@ -31,12 +31,12 @@ export function Home() {
   return (
     <>
       <Helmet>
-        <title>Lucas Henrique Alves Rosa | Software Engineer Full-Stack</title>
+        <title>Lucas Rosa | Software Engineer</title>
         <meta name="description" content={descricao} />
         <link rel="canonical" href="https://lucasrosa.dev.br/" />
         <meta
           property="og:title"
-          content="Lucas Henrique Alves Rosa | Software Engineer Full-Stack"
+          content="Lucas Rosa | Software Engineer"
         />
         <meta property="og:description" content={descricao} />
         <meta property="og:url" content="https://lucasrosa.dev.br/" />
