@@ -749,3 +749,45 @@ export const listaExperiencias: ExperienciaProps[] = [
     tags: ["C++", "IoT", "Microcontroladores", "Arduino", "Automação"],
   },
 ];
+
+export interface EducacaoProps {
+  title: string;
+  subtitle: string;
+  description: string;
+  tags: string[];
+}
+
+export const listaEducacao: EducacaoProps[] = [
+  {
+    title: "Engenharia Mecatrônica",
+    subtitle: "Universidade de Brasília (UnB)",
+    description: "Graduação em Engenharia Mecatrônica, Controle e Automação.",
+    tags: ["Automação", "Controle", "Mecatrônica", "Engenharia"],
+  },
+  {
+    title: "Desenvolvimento Web",
+    subtitle: "Rocketseat",
+    description:
+      "Desenvolvimento de aplicações web com React, Node.js e TypeScript.",
+    tags: ["React", "Node.js", "Next.js", "Nest.js"],
+  },
+  {
+    title: "Desenvolvimento Mobile",
+    subtitle: "Rocketseat",
+    description: "Desenvolvimento de aplicações mobile com React Native.",
+    tags: ["React Native", "Expo", "JavaScript", "TypeScript"],
+  },
+  {
+    title: "Desenvolvimento Backend",
+    subtitle: "ADA Tech",
+    description: "Desenvolvimento backend com Java",
+    tags: ["Java", "Spring Boot", "PostgreSQL", "Docker"],
+  },
+  {
+    title: "Curso.Dev",
+    subtitle: "Filipe Deschamps",
+    description:
+      "Formação fullstack para dominar qualquer tecnologia e resolver qualquer desafio.",
+    tags: ["Next.js", "React", "Node.js", "TypeScript"],
+  },
+];

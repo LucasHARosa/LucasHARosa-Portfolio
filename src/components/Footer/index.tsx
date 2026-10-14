@@ -1,127 +1,72 @@
-import { Envelope, GithubLogo, LinkedinLogo } from "phosphor-react";
-import { toast } from "react-toastify";
-import {
-  BottomSection,
-  CompanyDescription,
-  CompanyInfo,
-  CompanyName,
-  ContactEmail,
-  Container,
-  Copyright,
-  FooterContainer,
-  Navigation,
-  NavLink,
-  SocialButton,
-  SocialLinks,
-  SocialSection,
-  TopSection,
-} from "./styles";
+import { Link } from "react-router-dom";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { MdOutlineEmail } from "react-icons/md";
+import { Logo } from "@/components/ui/Logo";
+import { copyEmail, EMAIL } from "@/lib/email";
 
-interface FooterProps {
-  companyName?: string;
-  socialLinks?: {
-    github?: string;
-    twitter?: string;
-    linkedin?: string;
-    email?: string;
-  };
-  navigationLinks?: Array<{
-    label: string;
-    href: string;
-  }>;
-}
+const NAV = [
+  { label: "Início", to: "/#Home" },
+  { label: "Sobre", to: "/#SobreMim" },
+  { label: "Projetos", to: "/projetos" },
+  { label: "Contato", to: "/#Contato" },
+];
 
-export function Footer({
-  companyName = "Lucas Rosa",
-  socialLinks = {
-    github: "https://github.com/LucasHARosa",
-    twitter: "https://twitter.com/LucasHARosa",
-    linkedin: "https://linkedin.com/in/lucas-henrique-alves-rosa/",
-    email: "mailto:lucashenriquealvesrosa@gmail.com",
-  },
-  navigationLinks = [
-    { label: "Home", href: "#" },
-    { label: "Sobre", href: "#SobreMim" },
-    { label: "Projetos", href: "#Projetos" },
-    { label: "Contato", href: "#Contato" },
-  ],
-}: FooterProps) {
+const linkClass = "text-dim transition-colors hover:text-ink";
+
+export function Footer() {
   const currentYear = new Date().getFullYear();
-  function handleCopy() {
-    navigator.clipboard.writeText("lucashrosa99@gmail.com");
-    toast("📧 Email copiado!", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-  }
 
   return (
-    <FooterContainer>
-      <Container>
-        <TopSection>
-          <CompanyInfo>
-            <CompanyName>{companyName}</CompanyName>
-            <CompanyDescription>
-              Transformando ideias em experiências digitais excepcionais com
-              precisão e criatividade.
-            </CompanyDescription>
-          </CompanyInfo>
+    <footer className="border-t border-line">
+      <div className="grid gap-10 px-4 py-14 sm:px-8 md:grid-cols-12 md:gap-8 lg:px-12">
+        <div className="md:col-span-6">
+          <div className="flex items-center gap-3">
+            <Logo />
+            <span className="font-medium">Lucas Rosa</span>
+          </div>
+          <p className="mt-4 max-w-md text-[0.9375rem] text-dim">
+            Transformando ideias em experiências digitais excepcionais com precisão e criatividade.
+          </p>
+        </div>
 
-          <SocialSection>
-            <SocialLinks>
-              {socialLinks.github && (
-                <SocialButton
-                  href={socialLinks.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                >
-                  <GithubLogo size={20} weight="fill" />
-                </SocialButton>
-              )}
-
-              {socialLinks.linkedin && (
-                <SocialButton
-                  href={socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <LinkedinLogo size={20} weight="fill" />
-                </SocialButton>
-              )}
-              {socialLinks.email && (
-                <SocialButton onClick={handleCopy} aria-label="Email">
-                  <Envelope size={20} weight="fill" />
-                </SocialButton>
-              )}
-            </SocialLinks>
-            <ContactEmail>lucashrosa99@gmail.com</ContactEmail>
-          </SocialSection>
-        </TopSection>
-
-        <BottomSection>
-          <Navigation>
-            {navigationLinks.map((link, index) => (
-              <NavLink key={index} href={link.href}>
-                {link.label}
-              </NavLink>
+        <nav aria-label="Rodapé" className="md:col-span-3">
+          <p className="font-mono text-label text-dim">Navegação</p>
+          <ul className="mt-4 space-y-2 text-[0.9375rem]">
+            {NAV.map((item) => (
+              <li key={item.label}>
+                <Link to={item.to} className={linkClass}>
+                  {item.label}
+                </Link>
+              </li>
             ))}
-          </Navigation>
+          </ul>
+        </nav>
 
-          <Copyright>
-            <p>
-              © {currentYear} {companyName}. Todos os direitos reservados.
-            </p>
-          </Copyright>
-        </BottomSection>
-      </Container>
-    </FooterContainer>
+        <div className="md:col-span-3">
+          <p className="font-mono text-label text-dim">Redes</p>
+          <ul className="mt-4 space-y-2 text-[0.9375rem]">
+            <li>
+              <a href="https://github.com/LucasHARosa" target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-2`}>
+                <FaGithub aria-hidden="true" /> GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/lucas-henrique-alves-rosa/" target="_blank" rel="noopener noreferrer" className={`${linkClass} inline-flex items-center gap-2`}>
+                <FaLinkedinIn aria-hidden="true" /> LinkedIn
+              </a>
+            </li>
+            <li>
+              <button type="button" onClick={copyEmail} className={`${linkClass} inline-flex items-center gap-2 text-left`}>
+                <MdOutlineEmail aria-hidden="true" /> {EMAIL}
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-line px-4 py-5 font-mono text-label text-dim sm:px-8 lg:px-12">
+        © {currentYear} Lucas Rosa. Todos os direitos reservados.
+      </div>
+    </footer>
   );
 }

@@ -1,10 +1,5 @@
-import { CaretLeft, CaretRight } from "phosphor-react";
-import {
-  PaginationContainer,
-  PaginationButton,
-  PaginationArrow,
-  PaginationEllipsis,
-} from "./styles";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface Props {
   currentPage: number;
@@ -12,7 +7,22 @@ interface Props {
   onPageChange: (page: number) => void;
 }
 
+type Item = number | "ellipsis-start" | "ellipsis-end";
+
+function pageItems(current: number, total: number): Item[] {
+  const items: Item[] = [1];
+  if (current > 3) items.push("ellipsis-start");
+  for (let i = Math.max(2, current - 1); i <= Math.min(total - 1, current + 1); i++) items.push(i);
+  if (current < total - 2) items.push("ellipsis-end");
+  if (total > 1) items.push(total);
+  return items;
+}
+
+const cell = "grid h-11 min-w-11 place-items-center px-3 font-mono text-label transition-colors";
+
 export function Pagination({ currentPage, totalPages, onPageChange }: Props) {
+  if (totalPages <= 1) return null;
+
   const handlePageChange = (newPage: number) => {
     if (newPage !== currentPage && newPage >= 1 && newPage <= totalPages) {
       onPageChange(newPage);
@@ -20,87 +30,49 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Props) {
     }
   };
 
-  const renderPageNumbers = () => {
-    const pages = [];
-    const showEllipsisStart = currentPage > 3;
-    const showEllipsisEnd = currentPage < totalPages - 2;
-
-    // Always show first page
-    pages.push(
-      <PaginationButton
-        key={1}
-        isActive={currentPage === 1}
-        onClick={() => handlePageChange(1)}
-      >
-        1
-      </PaginationButton>
-    );
-
-    // Show ellipsis after first page if needed
-    if (showEllipsisStart) {
-      pages.push(<PaginationEllipsis key="ellipsis-start">...</PaginationEllipsis>);
-    }
-
-    // Show current page and neighbors
-    const start = Math.max(2, currentPage - 1);
-    const end = Math.min(totalPages - 1, currentPage + 1);
-
-    for (let i = start; i <= end; i++) {
-      pages.push(
-        <PaginationButton
-          key={i}
-          isActive={currentPage === i}
-          onClick={() => handlePageChange(i)}
-        >
-          {i}
-        </PaginationButton>
-      );
-    }
-
-    // Show ellipsis before last page if needed
-    if (showEllipsisEnd) {
-      pages.push(<PaginationEllipsis key="ellipsis-end">...</PaginationEllipsis>);
-    }
-
-    // Always show last page if there's more than 1 page
-    if (totalPages > 1) {
-      pages.push(
-        <PaginationButton
-          key={totalPages}
-          isActive={currentPage === totalPages}
-          onClick={() => handlePageChange(totalPages)}
-        >
-          {totalPages}
-        </PaginationButton>
-      );
-    }
-
-    return pages;
-  };
-
-  if (totalPages <= 1) {
-    return null;
-  }
-
   return (
-    <PaginationContainer>
-      <PaginationArrow
+    <nav aria-label="Paginação" className="flex items-stretch justify-between border-b border-line">
+      <button
+        type="button"
         disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
+        className={cn(cell, "flex gap-2 border-r border-line text-dim hover:text-ink disabled:opacity-40")}
       >
-        <CaretLeft size={16} weight="bold" />
-        <span>Anterior</span>
-      </PaginationArrow>
+        <ChevronLeft className="size-4" aria-hidden="true" />
+        <span className="max-sm:sr-only">Anterior</span>
+      </button>
 
-      {renderPageNumbers()}
+      <ul className="flex">
+        {pageItems(currentPage, totalPages).map((item) =>
+          typeof item === "number" ? (
+            <li key={item}>
+              <button
+                type="button"
+                onClick={() => handlePageChange(item)}
+                aria-current={item === currentPage ? "page" : undefined}
+                aria-label={`Página ${item}`}
+                className={cn(cell, item === currentPage ? "text-ink" : "text-dim hover:text-ink")}
+              >
+                {item === currentPage ? `[${item}]` : item}
+              </button>
+            </li>
+          ) : (
+            <li key={item} aria-hidden="true" className={cn(cell, "text-dim")}>
+              …
+            </li>
+          ),
+        )}
+      </ul>
 
-      <PaginationArrow
+      <button
+        type="button"
         disabled={currentPage === totalPages}
         onClick={() => handlePageChange(currentPage + 1)}
+        className={cn(cell, "flex gap-2 border-l border-line text-dim hover:text-ink disabled:opacity-40")}
       >
-        <span>Próxima</span>
-        <CaretRight size={16} weight="bold" />
-      </PaginationArrow>
-    </PaginationContainer>
+        <span className="max-sm:sr-only">Próxima</span>
+        <ChevronRight className="size-4" aria-hidden="true" />
+      </button>
+    </nav>
   );
 }
