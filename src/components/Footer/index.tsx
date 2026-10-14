@@ -19,7 +19,7 @@ export function Footer() {
   return (
     <footer className="border-t border-line">
       <div className="grid gap-10 px-4 py-14 sm:px-8 md:grid-cols-12 md:gap-8 lg:px-12">
-        <div className="md:col-span-6">
+        <div className="md:col-span-5 lg:col-span-6">
           <div className="flex items-center gap-3">
             <Logo />
             <span className="font-medium">Lucas Rosa</span>
@@ -42,7 +42,7 @@ export function Footer() {
           </ul>
         </nav>
 
-        <div className="md:col-span-3">
+        <div className="min-w-0 md:col-span-4 lg:col-span-3">
           <p className="font-mono text-label text-dim">Redes</p>
           <ul className="mt-4 space-y-2 text-[0.9375rem]">
             <li>
@@ -56,8 +56,9 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <button type="button" onClick={copyEmail} className={`${linkClass} inline-flex items-center gap-2 text-left`}>
-                <MdOutlineEmail aria-hidden="true" /> {EMAIL}
+              <button type="button" onClick={copyEmail} className={`${linkClass} inline-flex max-w-full items-center gap-2 text-left`}>
+                <MdOutlineEmail aria-hidden="true" className="shrink-0" />
+                <span className="break-all">{EMAIL}</span>
               </button>
             </li>
           </ul>

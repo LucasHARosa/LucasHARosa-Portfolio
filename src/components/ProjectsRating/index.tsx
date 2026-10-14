@@ -5,10 +5,10 @@ import { ProjectLinks } from "@/components/ProjectLinks";
 import { Button } from "@/components/ui/Button";
 import { Marker } from "@/components/ui/Marker";
 import { Section } from "@/components/ui/Section";
-import { labelCategoria, listaProjetos } from "@/data/data";
+import { labelCategoria, listaDestaques } from "@/data/data";
 import { cn } from "@/lib/utils";
 
-const destaques = listaProjetos.filter((p) => p.tipo.includes("principais"));
+const destaques = listaDestaques;
 const SLIDE_MS = 7000;
 
 function useCoarsePointer() {

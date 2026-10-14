@@ -113,7 +113,12 @@ export function Skills() {
                   active ? "text-ink" : "text-dim",
                 )}
               >
-                <IsoGlyph name={item.id} active={!reduce && (active || hovered === i)} className="max-w-[150px] md:max-w-[170px]" />
+                <IsoGlyph
+                  name={item.id}
+                  active={active || hovered === i}
+                  still={!!reduce}
+                  className="max-w-37.5 md:max-w-42.5"
+                />
               </div>
 
               <div className="dashed-t flex flex-1 flex-col px-5 pt-7 pb-7">

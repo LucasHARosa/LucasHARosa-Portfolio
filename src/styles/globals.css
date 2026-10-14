@@ -234,14 +234,18 @@
   stroke: currentColor;
   stroke-width: 1;
   stroke-dasharray: 3 3;
-  opacity: 0.55;
+  stroke-opacity: 0.55;
+}
+/* Atores da cena ganham a cor de sinal quando a coluna está ativa */
+.iso-active .iso-accent {
+  stroke: var(--signal);
 }
 .iso-drawing .iso-solid {
   stroke-dasharray: 1;
   animation: iso-draw 0.9s var(--ease-out-quart) both;
 }
 .iso-drawing .iso-hidden {
-  animation: fade-in 0.6s 0.35s both;
+  animation: fade-in 0.6s 0.35s backwards;
 }
 @keyframes iso-draw {
   from {

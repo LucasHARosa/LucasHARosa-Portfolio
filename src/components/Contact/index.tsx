@@ -58,7 +58,9 @@ export function Contact() {
       );
       toast.success("Mensagem enviada com sucesso!");
       reset();
-    } catch {
+    } catch (error) {
+      // EmailJS devolve { status, text } — ex.: 412 quando a conta do Gmail precisa ser reconectada
+      console.error("Falha ao enviar pelo EmailJS:", error);
       toast.error(`Erro ao enviar a mensagem. Se preferir, fale comigo em ${EMAIL}.`);
     } finally {
       setIsSending(false);
