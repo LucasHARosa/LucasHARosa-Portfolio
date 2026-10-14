@@ -1,119 +1,33 @@
-import { useEffect, useRef, useState } from "react";
-import { LiaCertificateSolid } from "react-icons/lia";
-import { PiGraduationCapFill } from "react-icons/pi";
-import { TbCertificate, TbDeviceMobileCode } from "react-icons/tb";
-import { EducationCard } from "../EducationCard";
-import { Title } from "../Title";
-import {
-  EducationContainer,
-  EducationSection,
-  TimelineContainer,
-} from "./styles";
-
-const educations = [
-  {
-    icon: PiGraduationCapFill,
-    title: "Engenharia Mecatrônica",
-    subtitle: "Universidade de Brasília (UnB)",
-    description: "Graduação em Engenharia Mecatrônica, Controle e Automação.",
-    tags: ["Automação", "Controle", "Mecatrônica", "Engenharia"],
-  },
-  {
-    icon: TbCertificate,
-    title: "Desenvolvimento Web",
-    subtitle: "Rocketseat",
-    description:
-      "Desenvolvimento de aplicações web com React, Node.js e TypeScript.",
-    tags: ["React", "Node.js", "Next.js", "Nest.js"],
-  },
-  {
-    icon: TbDeviceMobileCode,
-    title: "Desenvolvimento Mobile",
-    subtitle: "Rocketseat",
-    description: "Desenvolvimento de aplicações mobile com React Native.",
-    tags: ["React Native", "Expo", "JavaScript", "TypeScript"],
-  },
-  {
-    icon: TbCertificate,
-    title: "Desenvolvimento Backend",
-    subtitle: "ADA Tech",
-    description: "Desenvolvimento backend com Java",
-    tags: ["Java", "Spring Boot", "PostgreSQL", "Docker"],
-  },
-
-  {
-    icon: LiaCertificateSolid,
-    title: "Curso.Dev",
-    subtitle: "Filipe Deschamps",
-    description:
-      "Formação fullstack para dominar qualquer tecnologia e resolver qualquer desafio.",
-    tags: ["Next.js", "React", "Node.js", "TypeScript"],
-  },
-];
+import { Section } from "@/components/ui/Section";
+import { Tag } from "@/components/ui/Tag";
+import { listaEducacao } from "@/data/data";
 
 export function Education() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Detecta se a seção está visível para pausar animação quando fora de vista
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 },
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container || !isVisible) return; // Só roda quando visível
-
-    let scrollAmount = 0;
-    const speed = 0.5;
-    let animationFrameId: number;
-
-    const scroll = () => {
-      if (!container) return;
-
-      scrollAmount += speed;
-      container.scrollLeft = scrollAmount;
-
-      // Quando chegar no fim dos itens originais, reinicia
-      if (scrollAmount >= container.scrollWidth / 2) {
-        scrollAmount = 0;
-        container.scrollLeft = 0;
-      }
-
-      animationFrameId = requestAnimationFrame(scroll);
-    };
-
-    scroll();
-
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [isVisible]);
-
   return (
-    <EducationSection id="Educacao" ref={sectionRef}>
-      <EducationContainer>
-        <Title
-          title="Educação"
-          subTitle="Minhas formações"
-          description="Sempre buscando novos conhecimentos e habilidades!"
-        />
-        <TimelineContainer ref={containerRef}>
-          {[...educations, ...educations].map((edu, index) => (
-            <EducationCard key={index} {...edu} />
-          ))}
-        </TimelineContainer>
-      </EducationContainer>
-    </EducationSection>
+    <Section
+      id="Educacao"
+      title="Educação"
+      description="Minhas formações. Sempre buscando novos conhecimentos e habilidades!"
+    >
+      <ol className="grid border-t border-l border-line sm:grid-cols-2 lg:grid-cols-3">
+        {listaEducacao.map((edu, i) => (
+          <li key={edu.title} className="flex flex-col border-r border-b border-line">
+            <div className="dashed-b flex items-center justify-between px-5 py-4 font-mono text-label text-dim">
+              <span>{edu.subtitle}</span>
+              <span>[{String(i + 1).padStart(2, "0")}]</span>
+            </div>
+            <div className="flex flex-1 flex-col px-5 pt-6 pb-6">
+              <h3 className="text-[1.375rem] leading-tight font-medium tracking-tight">{edu.title}</h3>
+              <p className="mt-3 text-[0.9375rem] leading-relaxed text-dim">{edu.description}</p>
+              <div className="mt-auto flex flex-wrap gap-1.5 pt-6">
+                {edu.tags.map((tag) => (
+                  <Tag key={tag}>{tag}</Tag>
+                ))}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </Section>
   );
 }

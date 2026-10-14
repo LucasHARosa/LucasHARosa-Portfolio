@@ -1,236 +1,201 @@
-import { Variants, motion } from "framer-motion";
-import { List, X } from "phosphor-react";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { ButtonAnimationHover } from "../ButtonAnimationHover";
-import { ParticleLight } from "../Particles/particleLight";
-import { ParticleAmong } from "../Particles/particlesAmong";
-import { ParticleSnow } from "../Particles/particleSnow";
-import { ParticleStar } from "../Particles/particleStar";
-import {
-  HeaderButton,
-  HeaderContainer,
-  HeaderContent,
-  HeaderNav,
-  HeaderNavMobile,
-  NavLi,
-} from "./styles";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Button } from "@/components/ui/Button";
+import { Logo } from "@/components/ui/Logo";
+import { useTheme } from "@/hooks/useTheme";
+import { cn } from "@/lib/utils";
 
-const itemVariants: Variants = {
-  open: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 300, damping: 24 },
-  },
-  closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
-};
+// Mesma ordem das seções na página
+const NAV = [
+  { name: "Início", section: "Home" },
+  { name: "Sobre mim", section: "SobreMim" },
+  { name: "Projetos", section: "Projetos", route: "/projetos" },
+  { name: "Habilidades", section: "Skills" },
+  { name: "Experiência", section: "Experiencia" },
+  { name: "Artigos", section: "Artigos", route: "/blog" },
+  { name: "Educação", section: "Educacao" },
+  { name: "Contato", section: "Contato" },
+];
 
-export function Header() {
-  const [menu, setMenu] = useState(false);
-  const [theme, setTheme] = useState("stars");
-  const [activeSection, setActiveSection] = useState("Home");
-  const location = useLocation();
-
-  function handleTheme() {
-    if (theme === "stars") {
-      setTheme("snow");
-    } else if (theme === "snow") {
-      setTheme("light");
-    } else if (theme === "light") {
-      setTheme("among");
-    } else if (theme === "among") {
-      setTheme("stars");
-    }
-  }
-
-  const isProjectsPage = location.pathname === "/projetos";
-
-  const dataHeader = [
-    {
-      id: 1,
-      name: "Início",
-      link: isProjectsPage ? "/" : "#Home",
-      section: "Home",
-      isRoute: isProjectsPage,
-      isProjectsLink: false,
-    },
-    {
-      id: 3,
-      name: "Projetos",
-      link: "/projetos",
-      section: "Projetos",
-      isRoute: true,
-      isProjectsLink: true,
-    },
-    {
-      id: 2,
-      name: "Sobre mim",
-      link: isProjectsPage ? "/#SobreMim" : "#SobreMim",
-      section: "SobreMim",
-      isRoute: isProjectsPage,
-      isProjectsLink: false,
-    },
-    {
-      id: 5,
-      name: "Experiência",
-      link: isProjectsPage ? "/#Experiencia" : "#Experiencia",
-      section: "Experiencia",
-      isRoute: isProjectsPage,
-      isProjectsLink: false,
-    },
-    {
-      id: 4,
-      name: "Habilidades",
-      link: isProjectsPage ? "/#Skills" : "#Skills",
-      section: "Skills",
-      isRoute: isProjectsPage,
-      isProjectsLink: false,
-    },
-    {
-      id: 6,
-      name: "Educação",
-      link: isProjectsPage ? "/#Educacao" : "#Educacao",
-      section: "Educacao",
-      isRoute: isProjectsPage,
-      isProjectsLink: false,
-    },
-    {
-      id: 7,
-      name: "Contato",
-      link: isProjectsPage ? "/#Contato" : "#Contato",
-      section: "Contato",
-      isRoute: isProjectsPage,
-      isProjectsLink: false,
-    },
-  ];
+function useActiveSection(enabled: boolean) {
+  const [active, setActive] = useState("Home");
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll("section");
-      let currentSection = "Home";
+    if (!enabled) return;
+    const sections = Array.from(document.querySelectorAll<HTMLElement>("main section[id]"));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // "ProjetosRating" pertence ao item "Projetos" do menu
+            setActive(entry.target.id === "ProjetosRating" ? "Projetos" : entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, [enabled]);
 
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
+  return active;
+}
 
-        if (window.scrollY >= sectionTop - 200) {
-          currentSection = section.id || "Home";
-        }
-      });
-
-      setActiveSection(currentSection);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Call once to set initial state
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+function ThemeToggle() {
+  const { theme, toggleTheme } = useTheme();
+  const next = theme === "dark" ? "claro" : "escuro";
 
   return (
-    <>
-      <HeaderContainer>
-        <HeaderContent>
-          <HeaderNav>
-            <ul>
-              {dataHeader.map((item) => {
-                const isActive =
-                  item.isProjectsLink && isProjectsPage
-                    ? true
-                    : item.isRoute
-                      ? location.pathname === item.link
-                      : activeSection === item.section;
-                return (
-                  <li key={item.id} className={`${isActive ? "active" : ""}`}>
-                    <ButtonAnimationHover
-                      text={item.name}
-                      link={item.link}
-                      active={isActive}
-                      isRoute={item.isRoute}
-                    />
-                  </li>
-                );
-              })}
-              <li>
-                <ButtonAnimationHover
-                  handleTheme={handleTheme}
-                  text="Mudar fundo"
-                  icon
-                />
+    <button
+      type="button"
+      onClick={toggleTheme}
+      aria-label={`Mudar para o tema ${next}`}
+      title={`Tema ${next}`}
+      className="grid size-9 place-items-center rounded-xs border border-line text-dim transition-colors hover:border-ink hover:text-ink"
+    >
+      {theme === "dark" ? <Sun className="size-4" /> : <Moon className="size-4" />}
+    </button>
+  );
+}
+
+export function Header() {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+  const active = useActiveSection(isHome);
+  const [open, setOpen] = useState(false);
+  const reduce = useReducedMotion();
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  const hrefFor = (section: string) => (isHome ? `#${section}` : `/#${section}`);
+  const isActive = (item: (typeof NAV)[number]) =>
+    item.route
+      ? location.pathname === item.route || (isHome && active === item.section)
+      : isHome && active === item.section;
+
+  useEffect(() => {
+    if (!open) return;
+    document.body.style.overflow = "hidden";
+    firstLinkRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  useEffect(() => setOpen(false), [location.pathname, location.hash]);
+
+  const renderLink = (
+    item: (typeof NAV)[number],
+    className: string,
+    ref?: React.Ref<HTMLAnchorElement>,
+  ) => {
+    const current = isActive(item);
+    const content = (
+      <>
+        <span
+          aria-hidden="true"
+          className={cn("size-1.5 shrink-0 bg-signal transition-opacity", current ? "opacity-100" : "opacity-0")}
+        />
+        {item.name}
+      </>
+    );
+    const props = {
+      className: cn(className, current ? "text-ink" : "text-dim hover:text-ink"),
+      "aria-current": current ? ("page" as const) : undefined,
+      onClick: () => setOpen(false),
+    };
+    return item.route ? (
+      <Link to={item.route} ref={ref} {...props}>
+        {content}
+      </Link>
+    ) : (
+      <a href={hrefFor(item.section)} ref={ref} {...props}>
+        {content}
+      </a>
+    );
+  };
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-line bg-bg">
+      <div className="flex h-14 items-center justify-between gap-4 px-4 sm:px-8 lg:px-12">
+        <Link
+          to="/"
+          className="flex items-center gap-3 text-ink"
+          aria-label="Lucas Rosa, página inicial"
+        >
+          <Logo />
+          <span className="hidden text-[0.9375rem] font-medium whitespace-nowrap sm:inline">Lucas Rosa</span>
+        </Link>
+
+        <nav aria-label="Principal" className="hidden xl:block">
+          <ul className="flex items-center gap-5 xl:gap-6">
+            {NAV.map((item) => (
+              <li key={item.section}>
+                {renderLink(item, "flex items-center gap-2 whitespace-nowrap text-[0.875rem] transition-colors")}
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Button href={hrefFor("Contato")} variant="signal" size="sm" className="hidden sm:inline-flex">
+            Falar comigo
+          </Button>
+          <button
+            ref={toggleRef}
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="menu-mobile"
+            aria-label={open ? "Fechar menu" : "Abrir menu"}
+            className="grid size-9 place-items-center rounded-xs border border-line text-ink xl:hidden"
+          >
+            {open ? <X className="size-4" /> : <Menu className="size-4" />}
+          </button>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {open && (
+          <motion.nav
+            id="menu-mobile"
+            aria-label="Menu"
+            initial={reduce ? { opacity: 0 } : { clipPath: "inset(0 0 100% 0)" }}
+            animate={reduce ? { opacity: 1 } : { clipPath: "inset(0 0 0% 0)" }}
+            exit={reduce ? { opacity: 0 } : { clipPath: "inset(0 0 100% 0)" }}
+            transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+            className="fixed inset-x-0 top-14 bottom-0 z-40 overflow-y-auto border-t border-line bg-bg xl:hidden"
+          >
+            <ul className="mx-3 border-x border-line sm:mx-6">
+              {NAV.map((item, i) => (
+                <li key={item.section} className="border-b border-line">
+                  {renderLink(
+                    item,
+                    "flex min-h-14 items-center gap-3 px-4 font-mono text-[1.375rem] sm:px-8",
+                    i === 0 ? firstLinkRef : undefined,
+                  )}
+                </li>
+              ))}
+              <li className="p-4 sm:px-8">
+                <Button href={hrefFor("Contato")} variant="signal" className="w-full" onClick={() => setOpen(false)}>
+                  Falar comigo
+                </Button>
               </li>
             </ul>
-          </HeaderNav>
-
-          <HeaderButton onClick={() => setMenu(!menu)}>
-            <a href="#Home">
-              <img src="/lr.svg" alt="" />
-            </a>
-
-            {menu ? <X size={24} /> : <List size={24} />}
-          </HeaderButton>
-
-          <HeaderNavMobile initial={false} animate={menu ? "open" : "closed"}>
-            <motion.ul
-              variants={{
-                open: {
-                  clipPath: "inset(0% 0% 0% 0% round 10px)",
-                  transition: {
-                    type: "spring",
-                    bounce: 0,
-                    duration: 0.5,
-                    delayChildren: 0.3,
-                    staggerChildren: 0.05,
-                  },
-                },
-                closed: {
-                  clipPath: "inset(10% 20% 90% 80% round 10px)",
-                  transition: {
-                    type: "spring",
-                    bounce: 0,
-                    duration: 0.3,
-                  },
-                },
-              }}
-              style={{ pointerEvents: menu ? "auto" : "none" }}
-            >
-              {dataHeader.map((item) => {
-                const isActive =
-                  item.isProjectsLink && isProjectsPage
-                    ? true
-                    : item.isRoute
-                      ? location.pathname === item.link
-                      : activeSection === item.section;
-                return (
-                  <NavLi
-                    key={item.id}
-                    variants={itemVariants}
-                    className={`${isActive ? "active" : ""}${item.isProjectsLink && isProjectsPage ? " projects-highlight" : ""}`}
-                  >
-                    <ButtonAnimationHover
-                      text={item.name}
-                      link={item.link}
-                      mobile={true}
-                      active={isActive}
-                      isRoute={item.isRoute}
-                    />
-                  </NavLi>
-                );
-              })}
-              <NavLi variants={itemVariants}>
-                <ButtonAnimationHover
-                  handleTheme={handleTheme}
-                  text="Mudar fundo"
-                />
-              </NavLi>
-            </motion.ul>
-          </HeaderNavMobile>
-        </HeaderContent>
-      </HeaderContainer>
-      {theme === "stars" && <ParticleStar />}
-      {theme === "snow" && <ParticleSnow />}
-      {theme === "light" && <ParticleLight />}
-      {theme === "among" && <ParticleAmong />}
-    </>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }

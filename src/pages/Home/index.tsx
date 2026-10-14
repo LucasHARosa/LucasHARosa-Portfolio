@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
-import { About } from "../../components/About";
-
-import { Contact } from "../../components/Contact";
-import { Education } from "../../components/Education";
-import { Experience } from "../../components/Experience";
-
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
-import { Intro } from "../../components/Intro";
-import { ProjectsRating } from "../../components/ProjectsRating";
-import { Skills } from "../../components/Skills";
+import { About } from "@/components/About";
+import { Articles } from "@/components/Articles";
+import { Contact } from "@/components/Contact";
+import { Education } from "@/components/Education";
+import { Experience } from "@/components/Experience";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { Intro } from "@/components/Intro";
+import { ProjectsRating } from "@/components/ProjectsRating";
+import { Skills } from "@/components/Skills";
+import { Frame } from "@/components/ui/Frame";
 
 export function Home() {
   const location = useLocation();
@@ -34,24 +34,25 @@ export function Home() {
         <title>Lucas Rosa | Software Engineer</title>
         <meta name="description" content={descricao} />
         <link rel="canonical" href="https://lucasrosa.dev.br/" />
-        <meta
-          property="og:title"
-          content="Lucas Rosa | Software Engineer"
-        />
+        <meta property="og:title" content="Lucas Rosa | Software Engineer" />
         <meta property="og:description" content={descricao} />
         <meta property="og:url" content="https://lucasrosa.dev.br/" />
       </Helmet>
 
-      <Header />
-      <Intro />
-      <About />
-      <ProjectsRating />
-      <Skills />
-      <Experience />
-      <Education />
-      {/* <MainProjetos /> */}
-      <Contact />
-      <Footer />
+      <Frame>
+        <Header />
+        <main>
+          <Intro />
+          <About />
+          <ProjectsRating />
+          <Skills />
+          <Experience />
+          <Articles />
+          <Education />
+          <Contact />
+        </main>
+        <Footer />
+      </Frame>
     </>
   );
 }

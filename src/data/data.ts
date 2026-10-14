@@ -53,7 +53,7 @@ export const listaProjetos: ProjetosProps[] = [
     LinkGit: "https://github.com/LucasHARosa/BE-Daily-Diet",
     LinkGitBack: "https://github.com/LucasHARosa/BE-Daily-Diet",
     LinkGitFront: "https://github.com/LucasHARosa/APP-Daily-Diet",
-    tipo: ["principais", "backend", "mobile", "fullstack"],
+    tipo: ["backend", "mobile", "fullstack"],
   },
   // Slot reservado para um projeto Java/Spring Boot em destaque.
   // Basta descomentar e preencher os campos para ele entrar no carrossel da Home.
@@ -115,7 +115,7 @@ export const listaProjetos: ProjetosProps[] = [
     imagem: "/imagens/tcc1.png",
     Link: "",
     LinkGit: "https://github.com/LucasHARosa/UnB-TCC-IA",
-    tipo: ["principais", "ia", "academicos"],
+    tipo: ["ia", "academicos"],
   },
   {
     id: 2,
@@ -141,7 +141,7 @@ export const listaProjetos: ProjetosProps[] = [
     LinkGit: "",
     LinkGoogle: "",
     LinkApple: "",
-    tipo: ["fullstack", "backend", "frontend"],
+    tipo: ["principais", "fullstack", "backend", "frontend"],
   },
   {
     id: 8,
@@ -376,6 +376,17 @@ export const projetoCategorias: ProjetoCategoria[] = [
   { label: "Acadêmicos", value: "academicos", icon: "cap" },
 ];
 
+/** Ordem dos projetos no carrossel da Home (ids marcados com "principais"). */
+const ORDEM_DESTAQUES = [3, 7, 5, 4, 25]; // SporTickets, Cortex, Nacional Go, Base 3, RosaBet
+
+export const listaDestaques: ProjetosProps[] = listaProjetos
+  .filter((p) => p.tipo.includes("principais"))
+  .sort((a, b) => {
+    const ia = ORDEM_DESTAQUES.indexOf(a.id);
+    const ib = ORDEM_DESTAQUES.indexOf(b.id);
+    return (ia === -1 ? Infinity : ia) - (ib === -1 ? Infinity : ib);
+  });
+
 export function contarProjetos(value: string) {
   if (value === "todos") return listaProjetos.length;
   return listaProjetos.filter((p) => p.tipo.includes(value as ProjetoTipo))
@@ -400,21 +411,6 @@ export interface SkillProps {
 
 export const listaSkills: SkillProps[] = [
   {
-    id: "java",
-    titulo: "Java",
-    description:
-      "Desenvolvimento back-end com Java e Spring Boot: APIs REST, regras de negócio, integração entre sistemas e persistência com JPA. Experiência em contextos industriais, fintech e sistemas governamentais.",
-    tecnologiasAxiliares: [
-      "Spring Boot",
-      "Spring Web",
-      "Spring Data JPA",
-      "Spring Security",
-      "Hibernate",
-      "PostgreSQL",
-      "DB2",
-    ],
-  },
-  {
     id: "nodejs",
     titulo: "Node.js",
     description:
@@ -432,6 +428,32 @@ export const listaSkills: SkillProps[] = [
     ],
   },
   {
+    id: "nextjs",
+    titulo: "Next.js",
+    description:
+      "Aplicações com SSR, SSG e ISR em Next.js, com atenção a performance, SEO e Core Web Vitals em plataformas de alto tráfego.",
+    tecnologiasAxiliares: [
+      "React",
+      "TypeScript",
+      "Vercel",
+      "App Router",
+      "API Routes",
+    ],
+  },
+  {
+    id: "react-native",
+    titulo: "React Native",
+    description:
+      "Aplicativos cross-platform para Android e iOS com React Native e Expo: integração com APIs e sensores, dados em tempo real e publicação nas lojas.",
+    tecnologiasAxiliares: [
+      "Expo",
+      "Native Base",
+      "React Navigation",
+      "Gesture Handler",
+      "Reanimated",
+    ],
+  },
+  {
     id: "nestjs",
     titulo: "NestJS",
     description:
@@ -445,6 +467,21 @@ export const listaSkills: SkillProps[] = [
       "Swagger",
       "PostgreSQL",
       "Redis",
+    ],
+  },
+  {
+    id: "java",
+    titulo: "Java",
+    description:
+      "Desenvolvimento back-end com Java e Spring Boot: APIs REST, regras de negócio, integração entre sistemas e persistência com JPA. Experiência em contextos industriais, fintech e sistemas governamentais.",
+    tecnologiasAxiliares: [
+      "Spring Boot",
+      "Spring Web",
+      "Spring Data JPA",
+      "Spring Security",
+      "Hibernate",
+      "PostgreSQL",
+      "DB2",
     ],
   },
   {
@@ -510,37 +547,11 @@ export const listaSkills: SkillProps[] = [
     ],
   },
   {
-    id: "nextjs",
-    titulo: "Next.js",
-    description:
-      "Aplicações com SSR, SSG e ISR em Next.js, com atenção a performance, SEO e Core Web Vitals em plataformas de alto tráfego.",
-    tecnologiasAxiliares: [
-      "React",
-      "TypeScript",
-      "Vercel",
-      "App Router",
-      "API Routes",
-    ],
-  },
-  {
     id: "typescript",
     titulo: "TypeScript",
     description:
       "TypeScript no front-end e no back-end: tipos genéricos, utility types, decorators e tipagem compartilhada entre camadas.",
     tecnologiasAxiliares: ["React", "Node.js", "NestJS", "Next.js"],
-  },
-  {
-    id: "react-native",
-    titulo: "React Native",
-    description:
-      "Aplicativos cross-platform para Android e iOS com React Native e Expo: integração com APIs e sensores, dados em tempo real e publicação nas lojas.",
-    tecnologiasAxiliares: [
-      "Expo",
-      "Native Base",
-      "React Navigation",
-      "Gesture Handler",
-      "Reanimated",
-    ],
   },
   {
     id: "github",
@@ -747,5 +758,47 @@ export const listaExperiencias: ExperienciaProps[] = [
     description:
       "Projetos de automação residencial e predial com microcontroladores, sensores e dispositivos integrados. Cobri o ciclo completo: levantamento de requisitos, prototipação, desenvolvimento de firmware em C/C++, testes e entrega.",
     tags: ["C++", "IoT", "Microcontroladores", "Arduino", "Automação"],
+  },
+];
+
+export interface EducacaoProps {
+  title: string;
+  subtitle: string;
+  description: string;
+  tags: string[];
+}
+
+export const listaEducacao: EducacaoProps[] = [
+  {
+    title: "Engenharia Mecatrônica",
+    subtitle: "Universidade de Brasília (UnB)",
+    description: "Graduação em Engenharia Mecatrônica, Controle e Automação.",
+    tags: ["Automação", "Controle", "Mecatrônica", "Engenharia"],
+  },
+  {
+    title: "Desenvolvimento Web",
+    subtitle: "Rocketseat",
+    description:
+      "Desenvolvimento de aplicações web com React, Node.js e TypeScript.",
+    tags: ["React", "Node.js", "Next.js", "Nest.js"],
+  },
+  {
+    title: "Desenvolvimento Mobile",
+    subtitle: "Rocketseat",
+    description: "Desenvolvimento de aplicações mobile com React Native.",
+    tags: ["React Native", "Expo", "JavaScript", "TypeScript"],
+  },
+  {
+    title: "Desenvolvimento Backend",
+    subtitle: "ADA Tech",
+    description: "Desenvolvimento backend com Java",
+    tags: ["Java", "Spring Boot", "PostgreSQL", "Docker"],
+  },
+  {
+    title: "Curso.Dev",
+    subtitle: "Filipe Deschamps",
+    description:
+      "Formação fullstack para dominar qualquer tecnologia e resolver qualquer desafio.",
+    tags: ["Next.js", "React", "Node.js", "TypeScript"],
   },
 ];

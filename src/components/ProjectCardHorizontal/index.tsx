@@ -1,142 +1,71 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { AppleLogo, CaretDown, GithubLogo, GooglePlayLogo, Link } from "phosphor-react";
 import { useState } from "react";
-import { ProjetosProps } from "../../data/data";
-
-import {
-  ActionButton,
-  ActionsContainer,
-  Container,
-  ContentSection,
-  Description,
-  Header,
-  ImageSection,
-  Tag,
-  TagReal,
-  TagsContainer,
-} from "./styles";
+import { ProjectLinks } from "@/components/ProjectLinks";
+import { Tag } from "@/components/ui/Tag";
+import { labelCategoria, type ProjetosProps } from "@/data/data";
 
 interface Props {
   projeto: ProjetosProps;
 }
 
+/** Célula da grade de projetos: bordas compartilhadas, sem cartão flutuante. */
 export function ProjectCardHorizontal({ projeto }: Props) {
   const [expanded, setExpanded] = useState(false);
+  const descId = `projeto-${projeto.id}-descricao`;
+  const real = projeto.tags.includes("Projeto Real");
+  const categorias = projeto.tipo
+    .filter((t) => t !== "principais")
+    .map(labelCategoria)
+    .join(", ");
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      layout
-    >
-      <Container>
-        <ImageSection>
-          <img
-            src={projeto.imagem || "/placeholder.svg"}
-            loading="lazy"
-            alt={projeto.titulo}
-          />
-        </ImageSection>
-        <ContentSection>
-          <Header>{projeto.titulo}</Header>
-          <Description
-            style={
-              expanded
-                ? { overflow: "visible", display: "block", WebkitLineClamp: "unset" }
-                : undefined
-            }
-          >
-            {projeto.descricao}
-          </Description>
-          <button
-            onClick={() => setExpanded(!expanded)}
-            style={{
-              background: "none",
-              border: "none",
-              color: "rgba(255,255,255,0.3)",
-              cursor: "pointer",
-              padding: "0.125rem 0 0",
-              display: "flex",
-              alignItems: "center",
-              transition: "color 0.2s",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.3)")}
-          >
-            <CaretDown
-              size={14}
-              style={{
-                transition: "transform 0.25s ease",
-                transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
-              }}
-            />
-          </button>
+    <article className="flex h-full flex-col">
+      <header className="dashed-b flex min-h-12 items-center justify-between gap-4 px-5 py-3 font-mono text-label">
+        <span className="text-dim">{categorias}</span>
+        {real && (
+          <span className="flex shrink-0 items-center gap-2 text-ink">
+            <span aria-hidden="true" className="size-1.5 bg-signal" />
+            Projeto Real
+          </span>
+        )}
+      </header>
 
-          <TagsContainer>
-            {projeto.tags.map((tag) => {
-              if (tag === "Projeto Real") {
-                return <TagReal key={tag}>{tag}</TagReal>;
-              } else {
-                return <Tag key={tag}>{tag}</Tag>;
-              }
-            })}
-          </TagsContainer>
+      <img
+        src={projeto.imagem || "/placeholder.svg"}
+        loading="lazy"
+        alt={`Tela do projeto ${projeto.titulo}`}
+        className="aspect-16/10 w-full border-b border-line bg-surface object-cover object-top"
+      />
 
-          <ActionsContainer>
-            {projeto.LinkGoogle && (
-              <a href={projeto.LinkGoogle} target="_blank" rel="noreferrer">
-                <ActionButton>
-                  <GooglePlayLogo size={14} />
-                  Google Play
-                </ActionButton>
-              </a>
-            )}
-            {projeto.LinkApple && (
-              <a href={projeto.LinkApple} target="_blank" rel="noreferrer">
-                <ActionButton>
-                  <AppleLogo size={14} weight="fill" />
-                  Apple Store
-                </ActionButton>
-              </a>
-            )}
-            {projeto.LinkGitFront && (
-              <a href={projeto.LinkGitFront} target="_blank" rel="noreferrer">
-                <ActionButton>
-                  <GithubLogo size={14} />
-                  Frontend
-                </ActionButton>
-              </a>
-            )}
-            {projeto.LinkGitBack && (
-              <a href={projeto.LinkGitBack} target="_blank" rel="noreferrer">
-                <ActionButton>
-                  <GithubLogo size={14} />
-                  Backend
-                </ActionButton>
-              </a>
-            )}
-            {projeto.LinkGit && !projeto.LinkGitFront && !projeto.LinkGitBack && (
-              <a href={projeto.LinkGit} target="_blank" rel="noreferrer">
-                <ActionButton>
-                  <GithubLogo size={14} />
-                  Github
-                </ActionButton>
-              </a>
-            )}
-            {projeto.Link && (
-              <a href={projeto.Link} target="_blank" rel="noreferrer">
-                <ActionButton>
-                  <Link size={14} />
-                  Link
-                </ActionButton>
-              </a>
-            )}
-          </ActionsContainer>
-        </ContentSection>
-      </Container>
-    </motion.div>
+      <div className="flex flex-1 flex-col px-5 pt-6 pb-6">
+        <h2 className="text-[1.375rem] leading-tight font-medium tracking-tight">{projeto.titulo}</h2>
+        <p
+          id={descId}
+          className={expanded ? "mt-3 text-[0.9375rem] leading-relaxed text-dim" : "mt-3 line-clamp-3 text-[0.9375rem] leading-relaxed text-dim"}
+        >
+          {projeto.descricao}
+        </p>
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+          aria-controls={descId}
+          className="mt-2 self-start font-mono text-label text-dim underline decoration-line-strong underline-offset-4 transition-colors hover:text-ink"
+        >
+          {expanded ? "Ler menos" : "Ler mais"}
+        </button>
+
+        <div className="mt-5 flex flex-wrap gap-1.5">
+          {projeto.tags
+            .filter((tag) => tag !== "Projeto Real")
+            .map((tag) => (
+              <Tag key={tag}>{tag}</Tag>
+            ))}
+        </div>
+
+        <div className="mt-auto pt-6">
+          <ProjectLinks projeto={projeto} size="sm" />
+        </div>
+      </div>
+    </article>
   );
 }

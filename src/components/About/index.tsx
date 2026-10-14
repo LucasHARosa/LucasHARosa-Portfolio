@@ -1,154 +1,101 @@
-import { ChatCircle, Heart, PaperPlaneTilt } from "phosphor-react";
-import { useEffect, useRef, useState } from "react";
-import foto from "../../assets/profile.jpg";
-import {
-  Container,
-  ContainerAbout,
-  ContainerAboutImage,
-  ContainerAboutText,
-  Interact,
-  LegendImage,
-  SectionDescription,
-  SectionHeader,
-  SectionLabel,
-  SectionTitle,
-} from "./styles";
+import foto from "@/assets/profile.jpg";
+import { Section } from "@/components/ui/Section";
+import { listaExperiencias } from "@/data/data";
 
-import { animated, to, useSpring, useTrail } from "@react-spring/web";
-import { PiArrowBendRightDown } from "react-icons/pi";
-import { useGesture } from "react-use-gesture";
+const PARAGRAPHS = [
+  "Prazer! Sou Engenheiro Mecatrônico pela UnB e Software Engineer Full-Stack. Trabalho nas três camadas de um produto: back-end com Java/Spring Boot, Node.js/NestJS, Python/FastAPI e Go; web com React, Next.js e TypeScript; e mobile com React Native e Expo.",
+  "Atuei em produtos de fintech, energia, logística, esportes, educação e sistemas industriais, com responsabilidade sobre arquitetura, APIs REST, regras de negócio, modelagem de dados, performance e segurança. No caminho, também trabalhei com mensageria (RabbitMQ), cache e pub/sub com Redis, containers com Docker e Kubernetes, CI/CD, WebSockets, SSE, OCR e automações com IA e N8N.",
+  "Tenho base em sistemas embarcados e IoT, que é de onde vem meu interesse por performance e por entender o sistema de ponta a ponta. Me candidato tanto a vagas de Software Engineer e Full-Stack quanto a posições específicas de Back-end, Java, React ou React Native.",
+];
+
+const FACTS = [
+  { key: "Formação", value: "Engenharia Mecatrônica, UnB" },
+  { key: "Atuação", value: "Back-end, Web e Mobile" },
+  {
+    key: "Setores",
+    value: "Fintech, energia, logística, esportes, educação e indústria",
+  },
+  {
+    key: "Trajetória",
+    value: `${listaExperiencias.length} experiências profissionais`,
+  },
+];
 
 export function About() {
-  const domTarget = useRef<HTMLDivElement>(null);
-  const textSectionRef = useRef<HTMLDivElement>(null);
-  const [textVisible, setTextVisible] = useState(false);
-
-  const calcX = (y: number) => {
-    if (!domTarget.current) return;
-    const cardRect = domTarget.current.getBoundingClientRect();
-    const centery = (cardRect.top + cardRect.bottom) / 2;
-    return -(y - centery) / 85;
-  };
-
-  const calcY = (x: number) => {
-    if (!domTarget.current) return;
-    const cardRect = domTarget.current.getBoundingClientRect();
-    const centerx = (cardRect.left + cardRect.right) / 2;
-    return (x - centerx) / 85;
-  };
-
-  const [{ x, y, rotateX, rotateY, rotateZ, scale, zoom }, api] = useSpring(
-    () => ({
-      rotateX: 0,
-      rotateY: 0,
-      rotateZ: 0,
-      x: 0,
-      y: 0,
-      scale: 1,
-      zoom: 0,
-      config: { mass: 10, tension: 500, friction: 40 },
-    }),
-  );
-
-  useGesture(
-    {
-      onMove: ({ xy: [px, py], dragging }) =>
-        !dragging &&
-        api({
-          rotateX: calcX(py),
-          rotateY: calcY(px),
-          scale: 1.05,
-        }),
-      onHover: ({ hovering }) =>
-        !hovering && api({ rotateX: 0, rotateY: 0, scale: 1 }),
-    },
-    { domTarget, eventOptions: { passive: false } },
-  );
-
-  const trail = useTrail(3, {
-    from: { opacity: 0, y: 50 },
-    to: textVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
-    config: { mass: 1, tension: 280, friction: 60 },
-    delay: 200,
-  });
-
-  useEffect(() => {
-    // Create an Intersection Observer to detect when the text section is in view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setTextVisible(true);
-          }
-        });
-      },
-      { threshold: 0.2 }, // Trigger when 20% of the element is visible
-    );
-
-    if (textSectionRef.current) {
-      observer.observe(textSectionRef.current);
-    }
-
-    return () => {
-      if (textSectionRef.current) {
-        observer.unobserve(textSectionRef.current);
-      }
-    };
-  }, []);
-
   return (
-    <Container id="SobreMim">
-      <SectionHeader>
-        <SectionLabel>Sobre mim</SectionLabel>
-        <SectionTitle>Lucas Henrique Alves Rosa</SectionTitle>
-        <SectionDescription>
-          Software Engineer • Full-Stack • Back-end, Web e Mobile
-        </SectionDescription>
-      </SectionHeader>
-      <ContainerAbout>
-        <span>
-          <Interact>
-            <p>Interaja aqui</p>
-            <PiArrowBendRightDown size={15} style={{ marginLeft: 2 }} />
-          </Interact>
-          <animated.div
-            ref={domTarget}
-            style={{
-              x,
-              y,
-              transform: "perspective(600px)",
-              scale: to([scale, zoom], (s, z) => s + z),
-              rotateX,
-              rotateY,
-              rotateZ,
-              zIndex: 100,
-            }}
-          >
-            <ContainerAboutImage>
-              <img src={foto} alt="Foto de Lucas Rosa" />
-              <LegendImage>
-                <Heart size={24} weight="fill" color="#e52e4d" />
-                <ChatCircle size={24} color="#FFF" />
-                <PaperPlaneTilt size={24} color="#FFF" />
-              </LegendImage>
-            </ContainerAboutImage>
-          </animated.div>
-        </span>
-        <ContainerAboutText ref={textSectionRef}>
-          <div>
-            {trail.map((style, index) => (
-              <animated.p key={index} style={style}>
-                {index === 0 &&
-                  "Prazer! Sou Engenheiro Mecatrônico pela UnB e Software Engineer Full-Stack. Trabalho nas três camadas de um produto: back-end com Java/Spring Boot, Node.js/NestJS, Python/FastAPI e Go; web com React, Next.js e TypeScript; e mobile com React Native e Expo."}
-                {index === 1 &&
-                  "Atuei em produtos de fintech, energia, logística, esportes, educação e sistemas industriais, com responsabilidade sobre arquitetura, APIs REST, regras de negócio, modelagem de dados, performance e segurança. No caminho, também trabalhei com mensageria (RabbitMQ), cache e pub/sub com Redis, containers com Docker e Kubernetes, CI/CD, WebSockets, SSE, OCR e automações com IA e N8N."}
-                {index === 2 &&
-                  "Tenho base em sistemas embarcados e IoT, que é de onde vem meu interesse por performance e por entender o sistema de ponta a ponta. Me candidato tanto a vagas de Software Engineer e Full-Stack quanto a posições específicas de Back-end, Java, React ou React Native."}
-              </animated.p>
+    <Section
+      id="SobreMim"
+      title="Sobre mim"
+      description="Software Engineer • Full-Stack • Back-end, Web e Mobile"
+    >
+      <div className="grid gap-12 md:grid-cols-12 md:gap-8">
+        <figure className="md:col-span-5">
+          <div className="crop-marks relative border border-line">
+            <img
+              src={foto}
+              alt="Foto de Lucas Rosa"
+              width={800}
+              height={800}
+              loading="lazy"
+              className="block aspect-square w-full object-cover"
+            />
+            {/* Chamada sobre a foto (aponta o lenço do bolso), no estilo de anotação técnica */}
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              className="pointer-events-none absolute inset-0 h-full w-full"
+            >
+              <line
+                x1="66.5"
+                y1="66.5"
+                x2="88"
+                y2="50"
+                stroke="#fff"
+                strokeWidth="1"
+                strokeDasharray="1 3"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
+            <span
+              aria-hidden="true"
+              className="absolute size-[5px] -translate-1/2 rounded-full bg-white"
+              style={{ left: "66.5%", top: "66.5%" }}
+            />
+            <span
+              aria-hidden="true"
+              className="absolute right-[3%] bottom-1/2 bg-black px-1.5 py-1 font-mono text-[11px] leading-tight whitespace-nowrap text-white"
+            >
+              Eng. Mecatrônico
+              <br />
+              <span className="text-white/60">UnB</span>
+            </span>
+          </div>
+        </figure>
+
+        <div className="md:col-span-7 lg:col-span-6 lg:col-start-7">
+          <h3 className="text-h3 font-medium tracking-tight">
+            Lucas Henrique Alves Rosa
+          </h3>
+          <div className="mt-6 max-w-read space-y-5 text-dim">
+            {PARAGRAPHS.map((p) => (
+              <p key={p.slice(0, 24)}>{p}</p>
             ))}
           </div>
-        </ContainerAboutText>
-      </ContainerAbout>
-    </Container>
+        </div>
+      </div>
+
+      <dl className="mt-16 grid border-t border-l border-line sm:grid-cols-2 lg:grid-cols-4">
+        {FACTS.map((fact) => (
+          <div
+            key={fact.key}
+            className="border-r border-b border-line p-4 sm:p-5"
+          >
+            <dt className="font-mono text-label text-dim">{fact.key}</dt>
+            <dd className="mt-2 text-[0.9375rem] leading-snug">{fact.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </Section>
   );
 }

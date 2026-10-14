@@ -1,27 +1,32 @@
-import { FolderOpen } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
-import { Pagination } from "../../components/Pagination";
-import { ProjectCardHorizontal } from "../../components/ProjectCardHorizontal";
-import { ProjectsFilterBar } from "../../components/ProjectsFilterBar";
-import { ProjectsSidebar } from "../../components/ProjectsSidebar";
-import { Title } from "../../components/Title";
-import { filtrarProjetos, labelCategoria } from "../../data/data";
+import { useSearchParams } from "react-router-dom";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { Pagination } from "@/components/Pagination";
+import { ProjectCardHorizontal } from "@/components/ProjectCardHorizontal";
+import { ProjectsFilterBar } from "@/components/ProjectsFilterBar";
+import { Button } from "@/components/ui/Button";
+import { Frame } from "@/components/ui/Frame";
+import { filtrarProjetos, labelCategoria, projetoCategorias } from "@/data/data";
 
-import {
-  ContentWrapper,
-  EmptyState,
-  PageContainer,
-  ProjectsGrid,
-  TitleSection,
-} from "./styles";
+const ITEMS_PER_PAGE = 12;
+
+const CATEGORY_TITLES: Record<string, string> = {
+  todos: "Todos os Projetos",
+  backend: "Projetos de Back-end",
+  fullstack: "Projetos Full-Stack",
+  frontend: "Projetos de Front-end",
+  mobile: "Projetos Mobile",
+  ia: "Projetos de Inteligência Artificial",
+  academicos: "Projetos Acadêmicos e Históricos",
+};
 
 export function Projects() {
-  const [activeFilter, setActiveFilter] = useState("todos");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const param = searchParams.get("categoria") ?? "todos";
+  const activeFilter = projetoCategorias.some((c) => c.value === param) ? param : "todos";
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
 
   // Scroll to top quando a página é montada
   useEffect(() => {
@@ -33,37 +38,26 @@ export function Projects() {
     setCurrentPage(1);
   }, [activeFilter]);
 
-  // Filtrar projetos
+  const setFilter = (value: string) => {
+    setSearchParams(value === "todos" ? {} : { categoria: value }, { replace: false });
+  };
+
   const filteredProjects = filtrarProjetos(activeFilter);
-
-  // Calcular total de páginas
-  const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
-
-  // Paginar projetos
+  const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
   const paginatedProjects = filteredProjects.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage,
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
   );
 
-  const getCategoryTitle = (filter: string) => {
-    const titles: { [key: string]: string } = {
-      todos: "Todos os Projetos",
-      backend: "Projetos de Back-end",
-      fullstack: "Projetos Full-Stack",
-      frontend: "Projetos de Front-end",
-      mobile: "Projetos Mobile",
-      ia: "Projetos de Inteligência Artificial",
-      academicos: "Projetos Acadêmicos e Históricos",
-    };
-    return titles[filter] || "Projetos";
-  };
+  const count = filteredProjects.length;
+  const summary = `Mostrando ${count} ${count === 1 ? "projeto" : "projetos"}${
+    activeFilter !== "todos" ? ` na categoria ${labelCategoria(activeFilter)}` : ""
+  }`;
 
   return (
     <>
       <Helmet>
-        <title>
-          Projetos | Lucas Rosa
-        </title>
+        <title>Projetos | Lucas Rosa</title>
         <meta
           name="description"
           content="Projetos de back-end, full-stack, front-end, mobile e IA: APIs em Java, Node.js, Python e Go, aplicações web em React e Next.js e apps em React Native."
@@ -71,41 +65,33 @@ export function Projects() {
         <link rel="canonical" href="https://lucasrosa.dev.br/projetos" />
       </Helmet>
 
-      <Header />
+      <Frame>
+        <Header />
+        <main>
+          <header className="grid gap-4 px-4 pt-16 pb-10 sm:px-8 md:grid-cols-12 md:gap-8 md:pt-24 md:pb-14 lg:px-12">
+            <div className="md:col-span-7">
+              <p className="font-mono text-label text-dim">Meu Portfólio Completo</p>
+              <h1 className="mt-3 font-mono text-h2 tracking-tight">{CATEGORY_TITLES[activeFilter]}</h1>
+            </div>
+            <p className="text-dim md:col-span-5 md:self-end" aria-live="polite">
+              {summary}
+            </p>
+          </header>
 
-      <PageContainer>
-        <ProjectsSidebar
-          activeFilter={activeFilter}
-          onFilterChange={setActiveFilter}
-        />
-
-        <ContentWrapper>
-          <ProjectsFilterBar
-            activeFilter={activeFilter}
-            onFilterChange={setActiveFilter}
-          />
-
-          <TitleSection>
-            <Title
-              title={getCategoryTitle(activeFilter)}
-              subTitle="Meu Portfólio Completo"
-              description={`Mostrando ${filteredProjects.length} ${
-                filteredProjects.length === 1 ? "projeto" : "projetos"
-              } ${
-                activeFilter !== "todos"
-                  ? `na categoria ${labelCategoria(activeFilter)}`
-                  : ""
-              }`}
-            />
-          </TitleSection>
+          <ProjectsFilterBar activeFilter={activeFilter} onFilterChange={setFilter} />
 
           {paginatedProjects.length > 0 ? (
             <>
-              <ProjectsGrid>
+              <ul className="grid md:grid-cols-2">
                 {paginatedProjects.map((projeto) => (
-                  <ProjectCardHorizontal key={projeto.id} projeto={projeto} />
+                  <li
+                    key={projeto.id}
+                    className="border-b border-line md:odd:border-r"
+                  >
+                    <ProjectCardHorizontal projeto={projeto} />
+                  </li>
                 ))}
-              </ProjectsGrid>
+              </ul>
 
               <Pagination
                 currentPage={currentPage}
@@ -114,16 +100,16 @@ export function Projects() {
               />
             </>
           ) : (
-            <EmptyState>
-              <FolderOpen size={64} />
-              <h3>Nenhum projeto encontrado</h3>
-              <p>Não há projetos nesta categoria no momento.</p>
-            </EmptyState>
+            <div className="grid place-items-center gap-4 px-4 py-24 text-center">
+              <h2 className="font-mono text-h3">Nenhum projeto encontrado</h2>
+              <p className="text-dim">Não há projetos nesta categoria no momento.</p>
+              <Button onClick={() => setFilter("todos")}>Ver todos os projetos</Button>
+            </div>
           )}
-        </ContentWrapper>
-      </PageContainer>
-
-      <Footer />
+          <div className="h-16 md:h-24" />
+        </main>
+        <Footer />
+      </Frame>
     </>
   );
 }
