@@ -7,12 +7,14 @@ import { Logo } from "@/components/ui/Logo";
 import { useTheme } from "@/hooks/useTheme";
 import { cn } from "@/lib/utils";
 
+// Mesma ordem das seções na página
 const NAV = [
   { name: "Início", section: "Home" },
-  { name: "Projetos", section: "Projetos", route: "/projetos" },
   { name: "Sobre mim", section: "SobreMim" },
-  { name: "Experiência", section: "Experiencia" },
+  { name: "Projetos", section: "Projetos", route: "/projetos" },
   { name: "Habilidades", section: "Skills" },
+  { name: "Experiência", section: "Experiencia" },
+  { name: "Artigos", section: "Artigos", route: "/blog" },
   { name: "Educação", section: "Educacao" },
   { name: "Contato", section: "Contato" },
 ];
@@ -61,7 +63,6 @@ function ThemeToggle() {
 export function Header() {
   const location = useLocation();
   const isHome = location.pathname === "/";
-  const isProjectsPage = location.pathname === "/projetos";
   const active = useActiveSection(isHome);
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
@@ -70,7 +71,9 @@ export function Header() {
 
   const hrefFor = (section: string) => (isHome ? `#${section}` : `/#${section}`);
   const isActive = (item: (typeof NAV)[number]) =>
-    item.route ? isProjectsPage || (isHome && active === item.section) : isHome && active === item.section;
+    item.route
+      ? location.pathname === item.route || (isHome && active === item.section)
+      : isHome && active === item.section;
 
   useEffect(() => {
     if (!open) return;

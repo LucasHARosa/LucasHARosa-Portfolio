@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import { About } from "@/components/About";
+import { Articles } from "@/components/Articles";
 import { Contact } from "@/components/Contact";
 import { Education } from "@/components/Education";
 import { Experience } from "@/components/Experience";
@@ -46,6 +47,7 @@ export function Home() {
           <ProjectsRating />
           <Skills />
           <Experience />
+          <Articles />
           <Education />
           <Contact />
         </main>
