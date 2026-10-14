@@ -1,4 +1,3 @@
-import emailjs from "@emailjs/browser";
 import { ArrowUpRight, Copy } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -14,7 +13,12 @@ interface ContactFormData {
   name: string;
   email: string;
   message: string;
+  /** Honeypot: invisível para pessoas; bots que preenchem são descartados pelo Web3Forms. */
+  botcheck: boolean;
 }
+
+// Chave pública do Web3Forms: só permite enviar mensagens para o e-mail cadastrado.
+const WEB3FORMS_KEY = "8ca5386f-09a7-4df1-b887-715e8c6eed27";
 
 const rowClass =
   "group flex min-h-16 w-full items-center gap-4 border-b border-line text-left transition-colors hover:text-ink";
@@ -46,21 +50,28 @@ export function Contact() {
 
     setIsSending(true);
     try {
-      await emailjs.send(
-        "service_z6rfo82",
-        "template_yw0g23o",
-        {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Portfólio: nova mensagem de ${data.name}`,
+          from_name: "Portfólio lucasrosa.dev.br",
           name: data.name,
           email: data.email,
+          replyto: data.email,
           message: data.message,
-        },
-        "Ph0oPbifsyxX3HebY",
-      );
+          botcheck: data.botcheck,
+        }),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.success) {
+        throw new Error(result.message ?? `HTTP ${response.status}`);
+      }
       toast.success("Mensagem enviada com sucesso!");
       reset();
     } catch (error) {
-      // EmailJS devolve { status, text } — ex.: 412 quando a conta do Gmail precisa ser reconectada
-      console.error("Falha ao enviar pelo EmailJS:", error);
+      console.error("Falha ao enviar pelo Web3Forms:", error);
       toast.error(`Erro ao enviar a mensagem. Se preferir, fale comigo em ${EMAIL}.`);
     } finally {
       setIsSending(false);
@@ -160,6 +171,15 @@ export function Contact() {
             />
             {errors.message && <FieldError id="erro-mensagem">Mensagem é obrigatória</FieldError>}
           </div>
+
+          <input
+            type="checkbox"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="hidden"
+            {...register("botcheck")}
+          />
 
           <Button type="submit" variant="signal" disabled={isSending} className="self-start">
             {isSending ? "Enviando..." : "Enviar mensagem"}
