@@ -1,15 +1,28 @@
 import { cn } from "@/lib/utils";
 
-/** Monograma </LR> — herda a cor do texto para acompanhar o tema. */
+/**
+ * Monograma LR em pixel (o mesmo desenho do favicon). As letras herdam a cor
+ * do texto para acompanhar o tema; o marcador usa a cor de sinal.
+ */
 export function Logo({ className }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 91 29"
-      fill="currentColor"
+      viewBox="1.5 1.5 14 11"
+      shapeRendering="crispEdges"
       aria-hidden="true"
-      className={cn("h-[18px] w-auto", className)}
+      className={cn("h-[22px] w-auto", className)}
     >
-      <path d="M0.875 15.5114V11.5114L16.875 4.46591V9.06818L5.92045 13.4659L6.06818 13.2273V13.7955L5.92045 13.5568L16.875 17.9545V22.5568L0.875 15.5114ZM21.7727 25V1.72727H26.6932V20.9432H36.6705V25H21.7727ZM39.929 25V1.72727H49.1108C50.8684 1.72727 52.3684 2.04167 53.6108 2.67045C54.8608 3.29167 55.8116 4.17424 56.4631 5.31818C57.1222 6.45454 57.4517 7.79167 57.4517 9.32955C57.4517 10.875 57.1184 12.2045 56.4517 13.3182C55.785 14.4242 54.8191 15.2727 53.554 15.8636C52.2964 16.4545 50.7737 16.75 48.9858 16.75H42.8381V12.7955H48.1903C49.1297 12.7955 49.91 12.6667 50.5312 12.4091C51.1525 12.1515 51.6146 11.7652 51.9176 11.25C52.2282 10.7348 52.3835 10.0947 52.3835 9.32955C52.3835 8.55682 52.2282 7.9053 51.9176 7.375C51.6146 6.8447 51.1487 6.44318 50.5199 6.17045C49.8987 5.89015 49.1146 5.75 48.1676 5.75H44.8494V25H39.929ZM52.4972 14.4091L58.2812 25H52.8494L47.1903 14.4091H52.4972ZM70.9744 0.636362L63.4744 28.5H59.304L66.804 0.636362H70.9744ZM90.25 17.6932L74.25 24.7386V20.1364L85.2045 15.7386L85.0568 15.9773V15.4091L85.2045 15.6477L74.25 11.25V6.64773L90.25 13.6932V17.6932Z" />
+      <g fill="currentColor">
+        <rect x="2" y="4" width="1.6" height="8" />
+        <rect x="2" y="10.4" width="4.6" height="1.6" />
+        <rect x="8" y="4" width="1.6" height="8" />
+        <rect x="8" y="4" width="4.4" height="1.6" />
+        <rect x="11.6" y="4" width="1.6" height="4" />
+        <rect x="8" y="7.2" width="4.4" height="1.6" />
+        <rect x="10.4" y="8.8" width="1.6" height="1.6" />
+        <rect x="11.6" y="10.4" width="1.6" height="1.6" />
+      </g>
+      <rect x="13.6" y="2" width="1.4" height="1.4" fill="var(--signal)" />
     </svg>
   );
 }
