@@ -1,8 +1,8 @@
-﻿import { GiOctopus } from "react-icons/gi";
+﻿import type { IconType } from "react-icons";
+import { GiOctopus } from "react-icons/gi";
 import { IoDesktopOutline } from "react-icons/io5";
 import { MdOutlineDevices } from "react-icons/md";
 import { TbDeviceMobileCode } from "react-icons/tb";
-import type { IconType } from "react-icons";
 
 export type ProjetoTipo =
   | "principais"
@@ -668,14 +668,7 @@ export const listaExperiencias: ExperienciaProps[] = [
     subtitle: "Power Pick",
     description:
       "Responsável pela arquitetura e pelo desenvolvimento de uma plataforma de comparação de tarifas e serviços de energia. No back-end em NestJS, defini a estrutura em módulos, as APIs REST, as regras de negócio da comparação e a modelagem de dados, usando Redis para cache das consultas e integrações com provedores externos. No front-end, estruturei a aplicação em Next.js com SSR e SEO, participando das decisões técnicas do produto.",
-    tags: [
-      "NestJS",
-      "Node.js",
-      "Next.js",
-      "PostgreSQL",
-      "Redis",
-      "TypeScript",
-    ],
+    tags: ["NestJS", "Node.js", "Next.js", "PostgreSQL", "Redis", "TypeScript"],
   },
   {
     icon: IoDesktopOutline,
