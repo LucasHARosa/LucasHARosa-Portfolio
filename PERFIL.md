@@ -40,23 +40,23 @@ Presto serviços de desenvolvimento pela minha própria software house. Atuo na 
 ### Power Pick — Desenvolvedor Full-Stack
 *Arquitetura, APIs e Web*
 
-Responsável pela arquitetura e pelo desenvolvimento de uma plataforma de comparação de tarifas e serviços de energia. No back-end em NestJS, defini a estrutura em módulos, as APIs REST, as regras de negócio da comparação e a modelagem de dados, usando Redis para cache das consultas e integrações com provedores externos. No front-end, estruturei a aplicação em Next.js com SSR e SEO, participando das decisões técnicas do produto.
+Responsável pela arquitetura e pelo desenvolvimento de uma plataforma de comparação de tarifas e serviços de energia. No back-end em NestJS, defini a estrutura em módulos, as APIs REST, as regras de negócio da comparação e a modelagem de dados, usando Redis para cache das consultas e integrações com provedores externos. No front-end, estruturei a aplicação em Next.js com SSR e SEO, participando das decisões técnicas do produto. Integrei também um chatbot que orienta o usuário e o direciona aos fluxos relevantes.
 
 `NestJS` `Node.js` `Next.js` `PostgreSQL` `Redis` `TypeScript`
 
 ### DubPay — Desenvolvedor Full-Stack
 *Fintech, Pagamentos e Web*
 
-Desenvolvimento e manutenção de uma fintech de pagamentos. Atuei nos fluxos de checkout, no processamento e na conciliação de transações e nas integrações com gateways, trabalhando no back-end em Java e PHP/Laravel e nas aplicações web em React e Next.js. Mensageria com RabbitMQ para o processamento assíncrono das transações, containers com Docker e Kubernetes, monitoramento das aplicações e pipelines de CI/CD.
+Desenvolvimento e manutenção de uma fintech de pagamentos. Atuei nos fluxos de checkout, no processamento e na conciliação de transações e nas integrações com gateways, trabalhando no back-end em Java e PHP/Laravel e nas aplicações web em React e Next.js. Mensageria com RabbitMQ para o processamento assíncrono das transações, containers com Docker e Kubernetes, monitoramento das aplicações e pipelines de CI/CD. Participei também da migração da infraestrutura da AWS para o GCP com o serviço em produção.
 
 `Java` `PHP` `Laravel` `Next.js` `React` `RabbitMQ` `Docker` `Kubernetes` `CI/CD`
 
 ### Nacional GO — Desenvolvedor Full-Stack
 *Web, Mobile e Automações*
 
-Desenvolvi e mantive o sistema web interno da empresa de logística veicular: back-end em PHP, front-end em React, novas funcionalidades, ajustes de regras de negócio e integrações entre sistemas. Desenvolvi também o aplicativo dos motoristas em React Native, usado na operação de transporte, e automações de processos internos com N8N e IA.
+Desenvolvi e mantive o sistema web interno da empresa de logística veicular: back-end em PHP, front-end em React, novas funcionalidades, ajustes de regras de negócio e integrações entre sistemas. Desenvolvi também o aplicativo dos motoristas em React Native, usado na operação de transporte, e automações de processos internos com N8N e IA. Criei uma solução de OCR para leitura e conferência de placas dos veículos da operação e atuei na liderança técnica do e-commerce da empresa.
 
-`PHP` `React` `React Native` `N8N` `MySQL`
+`PHP` `React` `React Native` `N8N` `OCR` `MySQL`
 
 ### Grupo Bseen — Desenvolvedor Full-Stack
 *Back-end, Web e Mobile*
@@ -151,7 +151,7 @@ Docker · Kubernetes · RabbitMQ · CI/CD · Git · Testes automatizados · APIs
 - **[SporTickets](https://www.sportickets.com.br/)**: venda de ingressos para eventos esportivos, com checkout e painel do organizador. APIs em NestJS, regras de disponibilidade e emissão de ingressos, telas em Next.js.
 - **Cortex** ([Play Store](https://play.google.com/store/apps/details?id=com.besx.core) · [App Store](https://apps.apple.com/us/app/cortex-app/id6449041878)): app de monitoramento IoT com séries temporais, detecção de anomalias e alarmes. React Native e Expo.
 - **[Nacional Go](https://app.nacionalgo.com.br/)**: transporte e logística veicular, com área do cliente, e-commerce e acompanhamento de ordens. PHP, React e MySQL.
-- **[Base 3](https://base3edu.com.br/)**: gestão acadêmica para escolas e cursos. APIs em NestJS e interfaces em React.
+- **[Base 3](https://base3edu.com.br/)**: gestão acadêmica para escolas e cursos, com geração de relatórios com LLM a partir das avaliações e informações dos alunos. APIs em NestJS e interfaces em React.
 - **RosaBet** ([back-end](https://github.com/LucasHARosa/BE-RosaBet) · [front-end](https://github.com/LucasHARosa/FE-RosaBet)): apostas esportivas e cassino. FastAPI em arquitetura limpa, SQLAlchemy async, PostgreSQL, Redis pub/sub, odds ao vivo via WebSocket e front em Next.js.
 - **Daily Diet** ([back-end](https://github.com/LucasHARosa/BE-Daily-Diet) · [app](https://github.com/LucasHARosa/APP-Daily-Diet)): acompanhamento de dieta com app React Native e API em Go, JWT, PostgreSQL e estimativa de calorias com Google Gemini.
 

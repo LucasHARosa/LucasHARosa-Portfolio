@@ -134,7 +134,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 4,
     titulo: "Base 3",
     descricao:
-      "Sistema de gestão acadêmica para escolas e cursos: cadastro de turmas e alunos, acompanhamento de desempenho e geração de relatórios. Atuei nas APIs em NestJS e na modelagem das entidades acadêmicas, além das interfaces em React. Stack: NestJS, React, TypeScript.",
+      "Sistema de gestão acadêmica para escolas e cursos: cadastro de turmas e alunos, acompanhamento de desempenho e geração de relatórios com LLM a partir das avaliações e informações dos alunos. Atuei nas APIs em NestJS e na modelagem das entidades acadêmicas, além das interfaces em React. Stack: NestJS, React, TypeScript.",
     tags: ["Projeto Real", "React", "NestJS"],
     imagem: "/imagens/base3.png",
     Link: "https://base3edu.com.br/",
@@ -160,14 +160,14 @@ export const listaProjetos: ProjetosProps[] = [
     id: 1,
     titulo: "DubPay",
     descricao:
-      "Fintech de pagamentos com checkout, gestão de transações e área do cliente. Atuei no front-end das aplicações web em Next.js e Vite, consumindo as APIs de pagamento e implementando os fluxos de checkout e de acompanhamento de transações. Stack: Next.js, React, Vite, TypeScript.",
-    tags: ["Projeto Real", "NextJs", "Vite", "React App"],
+      "Fintech de pagamentos com checkout, gestão de transações e área do cliente. No back-end em Java e PHP/Laravel, atuei nos fluxos de checkout, no processamento e na conciliação de transações e nas integrações com gateways, com RabbitMQ no processamento assíncrono. No front-end, em Next.js e Vite, modernizei as aplicações web com melhoria de aproximadamente 60% no desempenho em relação à versão anterior. Stack: Java, PHP, Laravel, RabbitMQ, Next.js, React, Vite, TypeScript.",
+    tags: ["Projeto Real", "Java", "PHP", "RabbitMQ", "NextJs", "Vite", "React App"],
     imagem: "/imagens/dubpay.png",
     Link: "https://dubpay.com.br/",
     LinkGit: "",
     LinkGoogle: "",
     LinkApple: "",
-    tipo: ["frontend"],
+    tipo: ["fullstack", "backend", "frontend"],
   },
   {
     id: 23,
@@ -667,7 +667,7 @@ export const listaExperiencias: ExperienciaProps[] = [
     title: "Desenvolvedor Full-Stack · Arquitetura, APIs e Web",
     subtitle: "Power Pick",
     description:
-      "Responsável pela arquitetura e pelo desenvolvimento de uma plataforma de comparação de tarifas e serviços de energia. No back-end em NestJS, defini a estrutura em módulos, as APIs REST, as regras de negócio da comparação e a modelagem de dados, usando Redis para cache das consultas e integrações com provedores externos. No front-end, estruturei a aplicação em Next.js com SSR e SEO, participando das decisões técnicas do produto.",
+      "Responsável pela arquitetura e pelo desenvolvimento de uma plataforma de comparação de tarifas e serviços de energia. No back-end em NestJS, defini a estrutura em módulos, as APIs REST, as regras de negócio da comparação e a modelagem de dados, usando Redis para cache das consultas e integrações com provedores externos. No front-end, estruturei a aplicação em Next.js com SSR e SEO, participando das decisões técnicas do produto. Integrei também um chatbot que orienta o usuário e o direciona aos fluxos relevantes.",
     tags: ["NestJS", "Node.js", "Next.js", "PostgreSQL", "Redis", "TypeScript"],
   },
   {
@@ -675,7 +675,7 @@ export const listaExperiencias: ExperienciaProps[] = [
     title: "Desenvolvedor Full-Stack · Fintech, Pagamentos e Web",
     subtitle: "DubPay",
     description:
-      "Desenvolvimento e manutenção de uma fintech de pagamentos. Atuei nos fluxos de checkout, no processamento e na conciliação de transações e nas integrações com gateways, trabalhando no back-end em Java e PHP/Laravel e nas aplicações web em React e Next.js. Mensageria com RabbitMQ para o processamento assíncrono das transações, containers com Docker e Kubernetes, monitoramento das aplicações e pipelines de CI/CD.",
+      "Desenvolvimento e manutenção de uma fintech de pagamentos. Atuei nos fluxos de checkout, no processamento e na conciliação de transações e nas integrações com gateways, trabalhando no back-end em Java e PHP/Laravel e nas aplicações web em React e Next.js. Mensageria com RabbitMQ para o processamento assíncrono das transações, containers com Docker e Kubernetes, monitoramento das aplicações e pipelines de CI/CD. Participei também da migração da infraestrutura da AWS para o GCP com o serviço em produção.",
     tags: [
       "Java",
       "PHP",
@@ -693,8 +693,8 @@ export const listaExperiencias: ExperienciaProps[] = [
     title: "Desenvolvedor Full-Stack · Web, Mobile e Automações",
     subtitle: "Nacional GO",
     description:
-      "Desenvolvi e mantive o sistema web interno da empresa de logística veicular: back-end em PHP, front-end em React, novas funcionalidades, ajustes de regras de negócio e integrações entre sistemas. Desenvolvi também o aplicativo dos motoristas em React Native, usado na operação de transporte, e automações de processos internos com N8N e IA.",
-    tags: ["PHP", "React", "React Native", "N8N", "MySQL"],
+      "Desenvolvi e mantive o sistema web interno da empresa de logística veicular: back-end em PHP, front-end em React, novas funcionalidades, ajustes de regras de negócio e integrações entre sistemas. Desenvolvi também o aplicativo dos motoristas em React Native, usado na operação de transporte, e automações de processos internos com N8N e IA. Criei uma solução de OCR para leitura e conferência de placas dos veículos da operação e atuei na liderança técnica do e-commerce da empresa.",
+    tags: ["PHP", "React", "React Native", "N8N", "OCR", "MySQL"],
   },
   {
     icon: MdOutlineDevices,
