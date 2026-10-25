@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import {
+  articleCategories,
   DEVTO_PROFILE,
   formatArticleDate,
   useDevtoArticles,
@@ -65,11 +66,13 @@ interface ArticleListProps {
   /** Quantos mostrar (sem limite quando omitido). */
   limit?: number;
   showDescription?: boolean;
-  /** Filtra por tag do dev.to. */
-  tag?: string | null;
+  /** Filtra por categoria (ver ARTICLE_CATEGORIES). */
+  categoria?: string | null;
+  /** Nome da categoria para a mensagem de vazio. */
+  categoriaLabel?: string;
 }
 
-export function ArticleList({ limit, showDescription, tag }: ArticleListProps) {
+export function ArticleList({ limit, showDescription, categoria, categoriaLabel }: ArticleListProps) {
   const { status, articles } = useDevtoArticles();
 
   if (status === "loading") {
@@ -92,13 +95,13 @@ export function ArticleList({ limit, showDescription, tag }: ArticleListProps) {
     );
   }
 
-  const visible = (tag ? articles.filter((a) => a.tag_list.includes(tag)) : articles).slice(0, limit);
+  const visible = (categoria ? articles.filter((a) => articleCategories(a).includes(categoria)) : articles).slice(0, limit);
 
   if (visible.length === 0) {
     return (
       <div className="flex flex-col items-start gap-4 border-y border-line py-8">
         <p className="text-dim">
-          {tag ? `Nenhum artigo com a tag #${tag}.` : "Nenhum artigo publicado ainda."}
+          {categoria ? `Nenhum artigo em ${categoriaLabel ?? categoria}.` : "Nenhum artigo publicado ainda."}
         </p>
         <Button href={DEVTO_PROFILE}>Abrir perfil no dev.to</Button>
       </div>

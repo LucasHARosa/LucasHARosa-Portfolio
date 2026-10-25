@@ -10,22 +10,9 @@
 }
 
 /* ------------------------------------------------------------------
-   Tokens de tema. O escuro é o padrão; o claro é a "folha de papel".
+   Tokens de tema. O claro é o padrão (a "folha de papel"); o escuro é opcional.
    ------------------------------------------------------------------ */
 :root,
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --bg: #000000;
-  --surface: #0a0a0a;
-  --ink: #edede8;
-  --dim: #8a8a85;
-  --line: #262626;
-  --line-strong: #3a3a38;
-  --signal: #ff4f00;
-  --on-signal: #000000;
-  --grain-opacity: 0;
-}
-
 :root[data-theme="light"] {
   color-scheme: light;
   --bg: #f2f1ec;
@@ -37,6 +24,19 @@
   --signal: #e84300;
   --on-signal: #000000;
   --grain-opacity: 0.06;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --ink: #edede8;
+  --dim: #8a8a85;
+  --line: #262626;
+  --line-strong: #3a3a38;
+  --signal: #ff4f00;
+  --on-signal: #000000;
+  --grain-opacity: 0;
 }
 
 @theme inline {

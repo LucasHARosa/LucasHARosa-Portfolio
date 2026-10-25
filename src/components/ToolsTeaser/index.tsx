@@ -11,7 +11,7 @@ export function ToolsTeaser() {
     <Section
       id="Ferramentas"
       title="Ferramentas"
-      description="Utilitários que uso no dia a dia — UUID, hash, JSON, JWT, senhas, QR Code e cores. Rodam no navegador, sem enviar nada."
+      description="Utilitários que uso no dia a dia: UUID, hash, JSON, JWT, senhas, QR Code e cores. Rodam no navegador, sem enviar nada."
       aside={
         <Button to="/ferramentas" variant="ghost" className="self-start underline decoration-line-strong underline-offset-4">
           Ver todas as ferramentas

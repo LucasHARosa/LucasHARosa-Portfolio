@@ -70,11 +70,11 @@
       crossorigin
     />
 
-    <!-- Tema: aplicado antes do primeiro paint para evitar flash -->
-    <meta name="theme-color" content="#000000" />
+    <!-- Tema: aplicado antes do primeiro paint para evitar flash. Padrão claro; a escolha fica no localStorage -->
+    <meta name="theme-color" content="#F2F1EC" />
     <script>
       (function () {
-        var theme = "dark";
+        var theme = "light";
         try {
           var saved = localStorage.getItem("theme");
           if (saved === "light" || saved === "dark") theme = saved;

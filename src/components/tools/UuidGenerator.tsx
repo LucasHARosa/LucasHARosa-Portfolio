@@ -63,7 +63,7 @@ export default function UuidGenerator() {
             <Segmented label="Versão do UUID" options={VERSIONS} value={version} onChange={setVersion} />
           </div>
           <div>
-            <Label htmlFor="uuid-quantidade">Quantidade (1–100)</Label>
+            <Label htmlFor="uuid-quantidade">Quantidade (1 a 100)</Label>
             <input
               id="uuid-quantidade"
               type="number"

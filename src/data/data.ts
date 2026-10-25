@@ -115,7 +115,7 @@ export const listaProjetos: ProjetosProps[] = [
     id: 2,
     titulo: "Mouv Brasil",
     descricao:
-      "Venda e gestão de ingressos para eventos, com criação de eventos, lotes, checkout e painel do organizador. Atuei no back-end em NestJS — APIs REST, regras de negócio de lotes e pedidos e modelagem de dados — e no front-end em Next.js. Stack: NestJS, Next.js, TypeScript, PostgreSQL.",
+      "Venda e gestão de ingressos para eventos, com criação de eventos, lotes, checkout e painel do organizador. Atuei no back-end em NestJS (APIs REST, regras de negócio de lotes e pedidos e modelagem de dados) e no front-end em Next.js. Stack: NestJS, Next.js, TypeScript, PostgreSQL.",
     tags: ["Projeto Real", "NextJs", "NestJS"],
     imagem: "/imagens/mouv.png",
     Link: "https://www.mouvbrasil.com/",
@@ -567,7 +567,7 @@ export const listaSkills: SkillProps[] = [
     titulo: "C++",
     camada: "Embarcados",
     description:
-      "Base em C/C++ para sistemas embarcados, microcontroladores e automação — a fundação por trás do entendimento de performance, memória e arquitetura de baixo nível.",
+      "Base em C/C++ para sistemas embarcados, microcontroladores e automação: a fundação por trás do entendimento de performance, memória e arquitetura de baixo nível.",
     tecnologiasAxiliares: ["C++", "C", "Microcontroladores", "Arduino", "IoT"],
   },
 ];
@@ -647,7 +647,7 @@ export const listaExperiencias: ExperienciaProps[] = [
     title: "Founder & Desenvolvedor Full-Stack · Back-end, Web e Mobile",
     subtitle: "OctoLuna",
     description:
-      "Presto serviços de desenvolvimento pela minha própria software house. Atuo na arquitetura e no desenvolvimento de APIs REST, integrações com serviços externos, gateways de pagamento (Pagar.me, Mercado Pago), automações de processos, modelagem de banco de dados e deploy em cloud (Heroku, Vercel, AWS S3) — além das aplicações web e mobile que consomem essas APIs.",
+      "Presto serviços de desenvolvimento pela minha própria software house. Atuo na arquitetura e no desenvolvimento de APIs REST, integrações com serviços externos, gateways de pagamento (Pagar.me, Mercado Pago), automações de processos, modelagem de banco de dados e deploy em cloud (Heroku, Vercel, AWS S3), além das aplicações web e mobile que consomem essas APIs.",
     tags: [
       "NestJS",
       "Node.js",
@@ -779,5 +779,12 @@ export const listaEducacao: EducacaoProps[] = [
     description:
       "Formação fullstack para dominar qualquer tecnologia e resolver qualquer desafio.",
     tags: ["Next.js", "React", "Node.js", "TypeScript"],
+  },
+  {
+    title: "System Design",
+    subtitle: "LINUXtips",
+    description:
+      "Arquitetura de sistemas distribuídos: escalabilidade, disponibilidade, cache, filas, bancos de dados e padrões de resiliência.",
+    tags: ["System Design", "Arquitetura", "Escalabilidade", "Sistemas Distribuídos"],
   },
 ];

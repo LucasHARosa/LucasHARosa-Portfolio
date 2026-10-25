@@ -6,45 +6,48 @@ import { Header } from "@/components/Header";
 import { PageMeta } from "@/components/PageMeta";
 import { Button } from "@/components/ui/Button";
 import { Frame } from "@/components/ui/Frame";
-import { DEVTO_PROFILE, useDevtoArticles } from "@/lib/devto";
+import { ARTICLE_CATEGORIES, articleCategories, DEVTO_PROFILE, OTHER_CATEGORY, useDevtoArticles } from "@/lib/devto";
 import { cn } from "@/lib/utils";
 
 export function Blog() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const tag = searchParams.get("tag");
   const { status, articles } = useDevtoArticles();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // Tags ordenadas pela quantidade de artigos
+  // Só aparecem as categorias que têm artigo, na ordem de ARTICLE_CATEGORIES
   const counts = new Map<string, number>();
-  articles.forEach((a) => a.tag_list.forEach((t) => counts.set(t, (counts.get(t) ?? 0) + 1)));
-  const tags = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  articles.forEach((a) => articleCategories(a).forEach((c) => counts.set(c, (counts.get(c) ?? 0) + 1)));
+  const categories = [...ARTICLE_CATEGORIES, OTHER_CATEGORY].filter((c) => counts.has(c.value));
 
-  const total = tag ? (counts.get(tag) ?? 0) : articles.length;
+  const param = searchParams.get("categoria");
+  const active = categories.find((c) => c.value === param);
+  const categoria = active?.value ?? null;
+
+  const total = categoria ? (counts.get(categoria) ?? 0) : articles.length;
   const summary =
     status === "ready"
-      ? `${total} ${total === 1 ? "artigo" : "artigos"}${tag ? ` com a tag #${tag}` : ""}, publicados no dev.to`
+      ? `${total} ${total === 1 ? "artigo" : "artigos"}${active ? ` em ${active.label}` : ""}, publicados no dev.to`
       : "Artigos publicados no dev.to";
 
   const filterButton = (value: string | null, label: string, count: number) => {
-    const active = tag === value;
+    const pressed = categoria === value;
     return (
       <button
         key={label}
         type="button"
-        aria-pressed={active}
-        onClick={() => setSearchParams(value ? { tag: value } : {})}
+        aria-pressed={pressed}
+        onClick={() => setSearchParams(value ? { categoria: value } : {})}
         className={cn(
           "flex h-12 shrink-0 items-center gap-2 border-r border-line px-4 font-mono text-label transition-colors sm:px-5",
-          active ? "text-ink" : "text-dim hover:text-ink",
+          pressed ? "text-ink" : "text-dim hover:text-ink",
         )}
       >
         <span
           aria-hidden="true"
-          className={cn("size-1.5 bg-signal transition-opacity", active ? "opacity-100" : "opacity-0")}
+          className={cn("size-1.5 bg-signal transition-opacity", pressed ? "opacity-100" : "opacity-0")}
         />
         {label}
         <span className="text-dim">{count}</span>
@@ -73,17 +76,17 @@ export function Blog() {
             </div>
           </header>
 
-          {tags.length > 0 && (
+          {categories.length > 0 && (
             <div className="sticky top-14 z-30 border-y border-line bg-bg">
-              <div role="group" aria-label="Filtrar artigos por tag" className="no-scrollbar flex overflow-x-auto">
+              <div role="group" aria-label="Filtrar artigos por categoria" className="no-scrollbar flex overflow-x-auto">
                 {filterButton(null, "Todos", articles.length)}
-                {tags.map(([t, n]) => filterButton(t, `#${t}`, n))}
+                {categories.map((c) => filterButton(c.value, c.label, counts.get(c.value) ?? 0))}
               </div>
             </div>
           )}
 
           <div className="px-4 pt-10 pb-16 sm:px-8 md:pb-24 lg:px-12">
-            <ArticleList showDescription tag={tag} />
+            <ArticleList showDescription categoria={categoria} categoriaLabel={active?.label} />
           </div>
         </main>
         <Footer />

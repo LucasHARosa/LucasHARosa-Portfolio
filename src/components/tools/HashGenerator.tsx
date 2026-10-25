@@ -121,7 +121,7 @@ export default function HashGenerator() {
             return (
               <div key={algorithm} className="grid gap-2 border-b border-line pb-3 last:border-0 last:pb-0 sm:grid-cols-[6rem_1fr_auto] sm:items-center">
                 <dt className="font-mono text-label text-dim">{algorithm}</dt>
-                <dd className="min-w-0 font-mono text-[0.8125rem] break-all text-ink">{value || <span className="text-dim">—</span>}</dd>
+                <dd className="min-w-0 font-mono text-[0.8125rem] break-all text-ink">{value || <span className="text-dim">-</span>}</dd>
                 <dd>
                   <CopyButton value={value} message={`${algorithm} copiado!`} />
                 </dd>

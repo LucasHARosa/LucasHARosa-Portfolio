@@ -17,6 +17,47 @@ export interface DevtoArticle {
   cover_image: string | null;
 }
 
+/**
+ * Categorias do site. As tags do dev.to são muitas e genéricas (webdev,
+ * programming…), então cada artigo entra nas categorias das suas tags.
+ * Para uma tag nova cair numa categoria, basta incluí-la aqui.
+ */
+export const ARTICLE_CATEGORIES = [
+  {
+    value: "ia",
+    label: "IA",
+    tags: ["ai", "llm", "rag", "machinelearning", "genai", "openai", "agents", "mcp", "promptengineering", "claude"],
+  },
+  {
+    value: "system-design",
+    label: "System Design",
+    tags: ["systemdesign", "architecture", "distributedsystems", "microservices", "scalability", "designpatterns", "cloud"],
+  },
+  {
+    value: "back-end",
+    label: "Back-end",
+    tags: ["backend", "node", "nodejs", "nestjs", "java", "springboot", "python", "fastapi", "go", "golang", "api", "database", "postgres", "sql", "docker", "kubernetes", "devops"],
+  },
+  {
+    value: "front-end",
+    label: "Front-end",
+    tags: ["frontend", "javascript", "typescript", "react", "nextjs", "css", "html", "webdev", "reactnative", "mobile"],
+  },
+  {
+    value: "fundamentos",
+    label: "Fundamentos",
+    tags: ["computerscience", "programming", "algorithms", "datastructures", "beginners", "learning", "career"],
+  },
+] as const;
+
+/** Artigo sem nenhuma tag mapeada. */
+export const OTHER_CATEGORY = { value: "outros", label: "Outros" } as const;
+
+export function articleCategories(article: DevtoArticle): string[] {
+  const found = ARTICLE_CATEGORIES.filter((c) => article.tag_list.some((t) => (c.tags as readonly string[]).includes(t)));
+  return found.length ? found.map((c) => c.value) : [OTHER_CATEGORY.value];
+}
+
 type State =
   | { status: "loading"; articles: [] }
   | { status: "ready"; articles: DevtoArticle[] }

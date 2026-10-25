@@ -20,7 +20,7 @@
   {
     "slug": "ip",
     "nome": "Meu IP",
-    "descricao": "Veja seu IP público, país, cidade e provedor de internet.",
+    "descricao": "Veja seus IPs públicos (IPv4 e IPv6), país, cidade e provedor de internet.",
     "relacionadas": ["uuid", "senha", "qrcode", "json"]
   },
   {

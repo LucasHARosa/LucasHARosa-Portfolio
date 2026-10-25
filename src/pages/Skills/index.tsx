@@ -82,8 +82,8 @@ export function Skills() {
             aside={
               <>
                 <p>
-                  Cada tecnologia com que trabalho, agrupada por camada, e onde usei — nas empresas e nos projetos do
-                  portfólio.
+                  Cada tecnologia com que trabalho, agrupada por camada, e onde usei cada uma nas empresas e nos
+                  projetos do portfólio.
                 </p>
                 <Button to="/projetos" variant="ghost" className="underline decoration-line-strong underline-offset-4">
                   Ver os projetos

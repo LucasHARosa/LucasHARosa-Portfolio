@@ -30,70 +30,70 @@ Tenho base em sistemas embarcados e IoT, que é de onde vem meu interesse por pe
 
 ## Experiências profissionais
 
-### OctoLuna — Founder & Desenvolvedor Full-Stack
+### OctoLuna · Founder & Desenvolvedor Full-Stack
 *Back-end, Web e Mobile*
 
 Presto serviços de desenvolvimento pela minha própria software house. Atuo na arquitetura e no desenvolvimento de APIs REST, integrações com serviços externos, gateways de pagamento (Pagar.me, Mercado Pago), automações de processos, modelagem de banco de dados e deploy em cloud (Heroku, Vercel, AWS S3), além das aplicações web e mobile que consomem essas APIs.
 
 `NestJS` `Node.js` `Next.js` `React Native` `PostgreSQL` `Docker`
 
-### Power Pick — Desenvolvedor Full-Stack
+### Power Pick · Desenvolvedor Full-Stack
 *Arquitetura, APIs e Web*
 
 Responsável pela arquitetura e pelo desenvolvimento de uma plataforma de comparação de tarifas e serviços de energia. No back-end em NestJS, defini a estrutura em módulos, as APIs REST, as regras de negócio da comparação e a modelagem de dados, usando Redis para cache das consultas e integrações com provedores externos. No front-end, estruturei a aplicação em Next.js com SSR e SEO, participando das decisões técnicas do produto. Integrei também um chatbot que orienta o usuário e o direciona aos fluxos relevantes.
 
 `NestJS` `Node.js` `Next.js` `PostgreSQL` `Redis` `TypeScript`
 
-### DubPay — Desenvolvedor Full-Stack
+### DubPay · Desenvolvedor Full-Stack
 *Fintech, Pagamentos e Web*
 
 Desenvolvimento e manutenção de uma fintech de pagamentos. Atuei nos fluxos de checkout, no processamento e na conciliação de transações e nas integrações com gateways, trabalhando no back-end em Java e PHP/Laravel e nas aplicações web em React e Next.js. Mensageria com RabbitMQ para o processamento assíncrono das transações, containers com Docker e Kubernetes, monitoramento das aplicações e pipelines de CI/CD. Participei também da migração da infraestrutura da AWS para o GCP com o serviço em produção.
 
 `Java` `PHP` `Laravel` `Next.js` `React` `RabbitMQ` `Docker` `Kubernetes` `CI/CD`
 
-### Nacional GO — Desenvolvedor Full-Stack
+### Nacional GO · Desenvolvedor Full-Stack
 *Web, Mobile e Automações*
 
 Desenvolvi e mantive o sistema web interno da empresa de logística veicular: back-end em PHP, front-end em React, novas funcionalidades, ajustes de regras de negócio e integrações entre sistemas. Desenvolvi também o aplicativo dos motoristas em React Native, usado na operação de transporte, e automações de processos internos com N8N e IA. Criei uma solução de OCR para leitura e conferência de placas dos veículos da operação e atuei na liderança técnica do e-commerce da empresa.
 
 `PHP` `React` `React Native` `N8N` `OCR` `MySQL`
 
-### Grupo Bseen — Desenvolvedor Full-Stack
+### Grupo Bseen · Desenvolvedor Full-Stack
 *Back-end, Web e Mobile*
 
 Desenvolvimento do MVP de uma plataforma de gestão de energia. No back-end em FastAPI, criei endpoints, regras de negócio, autenticação, integrações com serviços externos, fluxos de pagamento e leitura de faturas com OCR. No front-end e no mobile, implementei os painéis administrativos e as telas que consomem essas APIs.
 
 `FastAPI` `Python` `React` `React Native` `OCR` `PostgreSQL`
 
-### MarjoSports — Desenvolvedor Full-Stack
+### MarjoSports · Desenvolvedor Full-Stack
 *Back-end e Mobile*
 
 No back-end, trabalhei com Python/Django na evolução dos microsserviços da plataforma, nas integrações com APIs e nas regras de negócio, implementando comunicação em tempo real com WebSockets e Server-Sent Events (SSE) para a atualização contínua dos dados. No mobile, mantive os apps existentes em Kotlin e fui responsável pela criação do novo aplicativo em React Native, substituindo a base defasada.
 
 `Python` `Django` `Microsserviços` `React Native` `Kotlin` `WebSocket` `SSE`
 
-### Grupo Orion — Desenvolvedor Mobile
+### Grupo Orion · Desenvolvedor Mobile
 *Arquitetura React Native e IoT*
 
 Desenvolvi e defini a arquitetura de aplicações mobile cross-platform para automação predial e IoT. Os apps consomem dados de sensores em tempo real e exibem métricas operacionais das áreas monitoradas. Atuei na estrutura dos projetos, nas interfaces, na integração com as APIs de telemetria, no tratamento dos dados em tempo real e na publicação nas lojas Android e iOS.
 
 `React Native` `Expo` `IoT` `TypeScript` `Android` `iOS`
 
-### Asset Tecnologia e Dados — Desenvolvedor Full-Stack
+### Asset Tecnologia e Dados · Desenvolvedor Full-Stack
 *Back-end Java e Mobile*
 
 Sistema de gestão industrial voltado à otimização de processos de chão de fábrica. No back-end com Java e Spring Boot, criei e mantive APIs REST, implementei regras de negócio e integrações entre sistemas. No mobile, desenvolvi funcionalidades em React Native para os operadores de fábrica, integrando com sensores e equipamentos industriais.
 
 `Java` `Spring Boot` `React Native` `MySQL` `APIs REST`
 
-### Ministério das Comunicações — Estagiário
+### Ministério das Comunicações · Estagiário
 *Back-end Java e Dados*
 
 Atuei no programa de inclusão de internet em escolas públicas de áreas afastadas. Desenvolvi e mantive serviços back-end em Java para os sistemas do programa e trabalhei na integração e consolidação de bases de dados com Python e SQL, além de relatórios em Power BI para apoiar a tomada de decisão.
 
 `Java` `Python` `SQL` `PostgreSQL` `Power BI`
 
-### Mecajun — Desenvolvedor de Projetos
+### Mecajun · Desenvolvedor de Projetos
 *Automação, IoT e Embarcados*
 
 Projetos de automação residencial e predial com microcontroladores, sensores e dispositivos integrados. Cobri o ciclo completo: levantamento de requisitos, prototipação, desenvolvimento de firmware em C/C++, testes e entrega.
@@ -170,3 +170,4 @@ Projetos acadêmicos e de IA: TCC de visão computacional para inspeção de sol
 | Desenvolvimento Mobile | Rocketseat | React Native, Expo |
 | Desenvolvimento Backend | ADA Tech | Java, Spring Boot, PostgreSQL, Docker |
 | Curso.Dev | Filipe Deschamps | Formação full-stack com Next.js, React e Node.js |
+| System Design | LINUXtips | Arquitetura de sistemas distribuídos, escalabilidade, cache, filas e resiliência |

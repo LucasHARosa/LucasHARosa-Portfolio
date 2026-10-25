@@ -28,7 +28,7 @@ function decode(token: string): Decoded {
   try {
     return { header: decodePart(parts[0]), payload: decodePart(parts[1]), signature: parts[2] };
   } catch {
-    throw new Error("Não foi possível decodificar o header ou o payload — confira se o token está completo.");
+    throw new Error("Não foi possível decodificar o header ou o payload. Confira se o token está completo.");
   }
 }
 
@@ -138,7 +138,7 @@ export default function JwtDecoder() {
       )}
 
       <Notice>
-        A decodificação acontece no navegador e não verifica a assinatura — qualquer pessoa consegue ler o payload de um JWT,
+        A decodificação acontece no navegador e não verifica a assinatura. Qualquer pessoa consegue ler o payload de um JWT,
         então não coloque dados sensíveis nele.
       </Notice>
     </div>

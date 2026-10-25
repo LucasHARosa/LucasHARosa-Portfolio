@@ -20,7 +20,7 @@ export function Experience() {
     <Section
       id="Experiencia"
       title="Experiência Profissional"
-      description="Onde atuei e o que fiz em cada contexto — back-end, web e mobile."
+      description="Onde atuei e o que fiz em cada contexto: back-end, web e mobile."
     >
       <ol className="border-t border-line">
         {listaExperiencias.map((exp, i) => {

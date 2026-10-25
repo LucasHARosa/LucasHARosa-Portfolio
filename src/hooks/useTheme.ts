@@ -7,8 +7,9 @@ const THEME_COLORS: Record<Theme, string> = {
   light: "#F2F1EC",
 };
 
+/** O claro é o padrão; o escuro só quando escolhido (salvo no localStorage). */
 function readTheme(): Theme {
-  return document.documentElement.dataset.theme === "light" ? "light" : "dark";
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
 }
 
 function subscribe(onChange: () => void) {
@@ -22,7 +23,7 @@ function subscribe(onChange: () => void) {
 
 /** Tema atual (aplicado em <html data-theme>) e alternância persistida. */
 export function useTheme() {
-  const theme = useSyncExternalStore(subscribe, readTheme, () => "dark" as Theme);
+  const theme = useSyncExternalStore(subscribe, readTheme, () => "light" as Theme);
 
   const setTheme = useCallback((next: Theme) => {
     document.documentElement.dataset.theme = next;
