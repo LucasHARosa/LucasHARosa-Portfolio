@@ -1,0 +1,22 @@
+{
+  "/projetos": {
+    "title": "Projetos | Lucas Rosa",
+    "description": "Projetos de back-end, full-stack, front-end, mobile e IA: APIs em Java, Node.js, Python e Go, aplicações web em React e Next.js e apps em React Native."
+  },
+  "/habilidades": {
+    "title": "Habilidades | Lucas Rosa",
+    "description": "Tecnologias com que Lucas Rosa trabalha em back-end, web, mobile, dados e infraestrutura, e onde usou cada uma: Java, Node.js, NestJS, Python, FastAPI, Go, React, Next.js e React Native."
+  },
+  "/blog": {
+    "title": "Artigos | Lucas Rosa",
+    "description": "Artigos de Lucas Rosa sobre inteligência artificial, system design, arquitetura de back-end, front-end e engenharia de software, publicados no dev.to."
+  },
+  "/ferramentas": {
+    "title": "Ferramentas | Lucas Rosa",
+    "description": "Ferramentas gratuitas para devs que rodam no navegador: gerador de UUID, hash, formatador de JSON, meu IP, decodificador de JWT, gerador de senhas, QR Code e cores."
+  },
+  "/templates": {
+    "title": "Templates | Lucas Rosa",
+    "description": "Templates de projeto para começar rápido: NestJS, Next.js, React Native, FastAPI, Go, Java com Spring Boot e direcionamento para agentes de IA."
+  }
+}

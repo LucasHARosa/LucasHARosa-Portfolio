@@ -11,6 +11,8 @@ import { Header } from "@/components/Header";
 import { Intro } from "@/components/Intro";
 import { ProjectsRating } from "@/components/ProjectsRating";
 import { Skills } from "@/components/Skills";
+import { TemplatesTeaser } from "@/components/TemplatesTeaser";
+import { ToolsTeaser } from "@/components/ToolsTeaser";
 import { Frame } from "@/components/ui/Frame";
 
 export function Home() {
@@ -49,6 +51,8 @@ export function Home() {
           <Experience />
           <Articles />
           <Education />
+          <ToolsTeaser />
+          <TemplatesTeaser />
           <Contact />
         </main>
         <Footer />

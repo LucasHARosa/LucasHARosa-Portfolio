@@ -12,7 +12,7 @@ interface LinkItem {
 }
 
 /** Links existentes de um projeto, na ordem: lojas, repositórios, demo. */
-export function projectLinks(projeto: ProjetosProps): LinkItem[] {
+function projectLinks(projeto: ProjetosProps): LinkItem[] {
   const links: LinkItem[] = [];
   if (projeto.LinkGoogle) links.push({ label: "Google Play", href: projeto.LinkGoogle, icon: FaGooglePlay });
   if (projeto.LinkApple) links.push({ label: "Apple Store", href: projeto.LinkApple, icon: FaApple });

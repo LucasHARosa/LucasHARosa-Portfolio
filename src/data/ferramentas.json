@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "uuid",
+    "nome": "Gerador de UUID",
+    "descricao": "Gere UUIDs v4 (aleatórios) ou v7 (ordenados por tempo) em lote, com ou sem hífens.",
+    "relacionadas": ["senha", "hash", "jwt", "json"]
+  },
+  {
+    "slug": "hash",
+    "nome": "Gerador de hash",
+    "descricao": "Calcule MD5, SHA-1, SHA-256, SHA-384 e SHA-512 de um texto ou arquivo, direto no navegador.",
+    "relacionadas": ["senha", "uuid", "jwt", "qrcode"]
+  },
+  {
+    "slug": "json",
+    "nome": "Formatador de JSON",
+    "descricao": "Formate, minifique e valide JSON, com o erro apontado por linha e coluna.",
+    "relacionadas": ["jwt", "uuid", "hash", "cores"]
+  },
+  {
+    "slug": "ip",
+    "nome": "Meu IP",
+    "descricao": "Veja seu IP público, país, cidade e provedor de internet.",
+    "relacionadas": ["uuid", "senha", "qrcode", "json"]
+  },
+  {
+    "slug": "jwt",
+    "nome": "Decodificador de JWT",
+    "descricao": "Decodifique o header e o payload de um JWT e veja quando ele expira.",
+    "relacionadas": ["json", "hash", "uuid", "senha"]
+  },
+  {
+    "slug": "senha",
+    "nome": "Gerador de senhas",
+    "descricao": "Gere senhas fortes com tamanho e caracteres configuráveis, e veja a força de cada uma.",
+    "relacionadas": ["hash", "uuid", "qrcode", "jwt"]
+  },
+  {
+    "slug": "qrcode",
+    "nome": "Gerador de QR Code",
+    "descricao": "Transforme textos e links em QR Code e baixe em PNG ou SVG.",
+    "relacionadas": ["cores", "paleta", "senha", "uuid"]
+  },
+  {
+    "slug": "paleta",
+    "nome": "Paleta de cores",
+    "descricao": "Gere paletas complementares, triádicas, análogas, tetrádicas e monocromáticas a partir de uma cor.",
+    "relacionadas": ["cores", "qrcode", "json", "uuid"]
+  },
+  {
+    "slug": "cores",
+    "nome": "Conversor de cores",
+    "descricao": "Converta cores entre HEX, RGB e HSL com prévia ao vivo.",
+    "relacionadas": ["paleta", "qrcode", "json", "hash"]
+  }
+]

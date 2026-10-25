@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { useSearchParams } from "react-router-dom";
 import { ArticleList } from "@/components/Articles";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { PageMeta } from "@/components/PageMeta";
 import { Button } from "@/components/ui/Button";
 import { Frame } from "@/components/ui/Frame";
 import { DEVTO_PROFILE, useDevtoArticles } from "@/lib/devto";
@@ -54,14 +54,7 @@ export function Blog() {
 
   return (
     <>
-      <Helmet>
-        <title>Artigos | Lucas Rosa</title>
-        <meta
-          name="description"
-          content="Artigos de Lucas Rosa sobre JavaScript, React e desenvolvimento de software, publicados no dev.to."
-        />
-        <link rel="canonical" href="https://lucasrosa.dev.br/blog" />
-      </Helmet>
+      <PageMeta path="/blog" />
 
       <Frame>
         <Header />

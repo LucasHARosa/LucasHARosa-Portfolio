@@ -1,6 +1,7 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { Suspense, lazy, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import foto from "@/assets/profile.jpg";
 import { Button } from "@/components/ui/Button";
 import { DecodeText } from "@/components/ui/DecodeText";
@@ -8,6 +9,9 @@ import { Marker } from "@/components/ui/Marker";
 import { Tag } from "@/components/ui/Tag";
 
 const EdgeScene = lazy(() => import("./EdgeScene"));
+
+const heroLink =
+  "inline-flex items-center gap-1 text-dim underline decoration-line-strong underline-offset-4 transition-colors hover:text-ink hover:decoration-ink";
 
 const STACKS = [
   "Java · Spring Boot",
@@ -93,15 +97,24 @@ export function Intro() {
             </Button>
           </div>
 
-          <a
-            href="https://bbs.lucasrosa.dev.br/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-1 text-[0.9375rem] text-dim underline decoration-line-strong underline-offset-4 transition-colors hover:text-ink hover:decoration-ink"
-          >
-            Portfolio BBS
-            <ArrowUpRight className="size-4" aria-hidden="true" />
-          </a>
+          <ul className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.9375rem]">
+            <li>
+              <Link to="/ferramentas" className={heroLink}>
+                Ferramentas
+              </Link>
+            </li>
+            <li>
+              <Link to="/templates" className={heroLink}>
+                Templates
+              </Link>
+            </li>
+            <li>
+              <a href="https://bbs.lucasrosa.dev.br/" target="_blank" rel="noopener noreferrer" className={heroLink}>
+                Portfolio BBS
+                <ArrowUpRight className="size-4" aria-hidden="true" />
+              </a>
+            </li>
+          </ul>
         </div>
 
         <div className="lg:col-span-6">

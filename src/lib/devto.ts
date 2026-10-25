@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const DEVTO_USERNAME = "lucasharosa";
+const DEVTO_USERNAME = "lucasharosa";
 export const DEVTO_PROFILE = `https://dev.to/${DEVTO_USERNAME}`;
 
 /** Campos usados da API pública do dev.to (GET /api/articles). */

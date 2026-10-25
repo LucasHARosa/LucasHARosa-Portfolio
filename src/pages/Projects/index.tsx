@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { useSearchParams } from "react-router-dom";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { PageMeta } from "@/components/PageMeta";
 import { Pagination } from "@/components/Pagination";
 import { ProjectCardHorizontal } from "@/components/ProjectCardHorizontal";
 import { ProjectsFilterBar } from "@/components/ProjectsFilterBar";
@@ -56,14 +56,7 @@ export function Projects() {
 
   return (
     <>
-      <Helmet>
-        <title>Projetos | Lucas Rosa</title>
-        <meta
-          name="description"
-          content="Projetos de back-end, full-stack, front-end, mobile e IA: APIs em Java, Node.js, Python e Go, aplicações web em React e Next.js e apps em React Native."
-        />
-        <link rel="canonical" href="https://lucasrosa.dev.br/projetos" />
-      </Helmet>
+      <PageMeta path="/projetos" />
 
       <Frame>
         <Header />

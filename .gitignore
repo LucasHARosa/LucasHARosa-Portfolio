@@ -23,7 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-# Tempo files
-**/tempobook/dynamic/
-**/tempobook/storyboards/
 .claude

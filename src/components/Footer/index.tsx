@@ -8,8 +8,14 @@ const NAV = [
   { label: "Início", to: "/#Home" },
   { label: "Sobre", to: "/#SobreMim" },
   { label: "Projetos", to: "/projetos" },
+  { label: "Habilidades", to: "/habilidades" },
   { label: "Artigos", to: "/blog" },
   { label: "Contato", to: "/#Contato" },
+];
+
+const RECURSOS = [
+  { label: "Ferramentas", to: "/ferramentas" },
+  { label: "Templates", to: "/templates" },
 ];
 
 const linkClass = "text-dim transition-colors hover:text-ink";
@@ -20,7 +26,7 @@ export function Footer() {
   return (
     <footer className="border-t border-line">
       <div className="grid gap-10 px-4 py-14 sm:px-8 md:grid-cols-12 md:gap-8 lg:px-12">
-        <div className="md:col-span-5 lg:col-span-6">
+        <div className="md:col-span-12 lg:col-span-5">
           <div className="flex items-center gap-3">
             <Logo />
             <span className="font-medium">Lucas Rosa</span>
@@ -30,10 +36,23 @@ export function Footer() {
           </p>
         </div>
 
-        <nav aria-label="Rodapé" className="md:col-span-3">
+        <nav aria-label="Rodapé" className="md:col-span-4 lg:col-span-2">
           <p className="font-mono text-label text-dim">Navegação</p>
           <ul className="mt-4 space-y-2 text-[0.9375rem]">
             {NAV.map((item) => (
+              <li key={item.label}>
+                <Link to={item.to} className={linkClass}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <nav aria-label="Recursos" className="md:col-span-4 lg:col-span-2">
+          <p className="font-mono text-label text-dim">Recursos</p>
+          <ul className="mt-4 space-y-2 text-[0.9375rem]">
+            {RECURSOS.map((item) => (
               <li key={item.label}>
                 <Link to={item.to} className={linkClass}>
                   {item.label}

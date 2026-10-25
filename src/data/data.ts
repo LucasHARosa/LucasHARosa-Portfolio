@@ -1,10 +1,4 @@
-﻿import type { IconType } from "react-icons";
-import { GiOctopus } from "react-icons/gi";
-import { IoDesktopOutline } from "react-icons/io5";
-import { MdOutlineDevices } from "react-icons/md";
-import { TbDeviceMobileCode } from "react-icons/tb";
-
-export type ProjetoTipo =
+﻿export type ProjetoTipo =
   | "principais"
   | "backend"
   | "fullstack"
@@ -348,32 +342,21 @@ export const listaProjetos: ProjetosProps[] = [
 
 /**
  * Categorias usadas nos filtros da página /projetos.
- * O ícone é uma chave: cada componente mapeia para o ícone que já utiliza.
  * "principais" não aparece aqui — alimenta apenas o carrossel de destaques da Home.
  */
-export type CategoriaIcone =
-  | "grid"
-  | "server"
-  | "globe"
-  | "code"
-  | "mobile"
-  | "cpu"
-  | "cap";
-
 export interface ProjetoCategoria {
   label: string;
   value: string;
-  icon: CategoriaIcone;
 }
 
 export const projetoCategorias: ProjetoCategoria[] = [
-  { label: "Todos", value: "todos", icon: "grid" },
-  { label: "Back-end", value: "backend", icon: "server" },
-  { label: "Full-Stack", value: "fullstack", icon: "globe" },
-  { label: "Front-end", value: "frontend", icon: "code" },
-  { label: "Mobile", value: "mobile", icon: "mobile" },
-  { label: "IA", value: "ia", icon: "cpu" },
-  { label: "Acadêmicos", value: "academicos", icon: "cap" },
+  { label: "Todos", value: "todos" },
+  { label: "Back-end", value: "backend" },
+  { label: "Full-Stack", value: "fullstack" },
+  { label: "Front-end", value: "frontend" },
+  { label: "Mobile", value: "mobile" },
+  { label: "IA", value: "ia" },
+  { label: "Acadêmicos", value: "academicos" },
 ];
 
 /** Ordem dos projetos no carrossel da Home (ids marcados com "principais"). */
@@ -405,6 +388,8 @@ export function labelCategoria(value: string) {
 export interface SkillProps {
   id: string;
   titulo: string;
+  /** Camada em que a skill atua — agrupa a página /habilidades. */
+  camada: string;
   description: string;
   tecnologiasAxiliares: string[];
 }
@@ -413,6 +398,7 @@ export const listaSkills: SkillProps[] = [
   {
     id: "nodejs",
     titulo: "Node.js",
+    camada: "Back-end",
     description:
       "Construção de APIs e serviços com Node.js: autenticação JWT, filas de mensageria, WebSockets, microsserviços e integração com bancos relacionais e NoSQL.",
     tecnologiasAxiliares: [
@@ -430,6 +416,7 @@ export const listaSkills: SkillProps[] = [
   {
     id: "nextjs",
     titulo: "Next.js",
+    camada: "Web",
     description:
       "Aplicações com SSR, SSG e ISR em Next.js, com atenção a performance, SEO e Core Web Vitals em plataformas de alto tráfego.",
     tecnologiasAxiliares: [
@@ -443,6 +430,7 @@ export const listaSkills: SkillProps[] = [
   {
     id: "react-native",
     titulo: "React Native",
+    camada: "Mobile",
     description:
       "Aplicativos cross-platform para Android e iOS com React Native e Expo: integração com APIs e sensores, dados em tempo real e publicação nas lojas.",
     tecnologiasAxiliares: [
@@ -456,6 +444,7 @@ export const listaSkills: SkillProps[] = [
   {
     id: "nestjs",
     titulo: "NestJS",
+    camada: "Back-end",
     description:
       "Back-end modular com NestJS: arquitetura em camadas, princípios SOLID, injeção de dependência, guards, interceptors e pipes, com persistência via TypeORM ou Prisma e documentação por Swagger.",
     tecnologiasAxiliares: [
@@ -472,6 +461,7 @@ export const listaSkills: SkillProps[] = [
   {
     id: "java",
     titulo: "Java",
+    camada: "Back-end",
     description:
       "Desenvolvimento back-end com Java e Spring Boot: APIs REST, regras de negócio, integração entre sistemas e persistência com JPA. Experiência em contextos industriais, fintech e sistemas governamentais.",
     tecnologiasAxiliares: [
@@ -487,6 +477,7 @@ export const listaSkills: SkillProps[] = [
   {
     id: "python",
     titulo: "Python",
+    camada: "Back-end",
     description:
       "APIs, automações e soluções de IA com Python. Experiência com FastAPI e Django, análise de dados, visão computacional e integração com modelos de machine learning.",
     tecnologiasAxiliares: [
@@ -503,6 +494,7 @@ export const listaSkills: SkillProps[] = [
   {
     id: "fastapi",
     titulo: "FastAPI",
+    camada: "Back-end",
     description:
       "APIs REST assíncronas e documentadas com FastAPI: autenticação, SQLAlchemy async, OCR, integração com gateways de pagamento e arquitetura de microsserviços em Python.",
     tecnologiasAxiliares: [
@@ -519,6 +511,7 @@ export const listaSkills: SkillProps[] = [
   {
     id: "go",
     titulo: "Go",
+    camada: "Back-end",
     description:
       "Serviços back-end em Go com foco em concorrência e baixa latência: APIs REST em arquitetura de camadas, autenticação JWT e integração com PostgreSQL.",
     tecnologiasAxiliares: [
@@ -533,6 +526,7 @@ export const listaSkills: SkillProps[] = [
   {
     id: "react",
     titulo: "React",
+    camada: "Web",
     description:
       "Aplicações web com React: hooks, Context API, gerenciamento de estado, componentização e padrões de organização para bases de código grandes.",
     tecnologiasAxiliares: [
@@ -549,6 +543,7 @@ export const listaSkills: SkillProps[] = [
   {
     id: "typescript",
     titulo: "TypeScript",
+    camada: "Web e Back-end",
     description:
       "TypeScript no front-end e no back-end: tipos genéricos, utility types, decorators e tipagem compartilhada entre camadas.",
     tecnologiasAxiliares: ["React", "Node.js", "NestJS", "Next.js"],
@@ -556,6 +551,7 @@ export const listaSkills: SkillProps[] = [
   {
     id: "github",
     titulo: "Git/GitHub",
+    camada: "Workflow",
     description:
       "Versionamento e colaboração em equipe: GitFlow, pull requests, code review e pipelines de CI/CD com GitHub Actions.",
     tecnologiasAxiliares: [
@@ -569,6 +565,7 @@ export const listaSkills: SkillProps[] = [
   {
     id: "code",
     titulo: "C++",
+    camada: "Embarcados",
     description:
       "Base em C/C++ para sistemas embarcados, microcontroladores e automação — a fundação por trás do entendimento de performance, memória e arquitetura de baixo nível.",
     tecnologiasAxiliares: ["C++", "C", "Microcontroladores", "Arduino", "IoT"],
@@ -639,7 +636,6 @@ export function ondeUsei(skillId: string) {
 }
 
 export interface ExperienciaProps {
-  icon: IconType;
   title: string;
   subtitle: string;
   description: string;
@@ -648,7 +644,6 @@ export interface ExperienciaProps {
 
 export const listaExperiencias: ExperienciaProps[] = [
   {
-    icon: GiOctopus,
     title: "Founder & Desenvolvedor Full-Stack · Back-end, Web e Mobile",
     subtitle: "OctoLuna",
     description:
@@ -663,7 +658,6 @@ export const listaExperiencias: ExperienciaProps[] = [
     ],
   },
   {
-    icon: MdOutlineDevices,
     title: "Desenvolvedor Full-Stack · Arquitetura, APIs e Web",
     subtitle: "Power Pick",
     description:
@@ -671,7 +665,6 @@ export const listaExperiencias: ExperienciaProps[] = [
     tags: ["NestJS", "Node.js", "Next.js", "PostgreSQL", "Redis", "TypeScript"],
   },
   {
-    icon: IoDesktopOutline,
     title: "Desenvolvedor Full-Stack · Fintech, Pagamentos e Web",
     subtitle: "DubPay",
     description:
@@ -689,7 +682,6 @@ export const listaExperiencias: ExperienciaProps[] = [
     ],
   },
   {
-    icon: MdOutlineDevices,
     title: "Desenvolvedor Full-Stack · Web, Mobile e Automações",
     subtitle: "Nacional GO",
     description:
@@ -697,7 +689,6 @@ export const listaExperiencias: ExperienciaProps[] = [
     tags: ["PHP", "React", "React Native", "N8N", "OCR", "MySQL"],
   },
   {
-    icon: MdOutlineDevices,
     title: "Desenvolvedor Full-Stack · Back-end, Web e Mobile",
     subtitle: "Grupo Bseen",
     description:
@@ -705,7 +696,6 @@ export const listaExperiencias: ExperienciaProps[] = [
     tags: ["FastAPI", "Python", "React", "React Native", "OCR", "PostgreSQL"],
   },
   {
-    icon: IoDesktopOutline,
     title: "Desenvolvedor Full-Stack · Back-end e Mobile",
     subtitle: "MarjoSports",
     description:
@@ -721,7 +711,6 @@ export const listaExperiencias: ExperienciaProps[] = [
     ],
   },
   {
-    icon: TbDeviceMobileCode,
     title: "Desenvolvedor Mobile · Arquitetura React Native e IoT",
     subtitle: "Grupo Orion",
     description:
@@ -729,7 +718,6 @@ export const listaExperiencias: ExperienciaProps[] = [
     tags: ["React Native", "Expo", "IoT", "TypeScript", "Android", "iOS"],
   },
   {
-    icon: IoDesktopOutline,
     title: "Desenvolvedor Full-Stack · Back-end Java e Mobile",
     subtitle: "Asset Tecnologia e Dados",
     description:
@@ -737,7 +725,6 @@ export const listaExperiencias: ExperienciaProps[] = [
     tags: ["Java", "Spring Boot", "React Native", "MySQL", "APIs REST"],
   },
   {
-    icon: IoDesktopOutline,
     title: "Estagiário · Back-end Java e Dados",
     subtitle: "Ministério das Comunicações",
     description:
@@ -745,7 +732,6 @@ export const listaExperiencias: ExperienciaProps[] = [
     tags: ["Java", "Python", "SQL", "PostgreSQL", "Power BI"],
   },
   {
-    icon: TbDeviceMobileCode,
     title: "Desenvolvedor de Projetos · Automação, IoT e Embarcados",
     subtitle: "Mecajun",
     description:

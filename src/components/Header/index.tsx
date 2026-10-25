@@ -12,11 +12,17 @@ const NAV = [
   { name: "Início", section: "Home" },
   { name: "Sobre mim", section: "SobreMim" },
   { name: "Projetos", section: "Projetos", route: "/projetos" },
-  { name: "Habilidades", section: "Skills" },
+  { name: "Habilidades", section: "Skills", route: "/habilidades" },
   { name: "Experiência", section: "Experiencia" },
   { name: "Artigos", section: "Artigos", route: "/blog" },
   { name: "Educação", section: "Educacao" },
   { name: "Contato", section: "Contato" },
+];
+
+// Fora do header desktop (que fica só com o portfólio): aparecem no menu mobile
+const RECURSOS = [
+  { name: "Ferramentas", route: "/ferramentas" },
+  { name: "Templates", route: "/templates" },
 ];
 
 function useActiveSection(enabled: boolean) {
@@ -187,6 +193,33 @@ export function Header() {
                   )}
                 </li>
               ))}
+              <li className="border-b border-line">
+                <p className="px-4 pt-6 pb-2 font-mono text-label text-dim sm:px-8">Recursos</p>
+                <ul>
+                  {RECURSOS.map((item) => {
+                    const current = location.pathname.startsWith(item.route);
+                    return (
+                      <li key={item.route} className="border-t border-line first:border-t-0">
+                        <Link
+                          to={item.route}
+                          onClick={() => setOpen(false)}
+                          aria-current={current ? "page" : undefined}
+                          className={cn(
+                            "flex min-h-14 items-center gap-3 px-4 font-mono text-[1.375rem] sm:px-8",
+                            current ? "text-ink" : "text-dim hover:text-ink",
+                          )}
+                        >
+                          <span
+                            aria-hidden="true"
+                            className={cn("size-1.5 shrink-0 bg-signal transition-opacity", current ? "opacity-100" : "opacity-0")}
+                          />
+                          {item.name}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </li>
               <li className="p-4 sm:px-8">
                 <Button href={hrefFor("Contato")} variant="signal" className="w-full" onClick={() => setOpen(false)}>
                   Falar comigo

@@ -120,7 +120,7 @@ export function Articles() {
     <Section
       id="Artigos"
       title="Artigos"
-      description="O que escrevo no dev.to sobre JavaScript, React e desenvolvimento de software."
+      description="O que escrevo no dev.to sobre IA, system design, back-end, front-end e engenharia de software."
       aside={
         <Button to="/blog" variant="ghost" className="self-start underline decoration-line-strong underline-offset-4">
           Ver todos os artigos

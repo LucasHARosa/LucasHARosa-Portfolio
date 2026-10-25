@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useRef, useState } from "react";
+import { Button } from "@/components/ui/Button";
 import { IsoGlyph } from "@/components/ui/IsoGlyph";
 import { Section } from "@/components/ui/Section";
 import { Tag } from "@/components/ui/Tag";
@@ -8,22 +9,6 @@ import { listaSkills, ondeUsei } from "@/data/data";
 import { cn } from "@/lib/utils";
 
 const MAX_PROJETOS = 6;
-
-/** Camada em que cada skill atua — cabeçalho da coluna. */
-const camada: Record<string, string> = {
-  java: "Back-end",
-  nodejs: "Back-end",
-  nestjs: "Back-end",
-  python: "Back-end",
-  fastapi: "Back-end",
-  go: "Back-end",
-  react: "Web",
-  nextjs: "Web",
-  typescript: "Web e Back-end",
-  "react-native": "Mobile",
-  github: "Workflow",
-  code: "Embarcados",
-};
 
 const usos = Object.fromEntries(listaSkills.map((s) => [s.id, ondeUsei(s.id)]));
 
@@ -49,7 +34,7 @@ export function Skills() {
   }
 
   const arrows = (
-    <div className="flex gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       <button
         type="button"
         onClick={() => scrollByColumn(-1)}
@@ -66,6 +51,9 @@ export function Skills() {
       >
         <ChevronRight className="size-4" />
       </button>
+      <Button to="/habilidades" variant="ghost" className="ml-3 underline decoration-line-strong underline-offset-4">
+        Ver todas as habilidades
+      </Button>
     </div>
   );
 
@@ -101,7 +89,7 @@ export function Skills() {
                 )}
               />
               <header className="dashed-b flex items-center justify-between px-5 py-4 font-mono text-label">
-                <span className={active ? "text-ink" : "text-dim"}>{camada[item.id]?.toUpperCase()}</span>
+                <span className={active ? "text-ink" : "text-dim"}>{item.camada.toUpperCase()}</span>
                 <span className="text-dim" title={`Usada em ${total} experiências e projetos`}>
                   [{String(total).padStart(2, "0")}]
                 </span>

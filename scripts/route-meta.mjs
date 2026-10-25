@@ -2,25 +2,25 @@
 // Robôs de prévia (WhatsApp, LinkedIn, X, Discord) não executam JavaScript,
 // então leem só as meta tags do HTML servido — o Helmet não chega até eles.
 // Com `cleanUrls` (vercel.json) e no GitHub Pages, /projetos serve projetos.html.
-import { readFileSync, writeFileSync } from "node:fs";
+// As rotas vêm de src/data/routes.json e src/data/ferramentas.json, os mesmos
+// arquivos que as páginas usam no <Helmet>.
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname } from "node:path";
 
 const SITE = "https://lucasrosa.dev.br";
 
+const readJson = (path) => JSON.parse(readFileSync(path, "utf8"));
+const pages = readJson("src/data/routes.json");
+const ferramentas = readJson("src/data/ferramentas.json");
+
 const routes = [
-  {
-    file: "projetos.html",
-    path: "/projetos",
-    title: "Projetos | Lucas Rosa",
-    description:
-      "Projetos de back-end, full-stack, front-end, mobile e IA: APIs em Java, Node.js, Python e Go, aplicações web em React e Next.js e apps em React Native.",
-  },
-  {
-    file: "blog.html",
-    path: "/blog",
-    title: "Artigos | Lucas Rosa",
-    description:
-      "Artigos de Lucas Rosa sobre JavaScript, React e desenvolvimento de software, publicados no dev.to.",
-  },
+  ...Object.entries(pages).map(([path, meta]) => ({ path, ...meta })),
+  // Mesmo título que src/pages/Tools/Tool.tsx
+  ...ferramentas.map((f) => ({
+    path: `/ferramentas/${f.slug}`,
+    title: `${f.nome} | Lucas Rosa`,
+    description: f.descricao,
+  })),
 ];
 
 const base = readFileSync("dist/index.html", "utf8");
@@ -29,6 +29,12 @@ function setMeta(html, attr, key, value) {
   const re = new RegExp(`(<meta\\s+${attr}="${key}"\\s+content=")[^"]*(")`);
   if (!re.test(html)) throw new Error(`meta ${attr}="${key}" não encontrada em dist/index.html`);
   return html.replace(re, `$1${value}$2`);
+}
+
+function write(file, html) {
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, html);
+  console.log(`route-meta: ${file}`);
 }
 
 for (const route of routes) {
@@ -41,6 +47,10 @@ for (const route of routes) {
   html = setMeta(html, "property", "og:description", route.description);
   html = setMeta(html, "name", "twitter:title", route.title);
   html = setMeta(html, "name", "twitter:description", route.description);
-  writeFileSync(`dist/${route.file}`, html);
-  console.log(`route-meta: dist/${route.file}`);
+  write(`dist${route.path}.html`, html);
+  // Rota que também é pasta (/ferramentas e /ferramentas/uuid): o GitHub Pages
+  // prioriza a pasta, então ela precisa do próprio index.html.
+  if (routes.some((r) => r.path.startsWith(`${route.path}/`))) {
+    write(`dist${route.path}/index.html`, html);
+  }
 }
